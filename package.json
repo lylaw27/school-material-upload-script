@@ -1,0 +1,32 @@
+{
+  "name": "school-material-uploader",
+  "version": "1.0.0",
+  "description": "Upload textbook materials to Supabase with embeddings",
+  "type": "module",
+  "scripts": {
+    "upload": "tsc && node dist/upload.js",
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "keywords": [
+    "supabase",
+    "embeddings",
+    "textbook",
+    "uploader"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@ai-sdk/openai": "^0.0.66",
+    "@ai-sdk/openai-compatible": "^1.0.29",
+    "@supabase/supabase-js": "^2.39.3",
+    "ai": "^5.0.116",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
