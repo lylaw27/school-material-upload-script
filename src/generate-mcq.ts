@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { generateObject } from 'ai';
+import { generateObject, embed } from 'ai';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
@@ -109,6 +109,14 @@ const MCQsSchema = z.array(MCQSchema).describe('Array of generated multiple choi
 type GeneratedMCQ = z.infer<typeof MCQSchema>;
 type GeneratedMCQs = z.infer<typeof MCQsSchema>;
 
+interface MCQRecord extends Omit<GeneratedMCQ, 'question_type_name'> {
+  question_type_id: string;
+  embedding: number[];
+  metadata: Record<string, any>;
+  subject: string;
+  grade_level: string;
+}
+
 /**
  * Fetch question types from Supabase
  */
@@ -193,6 +201,79 @@ async function fetchTextbookContent(subject: string, topic: string): Promise<Tex
 }
 
 /**
+ * Generate embeddings for question content
+ */
+async function generateEmbedding(text: string): Promise<number[]> {
+  try {
+    const { embedding } = await embed({
+      model: v4api.textEmbeddingModel('bge-m3'),
+      value: text,
+    });
+    
+    return embedding;
+  } catch (error) {
+    console.error('Error generating embedding:', error);
+    throw error;
+  }
+}
+
+/**
+ * Map question type name to ID
+ */
+function mapQuestionTypeToId(questionTypeName: string, questionTypes: QuestionType[]): string {
+  const questionType = questionTypes.find(qt => qt.name === questionTypeName);
+  
+  if (!questionType) {
+    throw new Error(`Question type "${questionTypeName}" not found in available types`);
+  }
+  
+  return questionType.id;
+}
+
+/**
+ * Upload MCQs to Supabase mcqs table
+ */
+async function uploadMCQsToSupabase(mcqs: MCQRecord[]): Promise<void> {
+  console.log('\nUploading MCQs to Supabase...');
+  
+  let successCount = 0;
+  let errorCount = 0;
+  
+  for (const mcq of mcqs) {
+    try {
+      const { data, error } = await supabase
+        .from('mcqs')
+        .insert({
+          topic: mcq.topic,
+          question: mcq.question,
+          options: mcq.options,
+          correct_answer: mcq.correct_answer,
+          explanation: mcq.explanation,
+          difficulty: mcq.difficulty,
+          subject: mcq.subject,
+          grade_level: mcq.grade_level,
+          question_type_id: mcq.question_type_id,
+          embedding: mcq.embedding,
+          metadata: mcq.metadata,
+        })
+        .select();
+      
+      if (error) {
+        throw new Error(`Failed to upload MCQ: ${error.message}`);
+      }
+      
+      console.log(`  ✓ Uploaded MCQ: ${mcq.question.substring(0, 50)}... (ID: ${data[0].id})`);
+      successCount++;
+    } catch (error) {
+      console.error(`  ✗ Failed to upload MCQ:`, error);
+      errorCount++;
+    }
+  }
+  
+  console.log(`\n✓ Upload complete: ${successCount} succeeded, ${errorCount} failed`);
+}
+
+/**
  * Generate MCQs using AI based on context
  */
 async function generateMCQs(
@@ -224,7 +305,7 @@ async function generateMCQs(
     
     // @ts-ignore - avoiding deep type instantiation error
     const result = await generateObject({
-      model: v4api('deepseek-v3.2'),
+      model: v4api('qwen-max-latest'),
       schema: MCQsSchema,
       messages: [
         {
@@ -385,12 +466,63 @@ async function generateMCQQuestions() {
   console.log('\nStep 5: Saving MCQs to file...');
   await saveMCQsToFile(generatedMCQs, CONFIG.outputFile, CONFIG);
   
+  // Step 6: Generate embeddings and prepare records for upload
+  console.log('\nStep 6: Generating embeddings and preparing records...');
+  const mcqRecords: MCQRecord[] = [];
+  
+  for (const mcq of generatedMCQs) {
+    try {
+      console.log(`  → Generating embedding for: ${mcq.question.substring(0, 50)}...`);
+      
+      // Map question type name to ID
+      const questionTypeId = mapQuestionTypeToId(mcq.question_type_name, questionTypes);
+      
+      // Generate embedding from question, options, and explanation
+      const embeddingText = `${mcq.question}\n${Object.values(mcq.options).join('\n')}\n${mcq.explanation}`;
+      const embedding = await generateEmbedding(embeddingText);
+      
+      // Create record
+      const record: MCQRecord = {
+        topic: mcq.topic,
+        question: mcq.question,
+        options: mcq.options,
+        correct_answer: mcq.correct_answer,
+        explanation: mcq.explanation,
+        difficulty: mcq.difficulty,
+        subject: CONFIG.subject,
+        grade_level: 'DSE',
+        question_type_id: questionTypeId,
+        embedding: embedding,
+        metadata: {
+          generated_at: new Date().toISOString(),
+          question_type_name: mcq.question_type_name,
+          generation_config: {
+            difficulty_setting: CONFIG.difficulty,
+            sample_questions_used: sampleQuestions.length,
+          },
+        },
+      };
+      
+      mcqRecords.push(record);
+      console.log(`    ✓ Embedding generated`);
+    } catch (error) {
+      console.error(`    ✗ Error processing MCQ:`, error);
+    }
+  }
+  
+  // Step 7: Upload to Supabase
+  if (mcqRecords.length > 0) {
+    console.log(`\nStep 7: Uploading ${mcqRecords.length} MCQ(s) to Supabase...`);
+    await uploadMCQsToSupabase(mcqRecords);
+  }
+  
   // Summary
   console.log('\n=== Generation Summary ===');
   console.log(`Sample questions used: ${sampleQuestions.length}`);
   console.log(`MCQs generated: ${generatedMCQs.length}`);
+  console.log(`MCQs uploaded: ${mcqRecords.length}`);
   console.log(`Output file: ${CONFIG.outputFile}`);
-  console.log('\n✓ MCQ generation completed successfully!');
+  console.log('\n✓ MCQ generation and upload completed successfully!');
 }
 
 // Run the script
