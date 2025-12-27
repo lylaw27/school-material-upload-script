@@ -37,6 +37,10 @@ const CONFIG = {
   // Number of MCQs to generate
   numberOfMCQsToGenerate: 10,
   
+  // Difficulty level for generated questions
+  // Options: 'easy' (1-2), 'medium' (3), 'hard' (4-5), 'mixed' (balanced distribution)
+  difficulty: 'hard' as 'easy' | 'medium' | 'hard' | 'mixed',
+  
   // Output file for generated MCQs
   outputFile: path.join(__dirname, '..', 'generated-mcqs.txt'),
 };
@@ -96,6 +100,7 @@ const MCQSchema = z.object({
   explanation: z.string().describe('Detailed explanation of why the answer is correct'),
   difficulty: z.number().int().min(1).max(5).describe('Difficulty level from 1 (easiest) to 5 (hardest)'),
   topic: z.string().describe('The topic this question relates to'),
+  question_type_name: z.string().describe('The type/category of this question - must match one from the available question types'),
 });
 
 // Schema for multiple MCQs
@@ -193,7 +198,9 @@ async function fetchTextbookContent(subject: string, topic: string): Promise<Tex
 async function generateMCQs(
   textbookContent: TextbookContent,
   sampleQuestions: PastPaperQuestion[],
-  numberOfMCQs: number
+  numberOfMCQs: number,
+  difficulty: 'easy' | 'medium' | 'hard' | 'mixed',
+  questionTypes: QuestionType[]
 ): Promise<GeneratedMCQs> {
   try {
     // Prepare context from sample questions
@@ -205,9 +212,19 @@ async function generateMCQs(
 難度: ${q.difficulty}/5`
     ).join('\n\n');
     
+    const difficultyGuidance = {
+      easy: '所有題目應該是基礎難度（1-2/5），適合初學者，著重基本概念和直接理解。',
+      medium: '所有題目應該是中等難度（3/5），適合一般學生，需要一定分析能力。',
+      hard: '所有題目應該是高難度（4-5/5），適合進階學生，需要深入思考和綜合分析。',
+      mixed: '難度分佈要均衡（簡單、中等、困難都要有），覆蓋不同程度學生。'
+    }[difficulty];
+    
+    // Create question types list for the prompt
+    const questionTypesList = questionTypes.map(qt => `- ${qt.name}`).join('\n');
+    
     // @ts-ignore - avoiding deep type instantiation error
     const result = await generateObject({
-      model: v4api('qwen-max-latest'),
+      model: v4api('deepseek-v3.2'),
       schema: MCQsSchema,
       messages: [
         {
@@ -222,6 +239,10 @@ ${textbookContent.content}
 【範例題目參考】
 ${questionsContext}
 
+【可用的題目類型】
+請為每道題目選擇最適合的類型，必須從以下列表中選擇：
+${questionTypesList}
+
 【出題要求】
 1. 每道題目必須有4個選項（A, B, C, D）
 2. 題目應該測試學生對範文的理解，包括但不限於：
@@ -232,7 +253,7 @@ ${questionsContext}
    - 作者觀點分析
    - 結構安排理解
 3. 選項要有合理的迷惑性，但只有一個正確答案
-4. 難度分佈要均衡（簡單、中等、困難都要有）
+4. ${difficultyGuidance}
 5. 每道題目都要提供詳細的解析說明
 6. 題目要參考範例題目的風格，但不要直接抄襲
 7. 確保題目答案可以在範文內容中找到依據
@@ -245,6 +266,7 @@ ${questionsContext}
 - explanation (string): 詳細解析
 - difficulty (number): 難度等級（1-5的整數）
 - topic (string): 題目所屬範文篇目
+- question_type_name (string): 題目類型，必須從上述可用的題目類型列表中選擇
 
 範例格式：
 [
@@ -259,7 +281,8 @@ ${questionsContext}
     "correct_answer": "A",
     "explanation": "解析內容...",
     "difficulty": 3,
-    "topic": "${textbookContent.topic}"
+    "topic": "${textbookContent.topic}",
+    "question_type_name": "文句翻譯與名句摘錄"
   }
 ]
 
@@ -296,6 +319,7 @@ async function saveMCQsToFile(mcqs: GeneratedMCQs, outputPath: string, config: t
     content += `Correct Answer: ${mcq.correct_answer}\n`;
     content += `Difficulty: ${mcq.difficulty}/5\n`;
     content += `Topic: ${mcq.topic}\n`;
+    content += `Question Type: ${mcq.question_type_name}\n`;
     content += `Explanation: ${mcq.explanation}\n`;
     content += '-'.repeat(80) + '\n\n';
   });
@@ -347,10 +371,13 @@ async function generateMCQQuestions() {
   
   // Step 4: Generate MCQs using AI
   console.log(`\nStep 4: Generating ${CONFIG.numberOfMCQsToGenerate} MCQs using AI...`);
+  console.log(`  Difficulty level: ${CONFIG.difficulty}`);
   const generatedMCQs = await generateMCQs(
     textbookContent,
     sampleQuestions,
-    CONFIG.numberOfMCQsToGenerate
+    CONFIG.numberOfMCQsToGenerate,
+    CONFIG.difficulty,
+    questionTypes
   );
   console.log(`  ✓ Generated ${generatedMCQs.length} MCQ(s)`);
   
