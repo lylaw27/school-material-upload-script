@@ -224,7 +224,7 @@ async function generateMCQs(
     
     // @ts-ignore - avoiding deep type instantiation error
     const result = await generateObject({
-      model: v4api('deepseek-v3.2'),
+      model: v4api('qwen-max-latest'),
       schema: MCQsSchema,
       messages: [
         {
