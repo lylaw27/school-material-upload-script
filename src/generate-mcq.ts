@@ -21,28 +21,44 @@ const __dirname = path.dirname(__filename);
 
 // ===== CONFIGURATION SECTION =====
 const CONFIG = {
-  // Subject for filtering
-  subject: 'DSE中文12篇範文',
+  // Subject ID for filtering (UUID from subjects table)
+  subjectId: '498833c4-dc12-4a05-b5fc-f7df9f2bd848', // DSE中文12篇範文
+  subjectName: 'DSE中文12篇範文', // For display purposes only
   
-  // Topic to focus on (leave null to select from all topics)
-  topic: '師說', // e.g., '六國論', '出師表', etc. or null for all
+  // Topics to process (array of topic names to generate MCQs for each)
+  topics: [
+    // '論仁論孝論君子',
+    // '出師表',
+    // '勸學',
+    '唐詩三首',
+    '宋詞三首',
+    // '岳陽樓記',
+    // '逍遙遊',
+    // '魚我所欲也',
+    // '始得西山宴遊記',
+    // '廉頗藺相如列傳',
+    // '六國論',
+    // '師說',
+    ], // e.g., ['六國論', '出師表', '勸學'] - will run generation for each topic
   
   // Question types to include (leave null for all types)
   // Examples: ['文句翻譯與名句摘錄', '情感主旨與現實啟發']
   questionTypes: null as string[] | null,
   
+  description: '是日練習集',
+
   // Number of questions to pick from database
   numberOfQuestions: 5,
   
-  // Number of MCQs to generate
+  // Number of MCQs to generate per topic
   numberOfMCQsToGenerate: 10,
   
   // Difficulty level for generated questions
   // Options: 'easy' (1-2), 'medium' (3), 'hard' (4-5), 'mixed' (balanced distribution)
-  difficulty: 'hard' as 'easy' | 'medium' | 'hard' | 'mixed',
+  difficulty: 'mixed' as 'easy' | 'medium' | 'hard' | 'mixed',
   
-  // Output file for generated MCQs
-  outputFile: path.join(__dirname, '..', 'generated-mcqs.txt'),
+  // Output directory for generated MCQs (will create one file per topic)
+  outputDir: path.join(__dirname, '..'),
 };
 // ===== END CONFIGURATION SECTION =====
 
@@ -68,7 +84,7 @@ interface PastPaperQuestion {
   answer: string;
   question_number: number;
   question_year: number;
-  subject: string;
+  subject_id: string;
   explanation: string;
   difficulty: number;
   grade_level: string;
@@ -78,13 +94,13 @@ interface PastPaperQuestion {
 interface QuestionType {
   id: string;
   name: string;
-  subject: string;
+  subject_id: string;
 }
 
 interface TextbookContent {
   topic: string;
   content: string;
-  subject: string;
+  subject_id: string;
 }
 
 // Zod schema for generated MCQ
@@ -113,18 +129,18 @@ interface MCQRecord extends Omit<GeneratedMCQ, 'question_type_name'> {
   question_type_id: string;
   embedding: number[];
   metadata: Record<string, any>;
-  subject: string;
+  subject_id: string;
   grade_level: string;
 }
 
 /**
  * Fetch question types from Supabase
  */
-async function fetchQuestionTypes(subject: string): Promise<QuestionType[]> {
+async function fetchQuestionTypes(subjectId: string): Promise<QuestionType[]> {
   const { data, error } = await supabase
     .from('question_types')
-    .select('id, name, subject')
-    .eq('subject', subject);
+    .select('id, name, subject_id')
+    .eq('subject_id', subjectId);
   
   if (error) {
     throw new Error(`Failed to fetch question types: ${error.message}`);
@@ -137,7 +153,7 @@ async function fetchQuestionTypes(subject: string): Promise<QuestionType[]> {
  * Fetch random questions from pastpapers table
  */
 async function fetchRandomQuestions(
-  subject: string,
+  subjectId: string,
   topic: string | null,
   questionTypeNames: string[] | null,
   limit: number,
@@ -146,7 +162,7 @@ async function fetchRandomQuestions(
   let query = supabase
     .from('pastpapers')
     .select('*')
-    .eq('subject', subject);
+    .eq('subject_id', subjectId);
   
   // Filter by topic if specified
   if (topic) {
@@ -185,11 +201,11 @@ async function fetchRandomQuestions(
 /**
  * Fetch textbook content by topic
  */
-async function fetchTextbookContent(subject: string, topic: string): Promise<TextbookContent> {
+async function fetchTextbookContent(subjectId: string, topic: string): Promise<TextbookContent> {
   const { data, error } = await supabase
     .from('textbooks')
-    .select('topic, content, subject')
-    .eq('subject', subject)
+    .select('topic, content, subject_id')
+    .eq('subject_id', subjectId)
     .eq('topic', topic)
     .single();
   
@@ -231,11 +247,12 @@ function mapQuestionTypeToId(questionTypeName: string, questionTypes: QuestionTy
 }
 
 /**
- * Upload MCQs to Supabase mcqs table
+ * Upload MCQs to Supabase mcqs table and return uploaded records with IDs
  */
-async function uploadMCQsToSupabase(mcqs: MCQRecord[]): Promise<void> {
+async function uploadMCQsToSupabase(mcqs: MCQRecord[]): Promise<Array<{ id: string; difficulty: number; question: string }>> {
   console.log('\nUploading MCQs to Supabase...');
   
+  const uploadedMCQs: Array<{ id: string; difficulty: number; question: string }> = [];
   let successCount = 0;
   let errorCount = 0;
   
@@ -250,7 +267,7 @@ async function uploadMCQsToSupabase(mcqs: MCQRecord[]): Promise<void> {
           correct_answer: mcq.correct_answer,
           explanation: mcq.explanation,
           difficulty: mcq.difficulty,
-          subject: mcq.subject,
+          subject_id: mcq.subject_id,
           grade_level: mcq.grade_level,
           question_type_id: mcq.question_type_id,
           embedding: mcq.embedding,
@@ -263,6 +280,11 @@ async function uploadMCQsToSupabase(mcqs: MCQRecord[]): Promise<void> {
       }
       
       console.log(`  ✓ Uploaded MCQ: ${mcq.question.substring(0, 50)}... (ID: ${data[0].id})`);
+      uploadedMCQs.push({
+        id: data[0].id,
+        difficulty: mcq.difficulty,
+        question: mcq.question,
+      });
       successCount++;
     } catch (error) {
       console.error(`  ✗ Failed to upload MCQ:`, error);
@@ -271,6 +293,66 @@ async function uploadMCQsToSupabase(mcqs: MCQRecord[]): Promise<void> {
   }
   
   console.log(`\n✓ Upload complete: ${successCount} succeeded, ${errorCount} failed`);
+  return uploadedMCQs;
+}
+
+/**
+ * Create an MCQ set and link uploaded MCQs to it, sorted by difficulty
+ */
+async function createMCQSet(topic: string, uploadedMCQs: Array<{ id: string; difficulty: number; question: string }>, tokensUsed: number): Promise<string> {
+  console.log('\nCreating MCQ set...');
+  
+  // Step 1: Create the mcqset
+  const { data: mcqsetData, error: mcqsetError } = await supabase
+    .from('mcqsets')
+    .insert({
+      topic: topic,
+      description: CONFIG.description,
+      subject_id: CONFIG.subjectId,
+      tokens_used: tokensUsed,
+    })
+    .select()
+    .single();
+  
+  if (mcqsetError) {
+    throw new Error(`Failed to create MCQ set: ${mcqsetError.message}`);
+  }
+  
+  console.log(`  ✓ Created MCQ set (ID: ${mcqsetData.id})`);
+  
+  // Step 2: Sort MCQs by difficulty (ascending order: easiest first)
+  const sortedMCQs = [...uploadedMCQs].sort((a, b) => a.difficulty - b.difficulty);
+  
+  // Step 3: Insert records into mcqset_questions
+  console.log('\nLinking MCQs to set...');
+  let linkSuccessCount = 0;
+  let linkErrorCount = 0;
+  
+  for (let i = 0; i < sortedMCQs.length; i++) {
+    const mcq = sortedMCQs[i];
+    try {
+      const { error: linkError } = await supabase
+        .from('mcqset_questions')
+        .insert({
+          mcqset_id: mcqsetData.id,
+          mcq_id: mcq.id,
+          order_index: i + 1, // 1-indexed
+        });
+      
+      if (linkError) {
+        throw new Error(`Failed to link MCQ: ${linkError.message}`);
+      }
+      
+      console.log(`  ✓ Linked MCQ ${i + 1}/${sortedMCQs.length} (Difficulty: ${mcq.difficulty}) - ${mcq.question.substring(0, 40)}...`);
+      linkSuccessCount++;
+    } catch (error) {
+      console.error(`  ✗ Failed to link MCQ:`, error);
+      linkErrorCount++;
+    }
+  }
+  
+  console.log(`\n✓ Linking complete: ${linkSuccessCount} succeeded, ${linkErrorCount} failed`);
+  return mcqsetData.id;
 }
 
 /**
@@ -282,7 +364,7 @@ async function generateMCQs(
   numberOfMCQs: number,
   difficulty: 'easy' | 'medium' | 'hard' | 'mixed',
   questionTypes: QuestionType[]
-): Promise<GeneratedMCQs> {
+): Promise<{ mcqs: GeneratedMCQs; tokensUsed: number }> {
   try {
     // Prepare context from sample questions
     const questionsContext = sampleQuestions.map((q, idx) => 
@@ -372,7 +454,13 @@ ${questionTypesList}
       ],
     });
     
-    return result.object as GeneratedMCQs;
+    const tokensUsed = result.usage?.totalTokens || 0;
+    console.log(`  ℹ Tokens used: ${tokensUsed}`);
+    
+    return {
+      mcqs: result.object as GeneratedMCQs,
+      tokensUsed: tokensUsed,
+    };
   } catch (error) {
     console.error('Error generating MCQs:', error);
     throw error;
@@ -382,11 +470,11 @@ ${questionTypesList}
 /**
  * Save generated MCQs to txt file
  */
-async function saveMCQsToFile(mcqs: GeneratedMCQs, outputPath: string, config: typeof CONFIG): Promise<void> {
+async function saveMCQsToFile(mcqs: GeneratedMCQs, outputPath: string, topic: string): Promise<void> {
   let content = '=== GENERATED MCQ QUESTIONS ===\n';
   content += `Generated: ${new Date().toISOString()}\n`;
-  content += `Topic: ${config.topic || 'All topics'}\n`;
-  content += `Question Types: ${config.questionTypes?.join(', ') || 'All types'}\n`;
+  content += `Topic: ${topic}\n`;
+  content += `Question Types: ${CONFIG.questionTypes?.join(', ') || 'All types'}\n`;
   content += `Total Questions: ${mcqs.length}\n`;
   content += '='.repeat(80) + '\n\n';
   
@@ -410,50 +498,34 @@ async function saveMCQsToFile(mcqs: GeneratedMCQs, outputPath: string, config: t
 }
 
 /**
- * Main function to generate MCQs
+ * Main function to generate MCQs for a single topic
  */
-async function generateMCQQuestions() {
-  console.log('=== MCQ Generator ===\n');
-  console.log('Configuration:');
-  console.log(`  Subject: ${CONFIG.subject}`);
-  console.log(`  Topic: ${CONFIG.topic || 'All topics'}`);
-  console.log(`  Question Types: ${CONFIG.questionTypes?.join(', ') || 'All types'}`);
-  console.log(`  Sample Questions: ${CONFIG.numberOfQuestions}`);
-  console.log(`  MCQs to Generate: ${CONFIG.numberOfMCQsToGenerate}\n`);
+async function generateMCQsForTopic(topic: string, questionTypes: QuestionType[]): Promise<void> {
+  console.log(`\n${'='.repeat(80)}`);
+  console.log(`Processing Topic: ${topic}`);
+  console.log('='.repeat(80));
   
-  // Step 1: Fetch question types
-  console.log('Step 1: Fetching question types...');
-  const questionTypes = await fetchQuestionTypes(CONFIG.subject);
-  console.log(`  ✓ Found ${questionTypes.length} question types`);
-  
-  // Step 2: Fetch random sample questions
-  console.log('\nStep 2: Fetching sample questions from database...');
+  // Step 1: Fetch random sample questions
+  console.log('\nStep 1: Fetching sample questions from database...');
   const sampleQuestions = await fetchRandomQuestions(
-    CONFIG.subject,
-    CONFIG.topic,
+    CONFIG.subjectId,
+    topic,
     CONFIG.questionTypes,
     CONFIG.numberOfQuestions,
     questionTypes
   );
   console.log(`  ✓ Retrieved ${sampleQuestions.length} sample question(s)`);
   
-  // Display the topics of selected questions
-  const selectedTopics = [...new Set(sampleQuestions.map(q => q.topic))];
-  console.log(`  ✓ Topics covered: ${selectedTopics.join(', ')}`);
-  
-  // Step 3: Fetch textbook content
-  console.log('\nStep 3: Fetching textbook content...');
-  if (!CONFIG.topic) {
-    throw new Error('Topic must be specified for textbook content retrieval');
-  }
-  const textbookContent = await fetchTextbookContent(CONFIG.subject, CONFIG.topic);
+  // Step 2: Fetch textbook content
+  console.log('\nStep 2: Fetching textbook content...');
+  const textbookContent = await fetchTextbookContent(CONFIG.subjectId, topic);
   console.log(`  ✓ Retrieved textbook content for: ${textbookContent.topic}`);
   console.log(`  ✓ Content length: ${textbookContent.content.length} characters`);
   
-  // Step 4: Generate MCQs using AI
-  console.log(`\nStep 4: Generating ${CONFIG.numberOfMCQsToGenerate} MCQs using AI...`);
+  // Step 3: Generate MCQs using AI
+  console.log(`\nStep 3: Generating ${CONFIG.numberOfMCQsToGenerate} MCQs using AI...`);
   console.log(`  Difficulty level: ${CONFIG.difficulty}`);
-  const generatedMCQs = await generateMCQs(
+  const { mcqs: generatedMCQs, tokensUsed } = await generateMCQs(
     textbookContent,
     sampleQuestions,
     CONFIG.numberOfMCQsToGenerate,
@@ -462,12 +534,13 @@ async function generateMCQQuestions() {
   );
   console.log(`  ✓ Generated ${generatedMCQs.length} MCQ(s)`);
   
-  // Step 5: Save to file
-  console.log('\nStep 5: Saving MCQs to file...');
-  await saveMCQsToFile(generatedMCQs, CONFIG.outputFile, CONFIG);
+  // Step 4: Save to file
+  console.log('\nStep 4: Saving MCQs to file...');
+  const outputFile = path.join(CONFIG.outputDir, `generated-mcqs-${topic}.txt`);
+  await saveMCQsToFile(generatedMCQs, outputFile, topic);
   
-  // Step 6: Generate embeddings and prepare records for upload
-  console.log('\nStep 6: Generating embeddings and preparing records...');
+  // Step 5: Generate embeddings and prepare records for upload
+  console.log('\nStep 5: Generating embeddings and preparing records...');
   const mcqRecords: MCQRecord[] = [];
   
   for (const mcq of generatedMCQs) {
@@ -489,7 +562,7 @@ async function generateMCQQuestions() {
         correct_answer: mcq.correct_answer,
         explanation: mcq.explanation,
         difficulty: mcq.difficulty,
-        subject: CONFIG.subject,
+        subject_id: CONFIG.subjectId,
         grade_level: 'DSE',
         question_type_id: questionTypeId,
         embedding: embedding,
@@ -510,19 +583,66 @@ async function generateMCQQuestions() {
     }
   }
   
-  // Step 7: Upload to Supabase
+  // Step 6: Upload to Supabase
   if (mcqRecords.length > 0) {
-    console.log(`\nStep 7: Uploading ${mcqRecords.length} MCQ(s) to Supabase...`);
-    await uploadMCQsToSupabase(mcqRecords);
+    console.log(`\nStep 6: Uploading ${mcqRecords.length} MCQ(s) to Supabase...`);
+    const uploadedMCQs = await uploadMCQsToSupabase(mcqRecords);
+    
+    // Step 7: Create MCQ set and link questions
+    if (uploadedMCQs.length > 0) {
+      console.log(`\nStep 7: Creating MCQ set for topic \"${topic}\"...`);
+      const mcqsetId = await createMCQSet(topic, uploadedMCQs, tokensUsed);
+      console.log(`  ✓ MCQ set created successfully (ID: ${mcqsetId})`);
+      console.log(`  ℹ Total tokens used: ${tokensUsed}`);
+    }
   }
   
-  // Summary
-  console.log('\n=== Generation Summary ===');
+  // Summary for this topic
+  console.log(`\n--- Summary for ${topic} ---`);
   console.log(`Sample questions used: ${sampleQuestions.length}`);
   console.log(`MCQs generated: ${generatedMCQs.length}`);
   console.log(`MCQs uploaded: ${mcqRecords.length}`);
-  console.log(`Output file: ${CONFIG.outputFile}`);
-  console.log('\n✓ MCQ generation and upload completed successfully!');
+  console.log(`Output file: ${outputFile}`);
+}
+
+/**
+ * Main function to generate MCQs for all configured topics
+ */
+async function generateMCQQuestions() {
+  console.log('=== MCQ Generator ===\n');
+  console.log('Configuration:');
+  console.log(`  Subject: ${CONFIG.subjectName} (ID: ${CONFIG.subjectId})`);
+  console.log(`  Topics: ${CONFIG.topics.join(', ')}`);
+  console.log(`  Question Types: ${CONFIG.questionTypes?.join(', ') || 'All types'}`);
+  console.log(`  Sample Questions per Topic: ${CONFIG.numberOfQuestions}`);
+  console.log(`  MCQs to Generate per Topic: ${CONFIG.numberOfMCQsToGenerate}\n`);
+  
+  // Fetch question types once for all topics
+  console.log('Fetching question types...');
+  const questionTypes = await fetchQuestionTypes(CONFIG.subjectId);
+  console.log(`✓ Found ${questionTypes.length} question types\n`);
+  
+  // Process each topic
+  let totalGenerated = 0;
+  let totalUploaded = 0;
+  
+  for (const topic of CONFIG.topics) {
+    try {
+      await generateMCQsForTopic(topic, questionTypes);
+      totalGenerated += CONFIG.numberOfMCQsToGenerate;
+      totalUploaded += CONFIG.numberOfMCQsToGenerate; // Assuming all generated MCQs are uploaded
+    } catch (error) {
+      console.error(`\n✗ Failed to process topic "${topic}":`, error);
+    }
+  }
+  
+  // Final summary
+  console.log('\n' + '='.repeat(80));
+  console.log('=== Final Summary ===');
+  console.log(`Topics processed: ${CONFIG.topics.length}`);
+  console.log(`Total MCQs generated: ${totalGenerated}`);
+  console.log(`Total MCQs uploaded: ${totalUploaded}`);
+  console.log('\n✓ All topics completed successfully!');
 }
 
 // Run the script

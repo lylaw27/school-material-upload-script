@@ -26,7 +26,7 @@ const __dirname = path.dirname(__filename);
 const CONFIG = {
   // Textbook metadata - customize for your materials
   // topic will be extracted from filename (e.g., "algebra-chapter1.txt" -> "algebra-chapter1")
-  subject: 'DSE中文12篇範文',
+  subject_id: '498833c4-dc12-4a05-b5fc-f7df9f2bd848',
   gradeLevel: 'DSE',
   
   // Folder containing .txt files
@@ -57,7 +57,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 interface TextbookRecord {
   topic: string;
   content: string;
-  subject: string;
+  subject_id: string;
   grade_level: string | null;
   embedding: number[];
   metadata: Record<string, any>;
@@ -69,7 +69,7 @@ interface TextbookRecord {
 async function summarizeContent(content: string): Promise<string> {
   try {
     const { text } = await generateText({
-      model: v4api('qwen3-vl-plus'),
+      model: v4api('qwen-max-latest'),
       prompt: `以下是其中一篇HKDSE十二篇範文的內容，現在我希望將內容進行整合和縮短，以便嵌入到數據庫中。:\n\n${content}`,
       // maxTokens: 1000,
     });
@@ -145,7 +145,7 @@ async function uploadTextbook(record: TextbookRecord): Promise<void> {
     .insert({
       topic: record.topic,
       content: record.content,
-      subject: record.subject,
+      subject_id: record.subject_id,
       grade_level: record.grade_level,
       embedding: record.embedding,
       metadata: record.metadata,
@@ -165,7 +165,7 @@ async function uploadTextbook(record: TextbookRecord): Promise<void> {
 async function processAndUploadTextbooks() {
   console.log('=== Textbook Uploader ===\n');
   console.log('Configuration:');
-  console.log(`  Subject: ${CONFIG.subject}`);
+  console.log(`  subject_id: ${CONFIG.subject_id}`);
   console.log(`  Grade Level: ${CONFIG.gradeLevel}`);
   console.log(`  Folder: ${CONFIG.textbooksFolder}\n`);
   
@@ -205,7 +205,7 @@ async function processAndUploadTextbooks() {
       const record: TextbookRecord = {
         topic: topic,
         content: content,
-        subject: CONFIG.subject,
+        subject_id: CONFIG.subject_id,
         grade_level: CONFIG.gradeLevel || null,
         embedding: embedding,
         metadata: {
