@@ -6,8 +6,10 @@
   "scripts": {
     "upload": "tsc && node dist/upload.js",
     "uploadpp": "tsc && node dist/upload-pastpapers.js",
+    "uploadmathpp": "tsc && node dist/upload-pastpapers-math.js",
     "generate-mcq": "tsc && node dist/generate-mcq.js",
     "create-mcqset": "tsc && node dist/create-mcqset.js",
+    "create-questiontypes": "tsc && node dist/create-questiontypes.js",
     "build": "tsc",
     "dev": "tsc --watch"
   },

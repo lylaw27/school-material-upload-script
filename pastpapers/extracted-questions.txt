@@ -1,103 +1,114 @@
 === EXTRACTED PAST PAPER QUESTIONS ===
-Total Questions: 5
-Generated: 2025-12-26T05:42:56.233Z
+Total Questions: 4
+Generated: 2026-01-29T14:31:53.971Z
 ================================================================================
 
 Question 1:
-  Topic: 魚我所欲也
-  Year: 2021
+  Topic: 結構與詳略安排
+  Year: 2019
   Question Number: 1
   Subject: DSE中文12篇範文
   Grade Level: DSE
-  Question Type ID: c6327991-a8a3-4707-92a7-aa1d82042b48
-  Difficulty: 2/5
-  Explanation: 此題考查文言實詞「鄉」的通假用法。「鄉」通「向」，意為「從前、過去」。考生需掌握常見通假字及其語境意義。
-  Question:試解釋以下文句中的粗體字，並把答案寫在橫線上。(4分)
-(i) 鄉為身死而不受，今為妻妾之奉為之。《魚我所欲也》
-  Answer:曾經
+  Question Type ID: 12278fea-2ea2-4b08-95d3-6b0dfe3c4c19
+  Difficulty: 1/5
+  Explanation: 展開多項式：
+$$(a-b)(a^2+ab-b^2)$$
+$$= a(a^2+ab-b^2) - b(a^2+ab-b^2)$$
+$$= a^3+a^2b-ab^2-a^2b-ab^2+b^3$$
+$$= a^3-2ab^2+b^3$$
+  Question:1. $(a-b)(a^2+ab-b^2) =$
+A. $(a-b)^3$
+B. $a^3-b^3$
+C. $a^3-2ab^2+b^3$
+D. $a^3-2a^2b+2ab^2+b^3$
+  Answer:C
   Metadata: {
-  "source_image": "2021-Sample-CHI-Paper1 Page 001.png",
-  "extracted_at": "2025-12-26T05:42:52.864Z",
-  "question_type_name": "文言實詞/虛詞解釋"
+  "source_image": "2019p2 Page 002.jpg",
+  "extracted_at": "2026-01-29T14:31:49.082Z",
+  "question_type_name": "結構與詳略安排"
 }
 --------------------------------------------------------------------------------
 
 Question 2:
-  Topic: 逍遙遊
-  Year: 2021
-  Question Number: 1
+  Topic: 結構與詳略安排
+  Year: 2019
+  Question Number: 2
   Subject: DSE中文12篇範文
   Grade Level: DSE
-  Question Type ID: c6327991-a8a3-4707-92a7-aa1d82042b48
-  Difficulty: 2/5
-  Explanation: 此題考查文言實詞「樹」的動詞用法，意為「種植、栽種」。考生需結合上下文理解詞義，並區分名詞與動詞的不同用法。
-  Question:試解釋以下文句中的粗體字，並把答案寫在橫線上。(4分)
-(ii) 魏王貽我大瓠之種，我樹之成而實五石。《逍遙遊》(節錄)
-  Answer:種植
+  Question Type ID: 12278fea-2ea2-4b08-95d3-6b0dfe3c4c19
+  Difficulty: 1/5
+  Explanation: 利用指數定律：
+$$\frac{(6x^7)^2}{4x^5} = \frac{36x^{14}}{4x^5}$$
+$$= 9x^{14-5}$$
+$$= 9x^9$$
+  Question:2. $\frac{(6x^7)^2}{4x^5} =$
+A. $3x^4$
+B. $9x^4$
+C. $3x^9$
+D. $9x^9$
+  Answer:D
   Metadata: {
-  "source_image": "2021-Sample-CHI-Paper1 Page 001.png",
-  "extracted_at": "2025-12-26T05:42:53.862Z",
-  "question_type_name": "文言實詞/虛詞解釋"
+  "source_image": "2019p2 Page 002.jpg",
+  "extracted_at": "2026-01-29T14:31:50.552Z",
+  "question_type_name": "結構與詳略安排"
 }
 --------------------------------------------------------------------------------
 
 Question 3:
-  Topic: 論仁論孝論君子
-  Year: 2021
-  Question Number: 2
+  Topic: 文言句式/語法判斷
+  Year: 2019
+  Question Number: 3
   Subject: DSE中文12篇範文
   Grade Level: DSE
-  Question Type ID: 264eece8-a913-4e25-89cd-0f1ab1cc882d
-  Difficulty: 1/5
-  Explanation: 此題要求默寫經典名句，考查學生對《論語》中關於君子與小人對比的核心語句的記憶與準確書寫能力。注意字形正確（如「蕩」、「戚」）。
-  Question:《論仁、論孝、論君子》其中一則說君子的心胸坦率寬大，小人卻局促憂愁。試摘錄有關句子。(2分)
-  Answer:君子坦蕩蕩，小人長戚戚。
+  Question Type ID: 21284a04-ba4d-4241-ac4d-5b63a392c4b5
+  Difficulty: 2/5
+  Explanation: 建立聯立方程：
+(1) $6x-7y=40$
+(2) $2x+11y=40$
+將 (2) 乘以 3：$6x+33y=120$ --- (3)
+(3) 減 (1)：$(6x+33y) - (6x-7y) = 120-40$
+$$40y = 80$$
+$$y = 2$$
+  Question:3. 若 $6x-7y=40=2x+11y$，則 $y=$
+A. -4
+B. 2
+C. 4
+D. 9
+  Answer:B
   Metadata: {
-  "source_image": "2021-Sample-CHI-Paper1 Page 001.png",
-  "extracted_at": "2025-12-26T05:42:54.646Z",
-  "question_type_name": "文句翻譯與名句摘錄"
+  "source_image": "2019p2 Page 002.jpg",
+  "extracted_at": "2026-01-29T14:31:52.320Z",
+  "question_type_name": "文言句式/語法判斷"
 }
 --------------------------------------------------------------------------------
 
 Question 4:
-  Topic: 逍遙遊
-  Year: 2021
-  Question Number: 3
-  Subject: DSE中文12篇範文
-  Grade Level: DSE
-  Question Type ID: 505ed40c-b6d9-420f-872f-5065db9d0555
-  Difficulty: 3/5
-  Explanation: 此題考查對《逍遙遊》中惠子與莊子對話的理解。惠子以大瓠無用比喻莊子學說空泛無實用，意在批評其理論脫離現實。選項A準確概括其立場。
-  Question:《逍遙遊》(節錄)一文，惠子以大瓠為喻有何目的？(2分)
-A. 批評莊子的學說看似宏大，卻不切實際。
-B. 諷刺莊子愚昧，不明不同事物各有其用。
-C. 諷刺世人不懂變通，心裏好像塞滿蓬草。
-D. 批評大瓠虛有其表，並沒有實際的用途。
-  Answer:A
-  Metadata: {
-  "source_image": "2021-Sample-CHI-Paper1 Page 001.png",
-  "extracted_at": "2025-12-26T05:42:55.458Z",
-  "question_type_name": "人物形象與觀點分析"
-}
---------------------------------------------------------------------------------
-
-Question 5:
-  Topic: 逍遙遊
-  Year: 2021
+  Topic: 文言句式/語法判斷
+  Year: 2019
   Question Number: 4
   Subject: DSE中文12篇範文
   Grade Level: DSE
-  Question Type ID: 505ed40c-b6d9-420f-872f-5065db9d0555
-  Difficulty: 3/5
-  Explanation: 此題考查對寓言寓意的理解。宋人僅知將大瓠作瓢盛水，卻不知可作腰舟浮游，是「拙於用大」；客人提出「浮乎江湖」之用，是「擅於用大」。需結合文本推論角色思維差異。
-  Question:根據《逍遙遊》(節錄)一文，下列何者拙於用大？何者擅於用大？又或是無從判斷？(4分)
-(i) 宋人
-(ii) 客人
-  Answer:(i) 拙於用大；(ii) 擅於用大
+  Question Type ID: 21284a04-ba4d-4241-ac4d-5b63a392c4b5
+  Difficulty: 2/5
+  Explanation: 比較恆等式兩邊的系數：
+左方 (LHS) $= x^2 + (\alpha-8)x - 8\alpha - 6$
+右方 (RHS) $= x^2 - 18x + 81 + \beta$
+比較 $x$ 的系數：$\alpha-8 = -18 \Rightarrow \alpha = -10$
+比較常數項：$-8\alpha-6 = 81 + \beta$
+將 $\alpha = -10$ 代入：$-8(-10)-6 = 81 + \beta$
+$$80-6 = 81 + \beta$$
+$$74 = 81 + \beta$$
+$$\beta = -7$$
+  Question:4. 若 $\alpha$ 及 $\beta$ 均為常數使得 $(x-8)(x+\alpha)-6 \equiv (x-9)^2+\beta$，則 $\beta =$
+A. -26
+B. -10
+C. -7
+D. -6
+  Answer:C
   Metadata: {
-  "source_image": "2021-Sample-CHI-Paper1 Page 001.png",
-  "extracted_at": "2025-12-26T05:42:56.233Z",
-  "question_type_name": "人物形象與觀點分析"
+  "source_image": "2019p2 Page 002.jpg",
+  "extracted_at": "2026-01-29T14:31:53.970Z",
+  "question_type_name": "文言句式/語法判斷"
 }
 --------------------------------------------------------------------------------
 

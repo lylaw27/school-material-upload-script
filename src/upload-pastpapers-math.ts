@@ -23,8 +23,8 @@ const __dirname = path.dirname(__filename);
 // ===== CONFIGURATION SECTION =====
 const CONFIG = {
   // Subject for querying question types from Supabase
-  subject: 'DSE中文12篇範文',
-  subject_id: '498833c4-dc12-4a05-b5fc-f7df9f2bd848',
+  subject: '必修數學',
+  subject_id: 'b1819b8e-cc76-41ac-9e01-7764faf36d89',
   gradeLevel: 'DSE',
   
   // Folder containing past paper images
@@ -51,7 +51,6 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Type definitions first
 type PastPaperQuestion = {
-  topic: string;
   question: string;
   answer: string;
   question_number: number;
@@ -67,7 +66,6 @@ type ExtractedQuestions = PastPaperQuestion[];
 
 // Zod schema for a single past paper question
 const PastPaperQuestionSchema = z.object({
-  topic: z.string().describe('The specific topic or article name from the 12 model texts that this question relates to'),
   question: z.string().describe('The full question text extracted from the image'),
   answer: z.string().describe('The answer to the question'),
   question_number: z.number().int().describe('The question number in the exam paper'),
@@ -88,12 +86,8 @@ interface QuestionType {
   subject: string;
 }
 
-interface Topic {
-  topic: string;
-  subject: string;
-}
-
 interface PastPaperRecord extends Omit<PastPaperQuestion, 'question_type_name'> {
+  topic: string;
   question_type_id: string;
   embedding: number[];
   metadata: Record<string, any>;
@@ -116,25 +110,9 @@ async function fetchQuestionTypes(subject: string): Promise<QuestionType[]> {
 }
 
 /**
- * Fetch available topics from Supabase textbooks table
- */
-async function fetchTopics(subject: string): Promise<Topic[]> {
-  const { data, error } = await supabase
-    .from('textbooks')
-    .select('topic')
-    .eq('subject_id', CONFIG.subject_id);
-  
-  if (error) {
-    throw new Error(`Failed to fetch topics: ${error.message}`);
-  }
-  
-  return data as Topic[];
-}
-
-/**
  * Perform OCR on an image using vision AI
  */
-async function performOCR(imagePath: string, questionTypes: QuestionType[], topics: Topic[]): Promise<ExtractedQuestions> {
+async function performOCR(imagePath: string, questionTypes: QuestionType[]): Promise<ExtractedQuestions> {
   try {
     // Read image and convert to base64
     const imageBuffer = await fs.readFile(imagePath);
@@ -144,12 +122,9 @@ async function performOCR(imagePath: string, questionTypes: QuestionType[], topi
     // Create question types list for the prompt
     const questionTypesList = questionTypes.map(qt => `- ${qt.name}`).join('\n');
     
-    // Create topics list for the prompt
-    const topicsList = topics.map(t => `- ${t.topic}`).join('\n');
-    
     // @ts-ignore - avoiding deep type instantiation error
     const result = await generateObject({
-      model: v4api('gemini-3-pro-preview'),
+      model: v4api('gemini-3-flash-preview'),
       schema: ExtractedQuestionsSchema,
       messages: [
         {
@@ -160,30 +135,32 @@ async function performOCR(imagePath: string, questionTypes: QuestionType[], topi
               text: `你是一個專業的DSE考試分析專家。請仔細分析這張圖片中的考題，並提取所有題目。返回一個題目數組。
 
 對於每個題目，請提供以下資訊：
-1. topic: 題目涉及的範文篇目，必須從以下列表中選擇：
-
-可選的範文篇目：
-${topicsList}
-
-2. question: 完整的題目內容
-3. answer: 題目的答案
-4. question_number: 題號（如果圖片中有標示 (一定要是整數)
-5. question_year: 年份（如果圖片中有標示）(一定要是整數)
-6. subject: 科目（${CONFIG.subject}）
-7. explanation: 題目解析，包含答題要點與分析
-8. difficulty: 難度（1-5，其中1最簡單，5最難，一定要是整數）
-9. grade_level: DSE
-10. question_type_name: 題目類型，必須從以下列表中選擇：
+1. question: 完整的題目內容（如果包含數學公式或符號，請使用 LaTeX 格式，例如：$x^2 + y^2 = r^2$ 或 $$\\\\frac{a}{b}$$）
+2. answer: 題目的答案（如果包含數學內容，同樣使用 LaTeX 格式）
+3. question_number: 題號（如果圖片中有標示 (一定要是整數)
+4. question_year: 年份（如果圖片中有標示）(一定要是整數)
+5. subject: 科目（${CONFIG.subject}）
+6. explanation: 題目解析，包含答題要點與分析（如涉及數學推導，使用 LaTeX 格式）
+7. difficulty: 難度（1-5，其中1最簡單，5最難，一定要是整數）
+8. grade_level: DSE
+9. question_type_name: 題目類型，必須從以下列表中選擇：
 
 可選的題目類型：
 ${questionTypesList}
 
+LaTeX 格式規則（重要！）：
+- 所有 LaTeX 命令必須使用雙反斜線（\\\\），例如：\\\\frac{a}{b}、\\\\sqrt{x}、\\\\sum、\\\\int
+- 行內公式使用 $...$ 格式，例如：$x^2 + \\\\frac{1}{2}$
+- 獨立公式使用 $$...$$ 格式，例如：$$\\\\int_0^1 x^2 dx$$
+- 常見命令示例：\\\\sin、\\\\cos、\\\\log、\\\\lim、\\\\alpha、\\\\beta、\\\\times、\\\\div
+
 請確保：
 - 準確提取所有文字內容
 - 正確識別題號和年份
-- topic 和 question_type_name 必須從上述列表中選擇
+- question_type_name 必須從上述列表中選擇
 - 合理評估難度
-- 如果一張圖片包含多個題目，請全部提取`,
+- 如果一張圖片包含多個題目，請全部提取
+- 所有 LaTeX 命令都必須使用雙反斜線（\\\\）以避免 JSON 解析錯誤`,
             },
             {
               type: 'image',
@@ -342,15 +319,11 @@ async function processAndExtractQuestions() {
   console.log(`  Images Folder: ${CONFIG.pastpapersFolder}`);
   console.log(`  Output File: ${CONFIG.outputFile}\n`);
   
-  // Step 1: Fetch question types and topics from Supabase
-  console.log('Step 1: Fetching question types and topics from Supabase...');
+  // Step 1: Fetch question types from Supabase
+  console.log('Step 1: Fetching question types from Supabase...');
   const questionTypes = await fetchQuestionTypes(CONFIG.subject);
   console.log(`  ✓ Found ${questionTypes.length} question types:`);
   questionTypes.forEach(qt => console.log(`    - ${qt.name}`));
-  
-  const topics = await fetchTopics(CONFIG.subject);
-  console.log(`  ✓ Found ${topics.length} topics:`);
-  topics.forEach(t => console.log(`    - ${t.topic}`));
   
   // Step 2: Read all image files
   console.log('\nStep 2: Reading image files...');
@@ -375,7 +348,7 @@ async function processAndExtractQuestions() {
       
       // Perform OCR and classification
       console.log('  → Performing OCR and classification...');
-      const extractedData = await performOCR(imagePath, questionTypes, topics);
+      const extractedData = await performOCR(imagePath, questionTypes);
       
       console.log(`  → Extracted ${extractedData.length} question(s)`);
       
@@ -391,7 +364,7 @@ async function processAndExtractQuestions() {
           
           // Create record
           const record: PastPaperRecord = {
-            topic: question.topic,
+            topic: question.question_type_name,
             question: question.question,
             question_number: question.question_number,
             question_year: question.question_year,
