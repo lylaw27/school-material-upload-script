@@ -135,8 +135,15 @@ async function performOCR(imagePath: string, questionTypes: QuestionType[]): Pro
               text: `你是一個專業的DSE考試分析專家。請仔細分析這張圖片中的考題，並提取所有題目。返回一個題目數組。
 
 對於每個題目，請提供以下資訊：
-1. question: 完整的題目內容（如果包含數學公式或符號，請使用 LaTeX 格式，例如：$x^2 + y^2 = r^2$ 或 $$\\\\frac{a}{b}$$）
-2. answer: 題目的答案（如果包含數學內容，同樣使用 LaTeX 格式）
+1. question: 完整的題目內容，包括題幹和所有選項（如果是多項選擇題，必須包含所有選項 A、B、C、D 等）。如果包含數學公式或符號，請使用 LaTeX 格式，例如：$x^2 + y^2 = r^2$ 或 $$\\\\frac{a}{b}$$
+   範例格式：
+   "以下哪一個等式是正確的？
+   A. $x^2 + 1 = 0$
+   B. $\\\\sin(0) = 1$
+   C. $\\\\log(1) = 0$
+   D. $\\\\sqrt{-1} = 1$"
+   
+2. answer: 題目的答案（如果是多項選擇題，請寫選項字母如 "C"；如果是計算題，請寫出完整答案，數學內容使用 LaTeX 格式）
 3. question_number: 題號（如果圖片中有標示 (一定要是整數)
 4. question_year: 年份（如果圖片中有標示）(一定要是整數)
 5. subject: 科目（${CONFIG.subject}）
@@ -156,6 +163,7 @@ LaTeX 格式規則（重要！）：
 
 請確保：
 - 準確提取所有文字內容
+- 如果是多項選擇題，question 欄位必須包含完整題幹和所有選項（A、B、C、D 等）
 - 正確識別題號和年份
 - question_type_name 必須從上述列表中選擇
 - 合理評估難度

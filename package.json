@@ -8,8 +8,11 @@
     "uploadpp": "tsc && node dist/upload-pastpapers.js",
     "uploadmathpp": "tsc && node dist/upload-pastpapers-math.js",
     "generate-mcq": "tsc && node dist/generate-mcq.js",
+    "generate-mcq-maths": "tsc && node dist/generate-mcq-math.js",
     "create-mcqset": "tsc && node dist/create-mcqset.js",
     "create-questiontypes": "tsc && node dist/create-questiontypes.js",
+    "query-pastpapers": "tsc && node dist/query-pastpapers.js",
+    "delete-pastpapers": "tsc && node dist/delete-pastpapers.js",
     "build": "tsc",
     "dev": "tsc --watch"
   },

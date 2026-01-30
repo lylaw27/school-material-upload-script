@@ -1,114 +1,880 @@
 === EXTRACTED PAST PAPER QUESTIONS ===
-Total Questions: 4
-Generated: 2026-01-29T14:31:53.971Z
+Total Questions: 29
+Generated: 2026-01-30T11:44:04.568Z
 ================================================================================
 
 Question 1:
-  Topic: 結構與詳略安排
+  Topic: 公式與恆等式
   Year: 2019
-  Question Number: 1
-  Subject: DSE中文12篇範文
+  Question Number: 5
+  Subject: 必修數學
   Grade Level: DSE
-  Question Type ID: 12278fea-2ea2-4b08-95d3-6b0dfe3c4c19
-  Difficulty: 1/5
-  Explanation: 展開多項式：
-$$(a-b)(a^2+ab-b^2)$$
-$$= a(a^2+ab-b^2) - b(a^2+ab-b^2)$$
-$$= a^3+a^2b-ab^2-a^2b-ab^2+b^3$$
-$$= a^3-2ab^2+b^3$$
-  Question:1. $(a-b)(a^2+ab-b^2) =$
-A. $(a-b)^3$
-B. $a^3-b^3$
-C. $a^3-2ab^2+b^3$
-D. $a^3-2a^2b+2ab^2+b^3$
-  Answer:C
+  Question Type ID: 0002638b-7c72-426a-9f39-ee332dcb1097
+  Difficulty: 2/5
+  Explanation: 對原方程進行主項變換：
+$$h = 3 - \frac{5}{k+4}$$
+$$\frac{5}{k+4} = 3 - h$$
+$$k+4 = \frac{5}{3-h}$$
+$$k = \frac{5}{3-h} - 4$$
+$$k = \frac{5 - 4(3-h)}{3-h}$$
+$$k = \frac{5 - 12 + 4h}{3-h}$$
+$$k = \frac{4h - 7}{3-h}$$
+因此答案為 A。
+  Question:若 $h=3-\frac{5}{k+4}$，則 $k=$
+
+A. $\frac{4h-7}{3-h}$
+B. $\frac{4h-17}{3-h}$
+C. $\frac{4h-7}{3+h}$
+D. $\frac{4h-17}{3+h}$
+  Answer:A
   Metadata: {
-  "source_image": "2019p2 Page 002.jpg",
-  "extracted_at": "2026-01-29T14:31:49.082Z",
-  "question_type_name": "結構與詳略安排"
+  "source_image": "2019p2 Page 003.jpg",
+  "extracted_at": "2026-01-30T11:38:43.234Z",
+  "question_type_name": "公式與恆等式"
 }
 --------------------------------------------------------------------------------
 
 Question 2:
-  Topic: 結構與詳略安排
+  Topic: 估算與誤差
   Year: 2019
-  Question Number: 2
-  Subject: DSE中文12篇範文
+  Question Number: 6
+  Subject: 必修數學
   Grade Level: DSE
-  Question Type ID: 12278fea-2ea2-4b08-95d3-6b0dfe3c4c19
-  Difficulty: 1/5
-  Explanation: 利用指數定律：
-$$\frac{(6x^7)^2}{4x^5} = \frac{36x^{14}}{4x^5}$$
-$$= 9x^{14-5}$$
-$$= 9x^9$$
-  Question:2. $\frac{(6x^7)^2}{4x^5} =$
-A. $3x^4$
-B. $9x^4$
-C. $3x^9$
-D. $9x^9$
+  Question Type ID: 0a8cdea4-2fe9-4c43-ac1c-9a29c5646da7
+  Difficulty: 2/5
+  Explanation: 檢查各選項：
+- A：若準確至二位小數，此範圍內的數（如 0.06557）會進位至 0.07。
+- B：若準確至二位有效數字，第一位是 6，第二位是 5，其後是 5，故應進位至 0.066。
+- C：若準確至三位小數，0.06557 會進位至 0.066。
+- D：檢查三位有效數字：
+對於 $0.06557$，有效數字從 6 開始，前三位是 6, 5, 5，第四位是 7，進位後得 $0.0656$。
+對於 $0.06564$，前三位是 6, 5, 6，第四位是 4，捨去後得 $0.0656$。
+因此在該範圍內的所有 $x$ 準確至三位有效數字皆為 $0.0656$。
+  Question:若 $0.06557 < x < 0.06564$，則下列何者正確？
+
+A. $x = 0.065$（準確至二位小數）
+B. $x = 0.065$（準確至二位有效數字）
+C. $x = 0.0656$（準確至三位小數）
+D. $x = 0.0656$（準確至三位有效數字）
   Answer:D
   Metadata: {
-  "source_image": "2019p2 Page 002.jpg",
-  "extracted_at": "2026-01-29T14:31:50.552Z",
-  "question_type_name": "結構與詳略安排"
+  "source_image": "2019p2 Page 003.jpg",
+  "extracted_at": "2026-01-30T11:38:44.536Z",
+  "question_type_name": "估算與誤差"
 }
 --------------------------------------------------------------------------------
 
 Question 3:
-  Topic: 文言句式/語法判斷
+  Topic: 不等式
   Year: 2019
-  Question Number: 3
-  Subject: DSE中文12篇範文
+  Question Number: 7
+  Subject: 必修數學
   Grade Level: DSE
-  Question Type ID: 21284a04-ba4d-4241-ac4d-5b63a392c4b5
+  Question Type ID: 9ca90a92-d3e1-4b14-bd53-9d9ec0314984
   Difficulty: 2/5
-  Explanation: 建立聯立方程：
-(1) $6x-7y=40$
-(2) $2x+11y=40$
-將 (2) 乘以 3：$6x+33y=120$ --- (3)
-(3) 減 (1)：$(6x+33y) - (6x-7y) = 120-40$
-$$40y = 80$$
-$$y = 2$$
-  Question:3. 若 $6x-7y=40=2x+11y$，則 $y=$
-A. -4
-B. 2
-C. 4
-D. 9
+  Explanation: 先分別解兩個不等式：
+1) $-2(x-5) + 5 < 21$
+$-2x + 10 + 5 < 21$
+$-2x < 6$
+$x > -3$
+
+2) $\frac{3x-5}{7} > 1$
+$3x - 5 > 7$
+$3x > 12$
+$x > 4$
+
+由於是「或」 (or) 關係，聯立解為 $x > -3$ 或 $x > 4$，即 $x > -3$。
+大於 $-3$ 的最小整數是 $-2$。
+  Question:滿足複合不等式 $-2(x-5)+5 < 21$ 或 $\frac{3x-5}{7} > 1$ 的最小整數為
+
+A. $-3$
+B. $-2$
+C. $4$
+D. $5$
   Answer:B
   Metadata: {
-  "source_image": "2019p2 Page 002.jpg",
-  "extracted_at": "2026-01-29T14:31:52.320Z",
-  "question_type_name": "文言句式/語法判斷"
+  "source_image": "2019p2 Page 003.jpg",
+  "extracted_at": "2026-01-30T11:38:45.620Z",
+  "question_type_name": "不等式"
 }
 --------------------------------------------------------------------------------
 
 Question 4:
-  Topic: 文言句式/語法判斷
+  Topic: 多項式
   Year: 2019
-  Question Number: 4
-  Subject: DSE中文12篇範文
+  Question Number: 8
+  Subject: 必修數學
   Grade Level: DSE
-  Question Type ID: 21284a04-ba4d-4241-ac4d-5b63a392c4b5
+  Question Type ID: 951d6c04-542d-4051-a34f-02485bf700f1
   Difficulty: 2/5
-  Explanation: 比較恆等式兩邊的系數：
-左方 (LHS) $= x^2 + (\alpha-8)x - 8\alpha - 6$
-右方 (RHS) $= x^2 - 18x + 81 + \beta$
-比較 $x$ 的系數：$\alpha-8 = -18 \Rightarrow \alpha = -10$
-比較常數項：$-8\alpha-6 = 81 + \beta$
-將 $\alpha = -10$ 代入：$-8(-10)-6 = 81 + \beta$
-$$80-6 = 81 + \beta$$
-$$74 = 81 + \beta$$
-$$\beta = -7$$
-  Question:4. 若 $\alpha$ 及 $\beta$ 均為常數使得 $(x-8)(x+\alpha)-6 \equiv (x-9)^2+\beta$，則 $\beta =$
-A. -26
-B. -10
-C. -7
-D. -6
+  Explanation: 將 $c$ 和 $-c$ 代入函數：
+$$f(c) = c^3 + c(c^2) + c = c^3 + c^3 + c = 2c^3 + c$$
+$$f(-c) = (-c)^3 + c(-c)^2 + c = -c^3 + c(c^2) + c = -c^3 + c^3 + c = c$$
+求和：
+$$f(c) + f(-c) = (2c^3 + c) + (c) = 2c^3 + 2c$$
+因此答案為 C。
+  Question:設 $c$ 為一常數。若 $f(x)=x^3+cx^2+c$，則 $f(c)+f(-c)=$
+
+A. $0$
+B. $2c$
+C. $2c^3+2c$
+D. $-2c^3+2c$
   Answer:C
   Metadata: {
-  "source_image": "2019p2 Page 002.jpg",
-  "extracted_at": "2026-01-29T14:31:53.970Z",
-  "question_type_name": "文言句式/語法判斷"
+  "source_image": "2019p2 Page 003.jpg",
+  "extracted_at": "2026-01-30T11:38:46.993Z",
+  "question_type_name": "多項式"
+}
+--------------------------------------------------------------------------------
+
+Question 5:
+  Topic: 平面幾何
+  Year: 2019
+  Question Number: 19
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: 34f0e6ea-d5f6-4ca3-a5dc-81986f9cd3b3
+  Difficulty: 2/5
+  Explanation: 1. 在直角三角形 $\triangle ABD$ 中，根據畢氏定理：
+$$BD^2 + AB^2 = AD^2$$
+$$BD = \sqrt{30^2 - 18^2} = \sqrt{900 - 324} = \sqrt{576} = 24\text{ cm}$$
+2. 由於 $AB // DC$ 且 $\angle ABD = 90^\circ$，則 $BD \perp DC$，故 $\triangle BCD$ 也是直角三角形，其中 $\angle BDC = 90^\circ$。
+3. 在直角三角形 $\triangle BCD$ 中：
+$$DC^2 + BD^2 = BC^2$$
+$$DC = \sqrt{26^2 - 24^2} = \sqrt{676 - 576} = \sqrt{100} = 10\text{ cm}$$
+4. 梯形 $ABCD$ 的面積為：
+$$\text{面積} = \frac{(AB + DC) \times BD}{2} = \frac{(18 + 10) \times 24}{2} = 14 \times 24 = 336\text{ cm}^2$$
+  Question:19. 圖中，$ABCD$ 為一梯形且 $AB // DC$ 及 $\angle ABD = 90^\circ$。若 $AB = 18\text{ cm}$、$BC = 26\text{ cm}$ 及 $AD = 30\text{ cm}$，求梯形 $ABCD$ 的面積。
+
+A. $336\text{ cm}^2$
+B. $400\text{ cm}^2$
+C. $504\text{ cm}^2$
+D. $552\text{ cm}^2$
+  Answer:A
+  Metadata: {
+  "source_image": "2019p2 Page 007.jpg",
+  "extracted_at": "2026-01-30T11:39:24.005Z",
+  "question_type_name": "平面幾何"
+}
+--------------------------------------------------------------------------------
+
+Question 6:
+  Topic: 平面幾何
+  Year: 2019
+  Question Number: 20
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: 34f0e6ea-d5f6-4ca3-a5dc-81986f9cd3b3
+  Difficulty: 3/5
+  Explanation: 1. 在 $\triangle BEF$ 中，已知 $BE = EF$（等腰三角形），則 $\angle EBF = \angle EFB$。
+2. 根據三角形內角和：
+$$2 \times \angle EBF + 56^\circ = 180^\circ$$
+$$2 \times \angle EBF = 124^\circ$$
+$$\angle EBF = 62^\circ$$
+3. 由於 $ABE$ 及 $BCF$ 為直線，$\angle ABC$ 與 $\angle EBF$ 是補角關係（$\angle EBF = \angle CBE$，而 $\angle ABC + \angle CBE = 180^\circ$）：
+$$\angle ABC = 180^\circ - 62^\circ = 118^\circ$$
+4. 在菱形 $ABCD$ 中，對角相等，$\angle ADC = \angle ABC = 118^\circ$。
+5. 菱形的對角線平分內角，故：
+$$\angle BDC = \frac{1}{2} \angle ADC = \frac{118^\circ}{2} = 59^\circ$$
+  Question:20. 圖中，$ABCD$ 為一菱形。$ABE$ 及 $BCF$ 均為直線使得 $BE = EF$。若 $\angle BEF = 56^\circ$，則 $\angle BDC =$
+
+A. $48^\circ$
+B. $56^\circ$
+C. $59^\circ$
+D. $62^\circ$
+  Answer:C
+  Metadata: {
+  "source_image": "2019p2 Page 007.jpg",
+  "extracted_at": "2026-01-30T11:39:24.901Z",
+  "question_type_name": "平面幾何"
+}
+--------------------------------------------------------------------------------
+
+Question 7:
+  Topic: 平面幾何
+  Year: 2019
+  Question Number: 21
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: 34f0e6ea-d5f6-4ca3-a5dc-81986f9cd3b3
+  Difficulty: 3/5
+  Explanation: 1. 在圓中，相等的弦對應相等的弧。已知 $AC = BD$，故 $\text{arc } AC = \text{arc } BD$。
+2. 由此推得 $\text{arc } AD + \text{arc } DC = \text{arc } DC + \text{arc } CB$，所以 $\text{arc } AD = \text{arc } CB$。
+3. 對應的圓心角也相等，設 $\angle AOD = \angle BOC = x$。
+4. 由於 $AB$ 是直徑，$\angle AOD + \angle COD + \angle BOC = 180^\circ$：
+$$x + 48^\circ + x = 180^\circ$$
+$$2x = 132^\circ$$
+$$x = 66^\circ$$
+5. $\angle ABD$ 是圓周角，其對應的圓心角為 $\angle AOD$：
+$$\angle ABD = \frac{1}{2} \angle AOD = \frac{1}{2} \times 66^\circ = 33^\circ$$
+  Question:21. 圖中，$O$ 為半圓 $ABCD$ 的圓心。若 $AC = BD$ 及 $\angle COD = 48^\circ$，則 $\angle ABD =$
+
+A. $31^\circ$
+B. $33^\circ$
+C. $42^\circ$
+D. $48^\circ$
+  Answer:B
+  Metadata: {
+  "source_image": "2019p2 Page 007.jpg",
+  "extracted_at": "2026-01-30T11:39:26.740Z",
+  "question_type_name": "平面幾何"
+}
+--------------------------------------------------------------------------------
+
+Question 8:
+  Topic: 等差與等比數列
+  Year: 2020
+  Question Number: 12
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: d3259ef7-ff9a-4760-bd81-f5bfaa519fbe
+  Difficulty: 2/5
+  Explanation: 根據題目給出的遞推關係：
+$T_1 = 3$
+$T_{n+1} = T_n + (2n+1)$
+我們可以計算前幾個項：
+$T_2 = T_1 + (2 \times 1 + 1) = 3 + 3 = 6$
+$T_3 = T_2 + (2 \times 2 + 1) = 6 + 5 = 11$
+$T_4 = T_3 + (2 \times 3 + 1) = 11 + 7 = 18$
+$T_5 = T_4 + (2 \times 4 + 1) = 18 + 9 = 27$
+$T_6 = T_5 + (2 \times 5 + 1) = 27 + 11 = 38$
+$T_7 = T_6 + (2 \times 6 + 1) = 38 + 13 = 51$
+或者觀察通項公式：$T_n = n^2 + 2$，則 $T_7 = 7^2 + 2 = 51$。
+  Question:圖中，第 1 個圖案包含 3 粒點子。對任意正整數 $n$，第 $(n+1)$ 個圖案是由第 $n$ 個圖案加上 $(2n+1)$ 粒點子所組成。求第 7 個圖案的點子數目。
+
+A. 15
+B. 27
+C. 38
+D. 51
+  Answer:D
+  Metadata: {
+  "source_image": "2020p2 Page 005.jpg",
+  "extracted_at": "2026-01-30T11:40:29.284Z",
+  "question_type_name": "等差與等比數列"
+}
+--------------------------------------------------------------------------------
+
+Question 9:
+  Topic: 不等式
+  Year: 2020
+  Question Number: 13
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: 9ca90a92-d3e1-4b14-bd53-9d9ec0314984
+  Difficulty: 1/5
+  Explanation: 分別解兩個不等式：
+1) $5 - 4x < 9 \Rightarrow -4x < 4 \Rightarrow x > -1$
+2) $\frac{2x - 3}{7} > 1 \Rightarrow 2x - 3 > 7 \Rightarrow 2x > 10 \Rightarrow x > 5$
+取兩者的交集（AND）：$x > -1$ 且 $x > 5$，結果為 $x > 5$。
+  Question:$5-4x < 9$ 及 $\frac{2x-3}{7} > 1$ 的解為
+
+A. $x < -1$
+B. $x > -1$
+C. $x < 5$
+D. $x > 5$
+  Answer:D
+  Metadata: {
+  "source_image": "2020p2 Page 005.jpg",
+  "extracted_at": "2026-01-30T11:40:30.589Z",
+  "question_type_name": "不等式"
+}
+--------------------------------------------------------------------------------
+
+Question 10:
+  Topic: 估算與誤差
+  Year: 2020
+  Question Number: 14
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: 0a8cdea4-2fe9-4c43-ac1c-9a29c5646da7
+  Difficulty: 3/5
+  Explanation: 五邊形面積可看作矩形 $PQ \times PT$ 與梯形的面積之和：
+$A = PT \times PQ + \frac{1}{2}(PQ + RS)(QR - PT) = \frac{1}{2}[QR(PQ+RS) + PT(PQ-RS)]$
+給定量度：$PQ=6, PT=5, QR=10, RS=3$。由於準確至最接近 cm，最大誤差為 $\pm 0.5$。
+下限 $A_{min} = \frac{1}{2}[9.5(5.5+2.5) + 4.5(5.5-2.5)] = \frac{1}{2}[76 + 13.5] = 44.75$
+上限 $A_{max} = \frac{1}{2}[10.5(6.5+3.5) + 5.5(6.5-3.5)] = \frac{1}{2}[105 + 16.5] = 60.75$
+因此範圍為 $44.75 \le A < 60.75$。
+  Question:圖中，$PQRST$ 為五邊形，其中所有的量度均準確至最接近的 cm。設 $A \text{ cm}^2$ 為該五邊形的實際面積。求 $A$ 值的範圍。
+
+A. $27.83 \le A < 31.83$
+B. $44.75 \le A < 60.75$
+C. $46.75 \le A < 63.25$
+D. $48.25 \le A < 64.75$
+  Answer:B
+  Metadata: {
+  "source_image": "2020p2 Page 005.jpg",
+  "extracted_at": "2026-01-30T11:40:31.980Z",
+  "question_type_name": "估算與誤差"
+}
+--------------------------------------------------------------------------------
+
+Question 11:
+  Topic: 平面幾何
+  Year: 2020
+  Question Number: 15
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: 34f0e6ea-d5f6-4ca3-a5dc-81986f9cd3b3
+  Difficulty: 2/5
+  Explanation: 設原半徑為 $r$，原角為 $\theta$。弧長 $L = r\theta$。
+新的角 $\theta' = \theta(1 - 60\%) = 0.4\theta$
+新的半徑 $r' = r(1 + \frac{k}{100})$
+由於弧長不變：$r'\theta' = r\theta$
+$r(1 + \frac{k}{100})(0.4\theta) = r\theta$
+$0.4(1 + \frac{k}{100}) = 1$
+$1 + \frac{k}{100} = 2.5 \Rightarrow \frac{k}{100} = 1.5 \Rightarrow k = 150$。
+  Question:某扇形的角減少 $60\%$ ，而它的半徑卻增加 $k\%$ 。若該扇形的弧長維持不變，求 $k$ 的值。
+
+A. 40
+B. 60
+C. 67
+D. 150
+  Answer:D
+  Metadata: {
+  "source_image": "2020p2 Page 005.jpg",
+  "extracted_at": "2026-01-30T11:40:33.364Z",
+  "question_type_name": "平面幾何"
+}
+--------------------------------------------------------------------------------
+
+Question 12:
+  Topic: 立體幾何
+  Year: 2020
+  Question Number: 16
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: ff32b20d-1bff-427a-a46d-96ebc52e07bf
+  Difficulty: 2/5
+  Explanation: 設第一個圓柱體的體積為 $V_1$，第二個圓錐體的體積為 $V_2$。
+1. 根據圓柱體體積公式：$V_1 = \pi r^2 h = \pi (5a)^2 (7b) = \pi (25a^2)(7b) = 175\pi a^2 b = 525$
+由此可得 $\pi a^2 b = \frac{525}{175} = 3$。
+2. 根據圓錐體體積公式：$V_2 = \frac{1}{3} \pi r^2 h = \frac{1}{3} \pi (7a)^2 (5b) = \frac{1}{3} \pi (49a^2)(5b) = \frac{245}{3} \pi a^2 b$
+3. 將 $\pi a^2 b = 3$ 代入：$V_2 = \frac{245}{3} \times 3 = 245\text{ cm}^3$。
+  Question:若一底半徑為 $5a\text{ cm}$ 及高為 $7b\text{ cm}$ 的直立圓柱體的體積為 $525\text{ cm}^3$ ， 則一底半徑為 $7a\text{ cm}$ 及高為 $5b\text{ cm}$ 的直立圓錐體的體積為
+
+A. $175\text{ cm}^3$ 。
+B. $245\text{ cm}^3$ 。
+C. $490\text{ cm}^3$ 。
+D. $735\text{ cm}^3$ 。
+  Answer:B
+  Metadata: {
+  "source_image": "2020p2 Page 006.jpg",
+  "extracted_at": "2026-01-30T11:41:12.605Z",
+  "question_type_name": "立體幾何"
+}
+--------------------------------------------------------------------------------
+
+Question 13:
+  Topic: 平面幾何
+  Year: 2020
+  Question Number: 17
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: 34f0e6ea-d5f6-4ca3-a5dc-81986f9cd3b3
+  Difficulty: 2/5
+  Explanation: 因為 $PU // QT // RS$，所以 $\triangle OPU \sim \triangle OQT \sim \triangle ORS$。
+已知 $OP = PQ = QR$，設 $OP = x$，則 $OQ = 2x$，$OR = 3x$。
+1. 相似三角形面積之比等於邊長平方之比：
+$\text{Area}(\triangle OPU) : \text{Area}(\triangle OQT) : \text{Area}(\triangle ORS) = 1^2 : 2^2 : 3^2 = 1 : 4 : 9$
+2. 設 $\text{Area}(\triangle OPU) = k$，則：
+$\text{Area}(PQTU) = \text{Area}(\triangle OQT) - \text{Area}(\triangle OPU) = 4k - k = 3k$
+$\text{Area}(QRST) = \text{Area}(\triangle ORS) - \text{Area}(\triangle OQT) = 9k - 4k = 5k$
+3. 面積之比為 $3k : 5k = 3 : 5$。
+  Question:圖中，$P$ 及 $Q$ 均為 $OR$ 上的點而 $U$ 及 $T$ 均為 $OS$ 上的點使得 $OP = PQ = QR$ 且 $PU // QT // RS$ 。 梯形 $PQTU$ 的面積與梯形 $QRST$ 的面積之比為
+
+A. $1:2$ 。
+B. $2:3$ 。
+C. $3:5$ 。
+D. $4:9$ 。
+  Answer:C
+  Metadata: {
+  "source_image": "2020p2 Page 006.jpg",
+  "extracted_at": "2026-01-30T11:41:13.527Z",
+  "question_type_name": "平面幾何"
+}
+--------------------------------------------------------------------------------
+
+Question 14:
+  Topic: 平面幾何
+  Year: 2020
+  Question Number: 18
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: 34f0e6ea-d5f6-4ca3-a5dc-81986f9cd3b3
+  Difficulty: 4/5
+  Explanation: 1. 設 $AE = 2x, ED = 5x$，則 $AD = 7x$。由於 $ABCD$ 是平行四邊形，$BC = AD = 7x$。已知 $BF = DE = 5x$。
+2. 因為 $AE // BF$，所以 $\triangle AEG \sim \triangle BFG$。邊長比為 $AE:BF = 2:5$。設其高分別為 $h_1, h_2$，則 $h_1:h_2 = 2:5$。總高 $H = h_1 + h_2 = \frac{7}{2}h_1$。
+3. $\text{Area}(\triangle AEG) = \frac{1}{2}(2x)h_1 = 48 \Rightarrow xh_1 = 48$。
+4. 平行四邊形面積 $= AD \times H = 7x \times \frac{7}{2}h_1 = \frac{49}{2}xh_1 = \frac{49}{2} \times 48 = 1176\text{ cm}^2$。
+5. $\text{Area}(\triangle BCD) = \frac{1}{2} \times 1176 = 588\text{ cm}^2$。
+6. 考慮 $\triangle CDH$。由 $\triangle AEG \sim \triangle BFG$ 可知 $AG:GB = 2:5$，故 $GB = \frac{5}{7}AB$。因為 $CD // AB$，所以 $\triangle CDH \sim \triangle GBH$，邊長比 $CD:GB = AB:(\frac{5}{7}AB) = 7:5$。
+7. $\triangle CDH$ 的高與其對應三角形 $\triangle GBH$ 的高之比為 $7:5$，故 $\triangle CDH$ 的高是 $CD$ 與 $AB$ 之間距離的 $\frac{7}{12}$。
+8. $\text{Area}(\triangle CDH) = \frac{7}{12} \times \text{Area}(\triangle BCD) = \frac{7}{12} \times 588 = 343\text{ cm}^2$。
+  Question:圖中，$ABCD$ 為一平行四邊形。設 $E$ 為 $AD$ 上的一點使得 $AE : ED = 2:5$ 。 延長 $CB$ 至點 $F$ 使得 $BF = DE$ 。 將 $AB$ 與 $EF$ 的交點記為 $G$ 。 已知 $BD$ 與 $CG$ 相交於點 $H$ 。 若 $\triangle AEG$ 的面積為 $48\text{ cm}^2$ ， 則 $\triangle CDH$ 的面積為
+
+A. $98\text{ cm}^2$ 。
+B. $343\text{ cm}^2$ 。
+C. $420\text{ cm}^2$ 。
+D. $588\text{ cm}^2$ 。
+  Answer:B
+  Metadata: {
+  "source_image": "2020p2 Page 006.jpg",
+  "extracted_at": "2026-01-30T11:41:14.842Z",
+  "question_type_name": "平面幾何"
+}
+--------------------------------------------------------------------------------
+
+Question 15:
+  Topic: 概率
+  Year: 2020
+  Question Number: 43
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: 13aa63db-b369-4ee7-9668-f73624e036f2
+  Difficulty: 3/5
+  Explanation: 我們可以使用餘事象（complementary event）來計算抽出至多 3 本中文書的概率。總共有 15 本書，抽 5 本的方法總數為 $C_{5}^{15} = 3003$。
+至多 3 本中文書的餘事象是「抽出 4 本或 5 本中文書」。
+抽出 4 本中文書及 1 本英文書的方法數：$C_{4}^{8} \times C_{1}^{7} = 70 \times 7 = 490$。
+抽出 5 本中文書及 0 本英文書的方法數：$C_{5}^{8} \times C_{0}^{7} = 56 \times 1 = 56$。
+餘事象的概率為 $\frac{490 + 56}{3003} = \frac{546}{3003} = \frac{2}{11}$。
+因此，抽出至多 3 本中文書的概率為 $1 - \frac{2}{11} = \frac{9}{11}$。
+  Question:某箱子內有 8 本中文書及 7 本英文書。若從該箱子中隨機同時抽出 5 本書，求抽出至多 3 本中文書的概率。
+
+A. $\frac{2}{11}$
+B. $\frac{9}{11}$
+C. $\frac{61}{143}$
+D. $\frac{82}{143}$
+  Answer:B
+  Metadata: {
+  "source_image": "2020p2 Page 015.jpg",
+  "extracted_at": "2026-01-30T11:41:39.606Z",
+  "question_type_name": "概率"
+}
+--------------------------------------------------------------------------------
+
+Question 16:
+  Topic: 統計學
+  Year: 2020
+  Question Number: 44
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: fa8a407b-a490-4391-83a1-05e2cc78def0
+  Difficulty: 2/5
+  Explanation: 根據標準分的定義 $z = \frac{x - \mu}{\sigma}$，兩個學生的標準分之差可表示為：
+$$z_1 - z_2 = \frac{x_1 - \mu}{\sigma} - \frac{x_2 - \mu}{\sigma} = \frac{x_1 - x_2}{\sigma}$$
+已知得分之差 $x_1 - x_2 = 30$ 且標準分之差 $z_1 - z_2 = 6$，代入公式：
+$$6 = \frac{30}{\sigma}$$
+解得 $\sigma = 5$ 分。
+  Question:在一測驗，某兩學生的測驗得分之差及標準分之差分別為 30 分及 6。在該測驗，測驗得分的標準差為
+
+A. 5 分。
+B. 24 分。
+C. 25 分。
+D. 36 分。
+  Answer:A
+  Metadata: {
+  "source_image": "2020p2 Page 015.jpg",
+  "extracted_at": "2026-01-30T11:41:41.019Z",
+  "question_type_name": "統計學"
+}
+--------------------------------------------------------------------------------
+
+Question 17:
+  Topic: 統計學
+  Year: 2020
+  Question Number: 45
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: fa8a407b-a490-4391-83a1-05e2cc78def0
+  Difficulty: 2/5
+  Explanation: 根據方差的性質，若每個數據都加上相同的常數，方差保持不變，即 $\text{Var}(X + k) = \text{Var}(X)$。因此，這六個數的方差與 $3, 5, 9, 11, 15, 17$ 的方差相同。
+1. 計算平均值：$\mu = \frac{3+5+9+11+15+17}{6} = \frac{60}{6} = 10$
+2. 計算方差 $\sigma^2$：
+$$\sigma^2 = \frac{(3-10)^2 + (5-10)^2 + (9-10)^2 + (11-10)^2 + (15-10)^2 + (17-10)^2}{6}$$
+$$\sigma^2 = \frac{(-7)^2 + (-5)^2 + (-1)^2 + 1^2 + 5^2 + 7^2}{6}$$
+$$\sigma^2 = \frac{49 + 25 + 1 + 1 + 25 + 49}{6} = \frac{150}{6} = 25$$
+  Question:六個數 $20a+3$、$20a+5$、$20a+9$、$20a+11$、$20a+15$ 及 $20a+17$ 的方差為
+
+A. 5。
+B. 10。
+C. 25。
+D. $20a+25$。
+  Answer:C
+  Metadata: {
+  "source_image": "2020p2 Page 015.jpg",
+  "extracted_at": "2026-01-30T11:41:42.021Z",
+  "question_type_name": "統計學"
+}
+--------------------------------------------------------------------------------
+
+Question 18:
+  Topic: 指數與對數
+  Year: 2021
+  Question Number: 1
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: cbea71a3-c3c2-4e20-80db-34ab1cd4786c
+  Difficulty: 1/5
+  Explanation: 首先將所有底數轉換為 2：
+$$\frac{2^n \times (2^3)^{3n}}{(2^6)^n}$$
+根據指數定律 $(a^m)^n = a^{mn}$：
+$$\frac{2^n \times 2^{9n}}{2^{6n}}$$
+根據指數定律 $a^m \times a^n = a^{m+n}$ 及 $a^m \div a^n = a^{m-n}$：
+$$2^{n+9n-6n} = 2^{4n}$$
+由於選項底數為 4，將其轉換：
+$$2^{4n} = (2^2)^{2n} = 4^{2n}$$
+因此答案為 B。
+  Question:$\frac{(2^n)(8^{3n})}{64^n} =$
+
+A. $4^n$
+B. $4^{2n}$
+C. $4^{-3n}$
+D. $4^{-4n}$
+  Answer:B
+  Metadata: {
+  "source_image": "2021p2 (1) Page 002.jpg",
+  "extracted_at": "2026-01-30T11:41:58.729Z",
+  "question_type_name": "指數與對數"
+}
+--------------------------------------------------------------------------------
+
+Question 19:
+  Topic: 公式與恆等式
+  Year: 2021
+  Question Number: 2
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: 0002638b-7c72-426a-9f39-ee332dcb1097
+  Difficulty: 1/5
+  Explanation: 展開方程兩邊：
+$$m^2 - ma = a - am$$
+將含有 $a$ 的項移到等號的一邊：
+$$m^2 - ma + am = a$$
+由於 $-ma + am = 0$，簡化得：
+$$m^2 = a$$
+因此 $a = m^2$，答案為 C。
+  Question:若 $m(m-a) = a(1-m)$，則 $a =$
+
+A. $m$
+B. $2m$
+C. $m^2$
+D. $\frac{m^2 + m}{2}$
+  Answer:C
+  Metadata: {
+  "source_image": "2021p2 (1) Page 002.jpg",
+  "extracted_at": "2026-01-30T11:42:00.015Z",
+  "question_type_name": "公式與恆等式"
+}
+--------------------------------------------------------------------------------
+
+Question 20:
+  Topic: 多項式
+  Year: 2021
+  Question Number: 3
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: 951d6c04-542d-4051-a34f-02485bf700f1
+  Difficulty: 1/5
+  Explanation: 利用平方差公式 $(u+v)(u-v) = u^2 - v^2$：
+$$(u^2 - v^2)(u - 1)$$
+然後展開：
+$$u^2(u) - u^2(1) - v^2(u) + v^2(1)$$
+$$= u^3 - u^2 - uv^2 + v^2$$
+對應選項 D。
+  Question:$(u+v)(u-v)(u-1) =$
+
+A. $u^3 + u^2 + uv^2 + v^2$
+B. $u^3 + u^2 - uv^2 + v^2$
+C. $u^3 - u^2 + uv^2 + v^2$
+D. $u^3 - u^2 - uv^2 + v^2$
+  Answer:D
+  Metadata: {
+  "source_image": "2021p2 (1) Page 002.jpg",
+  "extracted_at": "2026-01-30T11:42:01.337Z",
+  "question_type_name": "多項式"
+}
+--------------------------------------------------------------------------------
+
+Question 21:
+  Topic: 平面幾何
+  Year: 2021
+  Question Number: 21
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: 34f0e6ea-d5f6-4ca3-a5dc-81986f9cd3b3
+  Difficulty: 3/5
+  Explanation: 對於正八邊形 $ABCDEFGH$：
+I. 由於正多邊形的對稱性，弦 $AG$ 與弦 $BF$ 是平行的。正確。
+II. 弦 $BD$ 跨越了 2 個弧段（弧 $BC$ 及 $CD$），弦 $EG$ 也跨越了 2 個弧段（弧 $EF$ 及 $FG$）。在正多邊形中，跨越相同數量弧段的弦其長度必相等。正確。
+III. 設正八邊形的外接圓中心為 $O$。每個頂點之間的弧度為 $$\frac{360^\circ}{8} = 45^\circ$$。
+$\angle CAG$ 是圓周角，所對的弧為 $CDEFG$，包含 4 個弧段，其角度為 $$\frac{1}{2} \times (4 \times 45^\circ) = 90^\circ$$。
+$\angle BDH$ 也是圓周角，所對的弧為 $HAB$（或 $H-A-B$），包含 2 個弧段，其角度為 $$\frac{1}{2} \times (2 \times 45^\circ) = 45^\circ$$。
+因此 $\angle CAG = 90^\circ = 2 \times 45^\circ = 2\angle BDH$。正確。
+故 I、II 及 III 均正確。
+  Question:若 $ABCDEFGH$ 為一正 8 邊形，則下列何者正確？
+I. $AG // BF$
+II. $BD = EG$
+III. $\angle CAG = 2\angle BDH$
+
+A. 只有 I 及 II
+B. 只有 I 及 III
+C. 只有 II 及 III
+D. I、II 及 III
+  Answer:D
+  Metadata: {
+  "source_image": "2021p2 (1) Page 008.jpg",
+  "extracted_at": "2026-01-30T11:42:40.735Z",
+  "question_type_name": "平面幾何"
+}
+--------------------------------------------------------------------------------
+
+Question 22:
+  Topic: 平面幾何
+  Year: 2021
+  Question Number: 22
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: 34f0e6ea-d5f6-4ca3-a5dc-81986f9cd3b3
+  Difficulty: 3/5
+  Explanation: 1. 因為 $AC = BD$，所以它們所對的弧相等，即 $\text{arc } ABC = \text{arc } BCD$。減去重疊部分可得 $\text{arc } AB = \text{arc } CD$。
+2. 在圓內接四邊形 $ACDE$ 中，對角互補，則 $\angle ACD = 180^\circ - \angle AED = 180^\circ - 96^\circ = 84^\circ$。
+3. $\angle ACD$ 是圓周角，其所對的弧 $AED$ 度數為 $2 \times 84^\circ = 168^\circ$。則剩下的弧 $ABCD = 360^\circ - 168^\circ = 192^\circ$。
+4. 已知 $\angle BDC = 14^\circ$，其所對的 $\text{arc } BC = 2 \times 14^\circ = 28^\circ$。
+5. 由 $\text{arc } AB + \text{arc } BC + \text{arc } CD = 192^\circ$ 且 $\text{arc } AB = \text{arc } CD$，設 $\text{arc } CD = k$，則 $2k + 28^\circ = 192^\circ \Rightarrow 2k = 164^\circ \Rightarrow k = 82^\circ$。
+6. $\angle CAD$ 為 $\text{arc } CD$ 所對的圓周角，故 $\angle CAD = \frac{1}{2} \times 82^\circ = 41^\circ$。
+  Question:圖中，$ABCDE$ 為一圓。若 $AC = BD$、$\angle AED = 96^{\circ}$ 及 $\angle BDC = 14^{\circ}$，則 $\angle CAD =$
+
+A. $41^{\circ}$
+B. $44^{\circ}$
+C. $49^{\circ}$
+D. $55^{\circ}$
+  Answer:A
+  Metadata: {
+  "source_image": "2021p2 (1) Page 008.jpg",
+  "extracted_at": "2026-01-30T11:42:41.986Z",
+  "question_type_name": "平面幾何"
+}
+--------------------------------------------------------------------------------
+
+Question 23:
+  Topic: 坐標幾何
+  Year: 2021
+  Question Number: 23
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: ae460f30-6e9c-429a-9f7e-b34c91fe608b
+  Difficulty: 2/5
+  Explanation: 1. 點 $P(7, -5)$ 對 $y$ 軸反射得到點 $Q$。反射規則為 $(x, y) \rightarrow (-x, y)$，所以 $Q$ 的坐標為 $(-7, -5)$。
+2. 點 $Q(-7, -5)$ 繞原點順時針旋轉 $90^\circ$ 得到點 $R$。順時針旋轉 $90^\circ$ 的規則為 $(x, y) \rightarrow (y, -x)$。
+3. 應用規則：$x_R = y_Q = -5$，$y_R = -x_Q = -(-7) = 7$。因此 $R$ 的坐標為 $(-5, 7)$。
+4. 題目要求 $R$ 的 $x$ 坐標，即為 $-5$。
+  Question:點 $P$ 的坐標為 $(7, -5)$。$P$ 對 $y$ 軸作反射至點 $Q$，然後 $Q$ 繞原點順時針方向旋轉 $90^{\circ}$ 至點 $R$。求 $R$ 的 $x$ 座標。
+
+A. $-7$
+B. $-5$
+C. $5$
+D. $7$
+  Answer:B
+  Metadata: {
+  "source_image": "2021p2 (1) Page 008.jpg",
+  "extracted_at": "2026-01-30T11:42:43.326Z",
+  "question_type_name": "坐標幾何"
+}
+--------------------------------------------------------------------------------
+
+Question 24:
+  Topic: 等差與等比數列
+  Year: 2022
+  Question Number: 37
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: d3259ef7-ff9a-4760-bd81-f5bfaa519fbe
+  Difficulty: 2/5
+  Explanation: 由於 $a_n$ 是等比數列，其相鄰項的比（公比 $r$）恆等：
+$$r = \frac{a_2}{a_1} = \frac{a_3}{a_2}$$
+$$\frac{1}{8p^2} = \frac{27p}{1}$$
+$$1 = 216p^3$$
+$$p^3 = \frac{1}{216}$$
+$$p = \frac{1}{6}$$
+
+求得 $p$ 後可求公比 $r$：
+$$r = \frac{a_3}{a_2} = \frac{27p}{1} = 27 \times \frac{1}{6} = \frac{9}{2}$$
+
+最後求 $a_4$：
+$$a_4 = a_3 \times r = (27 \times \frac{1}{6}) \times \frac{9}{2} = \frac{9}{2} \times \frac{9}{2} = \frac{81}{4}$$
+因此答案為 D。
+  Question:設 $a_n$ 為一等比數列的第 $n$ 項。已知 $a_1=8p^2$ 、 $a_2=1$ 及 $a_3=27p$ ，其中 $p$ 為一實數。求 $a_4$ 。
+
+A. $\frac{1}{6}$
+B. $\frac{2}{9}$
+C. $\frac{9}{2}$
+D. $\frac{81}{4}$
+  Answer:D
+  Metadata: {
+  "source_image": "2022p2 Page 013.jpg",
+  "extracted_at": "2026-01-30T11:43:14.439Z",
+  "question_type_name": "等差與等比數列"
+}
+--------------------------------------------------------------------------------
+
+Question 25:
+  Topic: 平面幾何
+  Year: 2022
+  Question Number: 38
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: 34f0e6ea-d5f6-4ca3-a5dc-81986f9cd3b3
+  Difficulty: 3/5
+  Explanation: 1. 根據圓內接四邊形對角之和為 $180^\circ$：
+   $$\angle ABC = 180^\circ - \angle ADC = 180^\circ - 79^\circ = 101^\circ$$
+2. 根據交錯弓形理 (Alternate Segment Theorem)：
+   由於 $PA$ 為切線，弦 $AD$ 與切線夾角 $\angle DAP = 42^\circ$ ，其交錯弓形內的圓周角 $\angle ABD = 42^\circ$ 。
+   由於 $QB$ 為切線，弦 $BC$ 與切線夾角 $\angle CBQ = 39^\circ$ ，其交錯弓形內的圓周角 $\angle BAC = 39^\circ$ 。
+3. 在 $\angle ABC$ 中：
+   $$\angle CBD = \angle ABC - \angle ABD = 101^\circ - 42^\circ = 59^\circ$$
+4. 根據同弓形內的圓周角相等：
+   $$\angle CAD = \angle CBD = 59^\circ$$
+5. 計算 $\angle BAD$：
+   $$\angle BAD = \angle BAC + \angle CAD = 39^\circ + 59^\circ = 98^\circ$$
+6. 再利用圓內接四邊形對角之和為 $180^\circ$：
+   $$\angle BCD = 180^\circ - \angle BAD = 180^\circ - 98^\circ = 82^\circ$$
+因此答案為 D。
+  Question:圖中， $ABCD$ 為一圓。 $PA$ 及 $QB$ 分別為該圓在 $A$ 及 $B$ 的切線。若 $\angle ADC=79^\circ$ 、 $\angle CBQ=39^\circ$ 及 $\angle DAP=42^\circ$ ，則 $\angle BCD=$
+
+A. $76^\circ$
+B. $79^\circ$
+C. $81^\circ$
+D. $82^\circ$
+  Answer:D
+  Metadata: {
+  "source_image": "2022p2 Page 013.jpg",
+  "extracted_at": "2026-01-30T11:43:15.941Z",
+  "question_type_name": "平面幾何"
+}
+--------------------------------------------------------------------------------
+
+Question 26:
+  Topic: 三角學
+  Year: 2022
+  Question Number: 39
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: 0975f62f-468d-4c16-aeae-80d20a120a4e
+  Difficulty: 2/5
+  Explanation: 給定方程 $\sin^2 x = 6 \cos^2 x$：
+1. 兩邊除以 $\cos^2 x$（注意當 $\cos^2 x = 0$ 時方程不成立，故可除）：
+   $$\frac{\sin^2 x}{\cos^2 x} = 6$$
+   $$\tan^2 x = 6$$
+2. 解 $\tan x$：
+   $$\tan x = \sqrt{6} \text{ 或 } \tan x = -\sqrt{6}$$
+3. 分析根的數量：
+   - 對於 $\tan x = \sqrt{6}$，在 $0^\circ \le x < 360^\circ$ 範圍內，在第一象限和第三象限各有一個解（共 2 個）。
+   - 對於 $\tan x = -\sqrt{6}$，在 $0^\circ \le x < 360^\circ$ 範圍內，在第二象限和第四象限各有一個解（共 2 個）。
+4. 總根數為 $2 + 2 = 4$ 個。因此答案為 C。
+  Question:當 $0^\circ \le x < 360^\circ$ 時，方程 $\sin^2 x = 6 \cos^2 x$ 有多少個根？
+
+A. 2
+B. 3
+C. 4
+D. 5
+  Answer:C
+  Metadata: {
+  "source_image": "2022p2 Page 013.jpg",
+  "extracted_at": "2026-01-30T11:43:16.816Z",
+  "question_type_name": "三角學"
+}
+--------------------------------------------------------------------------------
+
+Question 27:
+  Topic: 指數與對數
+  Year: 2023
+  Question Number: 31
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: cbea71a3-c3c2-4e20-80db-34ab1cd4786c
+  Difficulty: 2/5
+  Explanation: 首先，將二進制數 $1011001011001011_2$ 按照 $1011$ 進行分組：
+$$1011, 0010, 1100, 1011$$
+這可以拆解為：
+$$(1011_2 \times 2^{12}) + (1011_2 \times 2^6) + (1011_2)$$
+由於 $1011_2 = 1 \times 2^3 + 0 \times 2^2 + 1 \times 2^1 + 1 \times 2^0 = 8 + 2 + 1 = 11_{10}$，
+代入後得到：
+$$11 \times 2^{12} + 11 \times 2^6 + 11$$
+因此答案是 B。
+  Question:31. $1011001011001011_2 =$
+
+A. $11 \times 2^{11} + 11 \times 2^5 + 11$ 。
+B. $11 \times 2^{12} + 11 \times 2^6 + 11$ 。
+C. $11 \times 2^{13} + 11 \times 2^7 + 11$ 。
+D. $11 \times 2^{14} + 11 \times 2^8 + 11$ 。
+  Answer:B
+  Metadata: {
+  "source_image": "2023p2 Page 010.jpg",
+  "extracted_at": "2026-01-30T11:44:01.899Z",
+  "question_type_name": "指數與對數"
+}
+--------------------------------------------------------------------------------
+
+Question 28:
+  Topic: 多項式
+  Year: 2023
+  Question Number: 32
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: 951d6c04-542d-4051-a34f-02485bf700f1
+  Difficulty: 1/5
+  Explanation: 求最小公倍數（L.C.M.）時，應取各項中所有質因式（變量）的最高次方：
+- 對於 $a$，最高次方為 $a^4$。
+- 對於 $b$，最高次方為 $b^5$。
+- 對於 $c$，最高次方為 $c^2$。
+因此，L.C.M. 為 $a^4b^5c^2$。
+  Question:32. $a^4b^2c$、$a^3b^4c$ 及 $a^2b^5c^2$ 的 L.C.M. 為
+
+A. $a^2b^2c$
+B. $a^2b^2c^2$
+C. $a^4b^5c$
+D. $a^4b^5c^2$
+  Answer:D
+  Metadata: {
+  "source_image": "2023p2 Page 010.jpg",
+  "extracted_at": "2026-01-30T11:44:03.252Z",
+  "question_type_name": "多項式"
+}
+--------------------------------------------------------------------------------
+
+Question 29:
+  Topic: 指數與對數
+  Year: 2023
+  Question Number: 33
+  Subject: 必修數學
+  Grade Level: DSE
+  Question Type ID: cbea71a3-c3c2-4e20-80db-34ab1cd4786c
+  Difficulty: 3/5
+  Explanation: 設 $Y = \log_8 y$ 及 $X = \log_4 x$。
+已知直線經過 $(0, 5)$ 及 $(3, 0)$。
+斜率 $m = \frac{0 - 5}{3 - 0} = -\frac{5}{3}$。
+直線方程為 $Y = -\frac{5}{3}X + 5$。
+即 $3Y = -5X + 15$。
+代入對數：$3 \log_8 y = -5 \log_4 x + 15$。
+利用換底公式將底數轉為 $2$：
+$$3 \left( \frac{\log_2 y}{\log_2 8} \right) = -5 \left( \frac{\log_2 x}{\log_2 4} \right) + 15$$
+$$3 \left( \frac{\log_2 y}{3} \right) = -5 \left( \frac{\log_2 x}{2} \right) + 15$$
+$$\log_2 y = -\frac{5}{2} \log_2 x + 15$$
+$$2 \log_2 y + 5 \log_2 x = 30$$
+$$\log_2 (y^2 x^5) = 30$$
+$$x^5 y^2 = 2^{30} = (2^3)^{10} = 8^{10}$$
+因此答案是 A。
+  Question:33. 已知 $\log_8 y$ 為 $\log_4 x$ 的線性函數。該線性函數的圖像在垂直軸上的截距及在水平軸上的截距分別為 $5$ 及 $3$。下列何者必為正確？
+
+A. $x^5 y^2 = 8^{10}$
+B. $x^6 y^5 = 8^{20}$
+C. $x^{10} y^3 = 8^{20}$
+D. $x^9 y^{10} = 8^{30}$
+  Answer:A
+  Metadata: {
+  "source_image": "2023p2 Page 010.jpg",
+  "extracted_at": "2026-01-30T11:44:04.568Z",
+  "question_type_name": "指數與對數"
 }
 --------------------------------------------------------------------------------
 
