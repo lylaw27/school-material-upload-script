@@ -45,8 +45,8 @@ const CONFIG = {
 // Zod schemas for geometry properties
 const PointSchema = z.object({
   label: z.string().describe('Point label (e.g., A, B, C)'),
-  x: z.number().optional().describe('X-coordinate (if applicable)'),
-  y: z.number().optional().describe('Y-coordinate (if applicable)'),
+  x: z.number().describe('X-coordinate (if applicable)'),
+  y: z.number().describe('Y-coordinate (if applicable)'),
   description: z.string().optional().describe('Description of the point'),
 });
 
@@ -60,15 +60,15 @@ const LineSchema = z.object({
 const CircleSchema = z.object({
   label: z.string().describe('Circle label (e.g., O, C)'),
   center: z.string().describe('Center point label'),
-  radius: z.number().optional().describe('Radius value'),
-  points_on_circle: z.array(z.string()).optional().describe('Points on the circumference'),
+  radius: z.number().describe('Radius value'),
+  points_on_circle: z.array(z.string()).describe('Points on the circumference'),
 });
 
 const AngleSchema = z.object({
   label: z.string().describe('Angle label (e.g., ∠ABC, ∠x)'),
   vertex: z.string().describe('Vertex point'),
   arms: z.array(z.string()).describe('Two arms of the angle'),
-  measure: z.number().optional().describe('Angle measure in degrees'),
+  measure: z.number().describe('Angle measure in degrees'),
   angle_type: z.enum(['acute', 'right', 'obtuse', 'straight', 'reflex', 'unknown']).optional(),
 });
 
@@ -82,7 +82,7 @@ const TriangleSchema = z.object({
 
 const GeometryPropertiesSchema = z.object({
   points: z.array(PointSchema).describe('All points in the diagram'),
-  lines: z.array(LineSchema).optional().describe('Lines and line segments'),
+  lines: z.array(LineSchema).describe('Lines and line segments'),
   circles: z.array(CircleSchema).optional().describe('Circles in the diagram'),
   angles: z.array(AngleSchema).optional().describe('Angles in the diagram'),
   triangles: z.array(TriangleSchema).optional().describe('Triangles in the diagram'),
@@ -163,7 +163,7 @@ async function generateMathMCQs(
     
     // @ts-ignore - avoiding deep type instantiation error
     const result = await generateObject({
-      model: v4api('gemini-3-flash-preview'),
+      model: v4api('gemini-3-pro-preview'),
       schema: MathMCQsSchema,
       messages: [
         {
@@ -194,6 +194,14 @@ ${topicGuidance}
 - given_conditions: 題目給定的條件列表
 - diagram_description: 圖形的文字描述
 
+【重要：座標精確性要求】
+⚠️ 點的座標必須在數學上準確反映所有的角度測量值和長度！
+- 使用三角函數計算座標：如果角度為θ，半徑為r，則點的座標應為 (r·cos(θ), r·sin(θ))
+- 驗證距離：兩點間的距離必須符合給定的長度值
+- 驗證角度：由座標計算出的角度必須與 measure 欄位的數值一致
+- 例如：如果∠AOB = 80°，點A在(5,0)，點B的座標必須使用 (5·cos(80°), 5·sin(80°)) ≈ (0.868, 4.924)
+- 絕對不要使用任意或近似的座標值，必須精確計算！
+
 【範例題目結構】
 {
   "question": "如圖所示，圓O的圓心為O，點A、B、C在圓上。若∠AOB = 80°，求∠ACB的度數。",
@@ -210,15 +218,26 @@ ${topicGuidance}
   "question_type": "calculation",
   "geometry_properties": {
     "points": [
-      {"label": "O", "description": "圓心"},
-      {"label": "A", "description": "圓上的點"},
-      {"label": "B", "description": "圓上的點"},
-      {"label": "C", "description": "圓上的點"}
+      {"label": "O", "x": 0, "y": 0, "description": "圓心"},
+      {"label": "A", "x": 5, "y": 0, "description": "圓上的點"},
+      {"label": "B", "x": 0.868, "y": 4.924, "description": "圓上的點（由80°角度計算：5·cos(80°), 5·sin(80°)）"},
+      {"label": "C", "x": 3, "y": 4, "description": "圓上的點"}
+    ],
+    "lines": [
+      {
+        "label": "OA",
+        "points": ["O", "A"],
+      },
+      {
+        "label": "OB",
+        "points": ["O", "B"],
+      }
     ],
     "circles": [
       {
         "label": "Circle O",
         "center": "O",
+        "radius": 5,
         "points_on_circle": ["A", "B", "C"]
       }
     ],
@@ -234,7 +253,8 @@ ${topicGuidance}
         "label": "∠ACB",
         "vertex": "C",
         "arms": ["CA", "CB"],
-        "angle_type": "unknown"
+        "measure": 40,
+        "angle_type": "acute"
       }
     ],
     "given_conditions": [

@@ -1,0 +1,42 @@
+=== GENERATED MATH GEOMETRY QUESTIONS ===
+Generated: 2026-01-30T19:24:49.263Z
+Topic: Circle Theorems
+Total Questions: 1
+================================================================================
+
+Question 1:
+如圖所示，A、B、C 為圓 O 上的點。直線 PAQ 為圓 O 在點 A 的切線。若 ∠QAB = 64° 及 ∠BOC = 100°，求 ∠ABC 的度數。
+
+[Diagram Description]
+圓心為 O 的圓。切線 PAQ 水平切於圓底部的 A 點。弦 AB 向右上方延伸。弦 BC 向左上方連接。O 點位於角 ABC 的內部區域。
+
+[Given Conditions]
+  1. O 是圓心
+  2. PAQ 是圓 O 在 A 點的切線
+  3. ∠QAB = 64°
+  4. ∠BOC = 100°
+
+A. 40°
+B. 50°
+C. 64°
+D. 66°
+
+Correct Answer: D
+Explanation: 1. 根據切線性質，圓半徑與切線垂直，即 ∠OAQ = 90°。
+2. 計算 ∠OAB：∠OAB = ∠OAQ - ∠QAB = 90° - 64° = 26°。
+3. 考慮 ΔOAB，因為 OA = OB（半徑），所以 ΔOAB 為等腰三角形，故 ∠OBA = ∠OAB = 26°。
+4. 考慮 ΔOBC，因為 OB = OC（半徑），所以 ΔOBC 為等腰三角形。頂角 ∠BOC = 100°，故底角 ∠OBC = (180° - 100°) / 2 = 40°。
+5. 最後，∠ABC = ∠OBA + ∠OBC = 26° + 40° = 66°。
+
+[Metadata]
+Difficulty: 3/5
+Type: calculation
+Required Theorems: 切線性質 (Tangent perpendicular to radius), 等腰三角形性質 (Base angles of isosceles triangle), 三角形內角和 (Angle sum of triangle)
+
+[Geometry Properties]
+Points: O, A, B, C, P, Q
+Lines: PQ, OA, OB, OC, AB, BC
+Circles: Circle O
+Angles: ∠QAB, ∠BOC, ∠ABC
+--------------------------------------------------------------------------------
+
