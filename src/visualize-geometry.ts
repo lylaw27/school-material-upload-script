@@ -76,13 +76,47 @@ function generateJSXGraphHTML(mcq: MathMCQ, questionIndex: number): string {
   const { geometry_properties } = mcq;
   const boardId = `jxgbox-${questionIndex}`;
   
-  // Find bounds for the board
+  // Find bounds considering all geometric objects
   const allX = geometry_properties.points.map(p => p.x);
   const allY = geometry_properties.points.map(p => p.y);
-  const dataMinX = Math.min(...allX);
-  const dataMaxX = Math.max(...allX);
-  const dataMinY = Math.min(...allY);
-  const dataMaxY = Math.max(...allY);
+  
+  // Create a point lookup map for easy access
+  const pointMap = new Map<string, Point>();
+  geometry_properties.points.forEach(p => pointMap.set(p.label, p));
+  
+  // Start with point bounds
+  let dataMinX = Math.min(...allX);
+  let dataMaxX = Math.max(...allX);
+  let dataMinY = Math.min(...allY);
+  let dataMaxY = Math.max(...allY);
+  
+  // Extend bounds to include circles
+  if (geometry_properties.circles) {
+    geometry_properties.circles.forEach(circle => {
+      const center = pointMap.get(circle.center);
+      if (center) {
+        // Calculate circle bounds using center ± radius
+        dataMinX = Math.min(dataMinX, center.x - circle.radius);
+        dataMaxX = Math.max(dataMaxX, center.x + circle.radius);
+        dataMinY = Math.min(dataMinY, center.y - circle.radius);
+        dataMaxY = Math.max(dataMaxY, center.y + circle.radius);
+      }
+    });
+  }
+  
+  // Extend bounds to include angle arcs (they have radius of 0.8)
+  if (geometry_properties.angles) {
+    const arcRadius = 0.8;
+    geometry_properties.angles.forEach(angle => {
+      const vertex = pointMap.get(angle.vertex);
+      if (vertex) {
+        dataMinX = Math.min(dataMinX, vertex.x - arcRadius);
+        dataMaxX = Math.max(dataMaxX, vertex.x + arcRadius);
+        dataMinY = Math.min(dataMinY, vertex.y - arcRadius);
+        dataMaxY = Math.max(dataMaxY, vertex.y + arcRadius);
+      }
+    });
+  }
   
   // Calculate data ranges
   const dataRangeX = dataMaxX - dataMinX;

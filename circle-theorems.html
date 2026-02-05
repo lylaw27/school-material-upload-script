@@ -62,11 +62,15 @@
     .diagram-wrapper {
       width: 100%;
       min-width: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .jxgbox {
-      width: 400px;
-      max-width: 400px;
-      height: 400px;
+      width: 100%;
+      max-width: 500px;
+      height: 500px;
+      aspect-ratio: 1;
       border: 2px solid #ddd;
       border-radius: 4px;
       box-sizing: border-box;
@@ -149,7 +153,7 @@
 <body>
   <h1>📐 Geometry Visualization: circle-theorems</h1>
   <p style="color: #666; margin-bottom: 30px;">
-    Source: <code>C:\Users\larry.law\gitrepo\quiz-app\uploader\circle-theorems.json</code> | Total Questions: 5
+    Source: <code>/Users/larrylaw/ai-projects/quiz-app/school-material-upload-script/circle-theorems.json</code> | Total Questions: 5
   </p>
 
   <div class="question-container">
@@ -542,7 +546,7 @@ A-E-C 是直線，B-E-D 是直線。
     
     // Board 1: Circle Theorems
     const board0 = JXG.JSXGraph.initBoard('jxgbox-0', {
-      boundingbox: [-12.688200000000002, 17.688200000000002, 12.688200000000002, -7.688200000000002],
+      boundingbox: [-14.56, 14.96, 14.56, -14.16],
       axis: false,
       showCopyright: false,
       showNavigation: false,
@@ -687,7 +691,7 @@ A-E-C 是直線，B-E-D 是直線。
 
     // Board 2: Circle Theorems
     const board1 = JXG.JSXGraph.initBoard('jxgbox-1', {
-      boundingbox: [-3.4026000000000014, 15.954100000000002, 20.415600000000005, -7.864100000000002],
+      boundingbox: [-15.5626, 19.4691, 23.375600000000002, -19.4691],
       axis: false,
       showCopyright: false,
       showNavigation: false,
@@ -867,7 +871,7 @@ A-E-C 是直線，B-E-D 是直線。
 
     // Board 3: Circle Theorems
     const board2 = JXG.JSXGraph.initBoard('jxgbox-2', {
-      boundingbox: [-16.8, 20.3, 16.8, -13.3],
+      boundingbox: [-18.2, 18.2, 18.2, -18.2],
       axis: false,
       showCopyright: false,
       showNavigation: false,
@@ -940,7 +944,7 @@ A-E-C 是直線，B-E-D 是直線。
 
     // Board 4: Circle Theorems
     const board3 = JXG.JSXGraph.initBoard('jxgbox-3', {
-      boundingbox: [-13.6985, 14, 14.3015, -14],
+      boundingbox: [-14.16, 14.96, 14.96, -14.16],
       axis: false,
       showCopyright: false,
       showNavigation: false,
@@ -1126,7 +1130,7 @@ A-E-C 是直線，B-E-D 是直線。
 
     // Board 5: Circle Theorems
     const board4 = JXG.JSXGraph.initBoard('jxgbox-4', {
-      boundingbox: [-14, 14.0275, 14, -13.9725],
+      boundingbox: [-14.56, 14.96, 14.56, -14.16],
       axis: false,
       showCopyright: false,
       showNavigation: false,
