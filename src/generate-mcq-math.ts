@@ -1,3 +1,4 @@
+import { createClient } from '@supabase/supabase-js';
 import { generateObject } from 'ai';
 import * as fs from 'fs/promises';
 import * as path from 'path';
@@ -18,9 +19,24 @@ const v4api = createOpenAICompatible({
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Initialize Supabase client
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseKey) {
+  throw new Error('Missing SUPABASE_URL or SUPABASE_ANON_KEY in environment variables');
+}
+
+if (!process.env.OPENAI_API_KEY) {
+  throw new Error('Missing OPENAI_API_KEY in environment variables');
+}
+
+const supabase = createClient(supabaseUrl, supabaseKey);
+
 // ===== CONFIGURATION SECTION =====
 const CONFIG = {
   // Subject configuration
+  subjectId: 'b1819b8e-cc76-41ac-9e01-7764faf36d89', // DSE Mathematics
   subjectName: 'DSE Mathematics (Geometry)',
   
   // Topics to process (process one at a time to avoid memory issues)
@@ -31,8 +47,15 @@ const CONFIG = {
     // 'Coordinate Geometry',
   ],
   
+  // Question types to filter sample questions (leave null for all types)
+  // Examples: ['Circle Theorems', 'Triangle Properties']
+  questionTypes: ['三角學','平面幾何'],
+  
+  // Number of sample questions to fetch from database for context
+  numberOfSampleQuestions: 5,
+  
   // Number of questions to generate per topic (reduce if memory issues occur)
-  numberOfQuestionsToGenerate: 1,
+  numberOfQuestionsToGenerate: 5,
   
   // Difficulty level
   difficulty: 'mixed' as 'easy' | 'medium' | 'hard' | 'mixed',
@@ -114,13 +137,101 @@ const MathMCQsSchema = z.array(MathMCQSchema).describe('Array of generated math 
 type GeneratedMathMCQ = z.infer<typeof MathMCQSchema>;
 type GeneratedMathMCQs = z.infer<typeof MathMCQsSchema>;
 
+// Type definitions for database records
+interface PastPaperQuestion {
+  id: string;
+  topic: string;
+  question: string;
+  answer: string;
+  question_number: number;
+  question_year: number;
+  subject_id: string;
+  explanation: string;
+  difficulty: number;
+  grade_level: string;
+  question_type_id: string;
+}
+
+interface QuestionType {
+  id: string;
+  name: string;
+  subject_id: string;
+}
+
+/**
+ * Fetch question types from Supabase
+ */
+async function fetchQuestionTypes(subjectId: string): Promise<QuestionType[]> {
+  const { data, error } = await supabase
+    .from('question_types')
+    .select('id, name, subject_id')
+    .eq('subject_id', subjectId);
+  
+  if (error) {
+    throw new Error(`Failed to fetch question types: ${error.message}`);
+  }
+  
+  return data as QuestionType[];
+}
+
+/**
+ * Fetch random questions from pastpapers table
+ */
+async function fetchRandomQuestions(
+  subjectId: string,
+  topic: string | null,
+  questionTypeNames: string[] | null,
+  limit: number,
+  questionTypes: QuestionType[]
+): Promise<PastPaperQuestion[]> {
+  let query = supabase
+    .from('pastpapers')
+    .select('*')
+    .eq('subject_id', subjectId);
+  
+  // Filter by topic if specified
+  // if (topic) {
+  //   query = query.eq('topic', topic);
+  // }
+  
+  // Filter by question types if specified
+  if (questionTypeNames && questionTypeNames.length > 0) {
+    const questionTypeIds = questionTypes
+      .filter(qt => questionTypeNames.includes(qt.name))
+      .map(qt => qt.id);
+    
+    if (questionTypeIds.length > 0) {
+      query = query.in('question_type_id', questionTypeIds);
+    }
+  }
+  
+  // Fetch all matching records first, then randomly sample
+  const { data, error } = await query;
+  
+  if (error) {
+    throw new Error(`Failed to fetch questions: ${error.message}`);
+  }
+  
+  if (!data || data.length === 0) {
+    console.log('  ⚠ No sample questions found matching the criteria - proceeding without samples');
+    return [];
+  }
+  
+  // Randomly sample the requested number of questions
+  const shuffled = data.sort(() => 0.5 - Math.random());
+  const selected = shuffled.slice(0, Math.min(limit, data.length));
+  
+  return selected as PastPaperQuestion[];
+}
+
 /**
  * Generate math geometry MCQs using AI
  */
 async function generateMathMCQs(
   topic: string,
   numberOfQuestions: number,
-  difficulty: 'easy' | 'medium' | 'hard' | 'mixed'
+  difficulty: 'easy' | 'medium' | 'hard' | 'mixed',
+  sampleQuestions: PastPaperQuestion[]
 ): Promise<{ mcqs: GeneratedMathMCQs; tokensUsed: number }> {
   try {
     const difficultyGuidance = {
@@ -161,10 +272,29 @@ async function generateMathMCQs(
 - 圓的方程 (equation of circle)`,
     }[topic] || '';
     
+    // Prepare context from sample questions (in random order for variety)
+    const questionsContext = sampleQuestions.length > 0 
+      ? sampleQuestions.map((q, idx) => 
+        `範例題目 ${idx + 1}:
+題目: ${q.question}
+答案: ${q.answer}
+解析: ${q.explanation}
+難度: ${q.difficulty}/5`
+      ).join('\n\n')
+      : '（無範例題目）';
+    
     // @ts-ignore - avoiding deep type instantiation error
     const result = await generateObject({
-      model: v4api('gemini-3-pro-preview'),
+      model: 'google/gemini-3-pro-preview',
       schema: MathMCQsSchema,
+      providerOptions: {
+        google: {
+          thinkingConfig: {
+            includeThoughts: true,
+            thinkingLevel: 'high',
+          },
+        },
+      },
       messages: [
         {
           role: 'user',
@@ -172,6 +302,10 @@ async function generateMathMCQs(
 
 【主題重點】
 ${topicGuidance}
+
+【範例題目參考】
+以下是一些參考題目，請參考其風格和難度，但不要直接抄襲：
+${questionsContext}
 
 【出題要求】
 1. 每道題目必須有完整的幾何圖形描述
@@ -373,19 +507,31 @@ async function saveMathMCQsToFiles(
 /**
  * Generate MCQs for a single topic
  */
-async function generateMathMCQsForTopic(topic: string): Promise<void> {
+async function generateMathMCQsForTopic(topic: string, questionTypes: QuestionType[]): Promise<void> {
   console.log(`\n${'='.repeat(80)}`);
   console.log(`Processing Topic: ${topic}`);
   console.log('='.repeat(80));
   
-  // Generate MCQs using AI
-  console.log(`\nGenerating ${CONFIG.numberOfQuestionsToGenerate} geometry questions...`);
+  // Step 1: Fetch sample questions from database
+  console.log(`\nStep 1: Fetching sample questions from database...`);
+  const sampleQuestions = await fetchRandomQuestions(
+    CONFIG.subjectId,
+    topic,
+    CONFIG.questionTypes,
+    CONFIG.numberOfSampleQuestions,
+    questionTypes
+  );
+  console.log(`  ✓ Retrieved ${sampleQuestions.length} sample question(s)`);
+  
+  // Step 2: Generate MCQs using AI
+  console.log(`\nStep 2: Generating ${CONFIG.numberOfQuestionsToGenerate} geometry questions...`);
   console.log(`Difficulty level: ${CONFIG.difficulty}`);
   
   const { mcqs, tokensUsed } = await generateMathMCQs(
     topic,
     CONFIG.numberOfQuestionsToGenerate,
-    CONFIG.difficulty
+    CONFIG.difficulty,
+    sampleQuestions
   );
   
   console.log(`  ✓ Generated ${mcqs.length} question(s)`);
@@ -416,18 +562,25 @@ async function generateMathMCQsForTopic(topic: string): Promise<void> {
 async function generateMathGeometryQuestions() {
   console.log('=== Math Geometry MCQ Generator ===\n');
   console.log('Configuration:');
-  console.log(`  Subject: ${CONFIG.subjectName}`);
+  console.log(`  Subject: ${CONFIG.subjectName} (ID: ${CONFIG.subjectId})`);
   console.log(`  Topics: ${CONFIG.topics.join(', ')}`);
+  console.log(`  Question Types: ${CONFIG.questionTypes?.join(', ') || 'All types'}`);
+  console.log(`  Sample Questions per Topic: ${CONFIG.numberOfSampleQuestions}`);
   console.log(`  Questions per Topic: ${CONFIG.numberOfQuestionsToGenerate}`);
   console.log(`  Difficulty: ${CONFIG.difficulty}`);
   console.log(`  Output Directory: ${CONFIG.outputDir}\n`);
+  
+  // Fetch question types once for all topics
+  console.log('Fetching question types...');
+  const questionTypes = await fetchQuestionTypes(CONFIG.subjectId);
+  console.log(`✓ Found ${questionTypes.length} question types\n`);
   
   let totalGenerated = 0;
   let totalTokens = 0;
   
   for (const topic of CONFIG.topics) {
     try {
-      await generateMathMCQsForTopic(topic);
+      await generateMathMCQsForTopic(topic, questionTypes);
       totalGenerated += CONFIG.numberOfQuestionsToGenerate;
     } catch (error) {
       console.error(`\n✗ Failed to process topic "${topic}":`, error);

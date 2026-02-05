@@ -1,42 +1,183 @@
 === GENERATED MATH GEOMETRY QUESTIONS ===
-Generated: 2026-01-30T19:24:49.263Z
+Generated: 2026-02-04T18:33:48.731Z
 Topic: Circle Theorems
-Total Questions: 1
+Total Questions: 5
 ================================================================================
 
 Question 1:
-如圖所示，A、B、C 為圓 O 上的點。直線 PAQ 為圓 O 在點 A 的切線。若 ∠QAB = 64° 及 ∠BOC = 100°，求 ∠ABC 的度數。
+圖中，O 為圓心。A、B 及 C 為圓周上的點。若 $\angle AOC = 124^\circ$，求 $\angle OAC + \angle ABC$ 的值。
 
 [Diagram Description]
-圓心為 O 的圓。切線 PAQ 水平切於圓底部的 A 點。弦 AB 向右上方延伸。弦 BC 向左上方連接。O 點位於角 ABC 的內部區域。
+圓 O，半徑 OA 和 OC 形成鈍角 124°。點 B 在優弧 AC 上。
 
 [Given Conditions]
-  1. O 是圓心
-  2. PAQ 是圓 O 在 A 點的切線
-  3. ∠QAB = 64°
-  4. ∠BOC = 100°
+  1. O 為圓心
+  2. ∠AOC = 124°
 
-A. 40°
-B. 50°
-C. 64°
-D. 66°
+A. 84°
+B. 90°
+C. 96°
+D. 118°
 
-Correct Answer: D
-Explanation: 1. 根據切線性質，圓半徑與切線垂直，即 ∠OAQ = 90°。
-2. 計算 ∠OAB：∠OAB = ∠OAQ - ∠QAB = 90° - 64° = 26°。
-3. 考慮 ΔOAB，因為 OA = OB（半徑），所以 ΔOAB 為等腰三角形，故 ∠OBA = ∠OAB = 26°。
-4. 考慮 ΔOBC，因為 OB = OC（半徑），所以 ΔOBC 為等腰三角形。頂角 ∠BOC = 100°，故底角 ∠OBC = (180° - 100°) / 2 = 40°。
-5. 最後，∠ABC = ∠OBA + ∠OBC = 26° + 40° = 66°。
+Correct Answer: B
+Explanation: 1. 考慮 $\triangle OAC$。因為 OA 及 OC 均為半徑，所以 $\triangle OAC$ 是等腰三角形。
+2. $\angle OAC = (180^\circ - 124^\circ) / 2 = 56^\circ / 2 = 28^\circ$。
+3. 根據圓心角定理（圓心角是圓周角的兩倍），$\angle ABC = \angle AOC / 2 = 124^\circ / 2 = 62^\circ$。
+4. 所求之和 = $28^\circ + 62^\circ = 90^\circ$。
+
+[Metadata]
+Difficulty: 2/5
+Type: calculation
+Required Theorems: 圓心角兩倍於圓周角, 等腰三角形底角相等
+
+[Geometry Properties]
+Points: O, A, C, B
+Lines: OA, OC, AC, AB, BC
+Circles: Circle O
+Angles: ∠AOC, ∠ABC
+Triangles: △OAC
+--------------------------------------------------------------------------------
+
+Question 2:
+如圖所示，PA 為圓的一條切線，切點為 A。PBC 為一直線穿過圓心 O，並分別交圓於 B 及 C。若 $\angle APB = 26^\circ$，求 $\angle ACB$。
+
+[Diagram Description]
+圓 O，直線 PBC 穿過圓心，P 在圓外。PA 切圓於 A。∠OAP 為直角。
+
+[Given Conditions]
+  1. PA 切圓於 A
+  2. PBC 是直線並穿過圓心 O
+  3. ∠APB = 26°
+
+A. 26°
+B. 32°
+C. 38°
+D. 64°
+
+Correct Answer: B
+Explanation: 1. 由於 PA 是切線而 OA 是半徑，故 $\angle OAP = 90^\circ$（切線垂直半徑）。
+2. 在直角 $\triangle OAP$ 中，$\angle AOP = 90^\circ - 26^\circ = 64^\circ$。
+3. $\angle AOP$ 是 $\triangle AOC$ 的外角（注意 O 在 BC 上，故 $\angle AOP$ 對應弧 AB 的圓心角，而 $\angle ACB$ 是對應的圓周角）。
+4. 或者直接使用圓心角定理：$\angle AOB = 64^\circ$。$\angle ACB$ 為同弧 AB 所對的圓周角。
+5. $\angle ACB = \angle AOB / 2 = 64^\circ / 2 = 32^\circ$。
 
 [Metadata]
 Difficulty: 3/5
 Type: calculation
-Required Theorems: 切線性質 (Tangent perpendicular to radius), 等腰三角形性質 (Base angles of isosceles triangle), 三角形內角和 (Angle sum of triangle)
+Required Theorems: 切線垂直半徑, 三角形內角和, 圓心角兩倍於圓周角
 
 [Geometry Properties]
-Points: O, A, B, C, P, Q
-Lines: PQ, OA, OB, OC, AB, BC
+Points: O, A, P, B, C
+Lines: PA, PC, OA, AC
 Circles: Circle O
-Angles: ∠QAB, ∠BOC, ∠ABC
+Angles: ∠APB, ∠OAP, ∠AOP
+Triangles: △OAP
+--------------------------------------------------------------------------------
+
+Question 3:
+圖中，A、B、C 及 D 為圓上的點。已知 AB = AC 及 $\angle ADB = 38^\circ$。求 $\angle BAC$。
+
+[Diagram Description]
+圓內接四邊形 ABCD，△ABC 為等腰三角形，AB=AC。
+
+[Given Conditions]
+  1. A, B, C, D 共圓
+  2. AB = AC
+  3. ∠ADB = 38°
+
+A. 38°
+B. 72°
+C. 76°
+D. 104°
+
+Correct Answer: D
+Explanation: 1. 根據「同弓形內的圓周角」定理，$\angle ACB = \angle ADB = 38^\circ$。
+2. 已知 $\triangle ABC$ 中 $AB = AC$，故其為等腰三角形，底角相等。
+3. 因此，$\angle ABC = \angle ACB = 38^\circ$。
+4. 在 $\triangle ABC$ 中，內角和為 $180^\circ$。
+5. $\angle BAC = 180^\circ - 38^\circ - 38^\circ = 104^\circ$。
+
+[Metadata]
+Difficulty: 3/5
+Type: calculation
+Required Theorems: 同弓形內的圓周角, 等腰三角形性質, 三角形內角和
+
+[Geometry Properties]
+Points: O, A, B, C, D
+Lines: AB, AC, BC, BD, AD
+Circles: Circle
+Angles: ∠ADB, ∠ACB, ∠BAC
+Triangles: △ABC
+--------------------------------------------------------------------------------
+
+Question 4:
+圖中，弦 AB 與弦 CD 相交於 E。若 AE = 6 cm，EB = 4 cm 及 CE = 3 cm，求弦 CD 的長度。
+
+[Diagram Description]
+兩條弦 AB 和 CD 在圓內一點 E 相交。E 點將弦分為不同長度的線段。
+
+[Given Conditions]
+  1. AE = 6
+  2. EB = 4
+  3. CE = 3
+
+A. 8 cm
+B. 9 cm
+C. 10 cm
+D. 11 cm
+
+Correct Answer: D
+Explanation: 1. 根據相交弦定理 (Intersecting Chords Theorem)，圓內兩弦相交，其線段長度的積相等。
+2. 即 $AE \times EB = CE \times ED$。
+3. 代入數值：$6 \times 4 = 3 \times ED$。
+4. $24 = 3 \times ED \implies ED = 8 \text{ cm}$。
+5. 弦 CD 的總長度 = $CE + ED = 3 + 8 = 11 \text{ cm}$。
+
+[Metadata]
+Difficulty: 3/5
+Type: calculation
+Required Theorems: 相交弦定理
+
+[Geometry Properties]
+Points: O, E, A, B, C, D
+Lines: AB, CD
+Circles: Circle
+Angles: 
+Triangles: 
+--------------------------------------------------------------------------------
+
+Question 5:
+圖中，TP 及 TQ 分別切圓於 P 及 Q。R 為優弧 PQ 上的一點。若 $\angle PTQ = 70^\circ$，求 $\angle PRQ$。
+
+[Diagram Description]
+圓 O，圓外一點 T 引兩條切線接觸圓於 P 和 Q。R 在圓周的遠端。
+
+[Given Conditions]
+  1. TP 和 TQ 為切線
+  2. ∠PTQ = 70°
+
+A. 35°
+B. 55°
+C. 70°
+D. 110°
+
+Correct Answer: B
+Explanation: 1. 由於 TP 及 TQ 為切線，O 為圓心，則 $\angle OPT = 90^\circ$ 及 $\angle OQT = 90^\circ$。
+2. 考慮四邊形 OPTQ，內角和為 $360^\circ$。
+3. $\angle POQ = 360^\circ - 90^\circ - 90^\circ - 70^\circ = 110^\circ$。
+4. 根據圓心角定理，圓周角 $\angle PRQ$ 是圓心角 $\angle POQ$ 的一半。
+5. $\angle PRQ = 110^\circ / 2 = 55^\circ$。
+
+[Metadata]
+Difficulty: 4/5
+Type: calculation
+Required Theorems: 切線性質 (Two Tangent Theorem), 多邊形內角和, 圓心角兩倍於圓周角
+
+[Geometry Properties]
+Points: O, T, P, Q, R
+Lines: TP, TQ, OP, OQ, PR, QR
+Circles: Circle O
+Angles: ∠PTQ, ∠POQ, ∠PRQ
+Triangles: △PQR
 --------------------------------------------------------------------------------
 
