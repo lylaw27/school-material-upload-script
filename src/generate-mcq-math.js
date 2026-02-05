@@ -52,7 +52,7 @@ const CONFIG = {
   numberOfQuestionsToGenerate: 5,
   
   // Difficulty level
-  difficulty: 'mixed' as 'easy' | 'medium' | 'hard' | 'mixed',
+  difficulty: 'mixed',
   
   // Output directory
   outputDir: path.join(__dirname, '..'),
@@ -128,34 +128,11 @@ const MathMCQSchema = z.object({
 // Schema for multiple MCQs
 const MathMCQsSchema = z.array(MathMCQSchema).describe('Array of generated math geometry questions');
 
-type GeneratedMathMCQ = z.infer<typeof MathMCQSchema>;
-type GeneratedMathMCQs = z.infer<typeof MathMCQsSchema>;
-
-// Type definitions for database records
-interface PastPaperQuestion {
-  id: string;
-  topic: string;
-  question: string;
-  answer: string;
-  question_number: number;
-  question_year: number;
-  subject_id: string;
-  explanation: string;
-  difficulty: number;
-  grade_level: string;
-  question_type_id: string;
-}
-
-interface QuestionType {
-  id: string;
-  name: string;
-  subject_id: string;
-}
 
 /**
  * Fetch question types from Supabase
  */
-async function fetchQuestionTypes(subjectId: string): Promise<QuestionType[]> {
+async function fetchQuestionTypes(subjectId) {
   const { data, error } = await supabase
     .from('question_types')
     .select('id, name, subject_id')
@@ -165,19 +142,19 @@ async function fetchQuestionTypes(subjectId: string): Promise<QuestionType[]> {
     throw new Error(`Failed to fetch question types: ${error.message}`);
   }
   
-  return data as QuestionType[];
+  return data;
 }
 
 /**
  * Fetch random questions from pastpapers table
  */
 async function fetchRandomQuestions(
-  subjectId: string,
-  topic: string | null,
-  questionTypeNames: string[] | null,
-  limit: number,
-  questionTypes: QuestionType[]
-): Promise<PastPaperQuestion[]> {
+  subjectId,
+  topic,
+  questionTypeNames,
+  limit,
+  questionTypes
+) {
   let query = supabase
     .from('pastpapers')
     .select('*')
@@ -215,18 +192,18 @@ async function fetchRandomQuestions(
   const shuffled = data.sort(() => 0.5 - Math.random());
   const selected = shuffled.slice(0, Math.min(limit, data.length));
   
-  return selected as PastPaperQuestion[];
+  return selected;
 }
 
 /**
  * Generate math geometry MCQs using AI
  */
 async function generateMathMCQs(
-  topic: string,
-  numberOfQuestions: number,
-  difficulty: 'easy' | 'medium' | 'hard' | 'mixed',
-  sampleQuestions: PastPaperQuestion[]
-): Promise<{ mcqs: GeneratedMathMCQs; tokensUsed: number }> {
+  topic,
+  numberOfQuestions,
+  difficulty,
+  sampleQuestions
+){
   try {
     const difficultyGuidance = {
       easy: '所有題目應該是基礎難度（1-2/5），適合初學者，著重基本概念和簡單計算。',
@@ -330,6 +307,7 @@ ${questionsContext}
 - 例如：如果∠AOB = 80°，點A在(5,0)，點B的座標必須使用 (5·cos(80°), 5·sin(80°)) ≈ (0.868, 4.924)
 - 絕對不要使用任意或近似的座標值，必須精確計算！
 
+
 【圓的幾何精確性要求】
 ⚠️ 圓的圓心、半徑和圓周上的點必須精確滿足圓的方程式！
 - 圓心座標定義：如果圓心為O，必須明確指定O的座標 (h, k)
@@ -365,9 +343,9 @@ ${questionsContext}
   "geometry_properties": {
     "points": [
       {"label": "O", "x": 0, "y": 0, "description": "圓心"},
-      {"label": "A", "x": 5, "y": 0, "description": "圓上的點（距圓心距離 = √[(5-0)² + (0-0)²] = 5 ✓）"},
-      {"label": "B", "x": 0.868, "y": 4.924, "description": "圓上的點（由80°角度計算：5·cos(80°), 5·sin(80°)，距圓心距離 = 5 ✓）"},
-      {"label": "C", "x": 3, "y": 4, "description": "圓上的點（距圓心距離 = √[(3-0)² + (4-0)²] = 5 ✓）"}
+      {"label": "A", "x": 5, "y": 0, "description": "圓上的點"},
+      {"label": "B", "x": 0.868, "y": 4.924, "description": "圓上的點（由80°角度計算：5·cos(80°), 5·sin(80°)）"},
+      {"label": "C", "x": 3, "y": 4, "description": "圓上的點"}
     ],
     "lines": [
       {
@@ -429,7 +407,7 @@ ${questionsContext}
     console.log(`  ℹ Tokens used: ${tokensUsed}`);
     
     return {
-      mcqs: result.object as GeneratedMathMCQs,
+      mcqs: result.object,
       tokensUsed: tokensUsed,
     };
   } catch (error) {
@@ -442,10 +420,10 @@ ${questionsContext}
  * Save generated math MCQs to JSON and txt files
  */
 async function saveMathMCQsToFiles(
-  mcqs: GeneratedMathMCQs,
-  outputDir: string,
-  topic: string
-): Promise<void> {
+  mcqs,
+  outputDir,
+  topic
+) {
   // Ensure output directory exists
   await fs.mkdir(outputDir, { recursive: true });
   
@@ -519,7 +497,7 @@ async function saveMathMCQsToFiles(
 /**
  * Generate MCQs for a single topic
  */
-async function generateMathMCQsForTopic(topic: string, questionTypes: QuestionType[]): Promise<void> {
+async function generateMathMCQsForTopic(topic, questionTypes) {
   console.log(`\n${'='.repeat(80)}`);
   console.log(`Processing Topic: ${topic}`);
   console.log('='.repeat(80));

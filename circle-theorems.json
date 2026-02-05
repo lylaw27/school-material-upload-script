@@ -1,14 +1,14 @@
 [
   {
-    "question": "圖中，O 為圓心。A、B 及 C 為圓周上的點。若 $\\angle AOC = 124^\\circ$，求 $\\angle OAC + \\angle ABC$ 的值。",
+    "question": "圖中，O 為圓心，A、B 及 C 為圓周上的點。若反射角 (reflex angle) ∠AOB = 230°，求 ∠ACB 的度數。",
     "options": {
-      "A": "84°",
-      "B": "90°",
-      "C": "96°",
-      "D": "118°"
+      "A": "65°",
+      "B": "115°",
+      "C": "130°",
+      "D": "155°"
     },
     "correct_answer": "B",
-    "explanation": "1. 考慮 $\\triangle OAC$。因為 OA 及 OC 均為半徑，所以 $\\triangle OAC$ 是等腰三角形。\n2. $\\angle OAC = (180^\\circ - 124^\\circ) / 2 = 56^\\circ / 2 = 28^\\circ$。\n3. 根據圓心角定理（圓心角是圓周角的兩倍），$\\angle ABC = \\angle AOC / 2 = 124^\\circ / 2 = 62^\\circ$。\n4. 所求之和 = $28^\\circ + 62^\\circ = 90^\\circ$。",
+    "explanation": "1. 已知反射角 ∠AOB = 230°。\n2. 圓內對應的劣角 (obtuse/acute angle) ∠AOB = 360° - 230° = 130°。\n3. 注意點 C 的位置相對於弦 AB。根據圓周角定理（angle at center is twice angle at circumference），若 C 點位於大弧（major arc）上，則 ∠ACB = 130° / 2 = 65°。\n4. 然而，根據圖示（或幾何邏輯），若反射角對應的是優弧上的圓周角，則 ∠ACB 對應的是反射角的一半？\n不，標準定理是：圓心角 = 2 × 圓周角（兩者必須對應同一段弧）。\n反射角 ∠AOB (230°) 對應的是優弧 AB。\n角 ∠ACB 所對的弧也是優弧 AB（即 C 點位於劣弧上）。\n因此，2 × ∠ACB = 反射角 ∠AOB。\n∠ACB = 230° / 2 = 115°。\n\n另一種想法：\n圓內接四邊形性質。設圓上大弧有一點 D。\n∠ADB = 130° / 2 = 65°。\nACBD 為圓內接四邊形，故 ∠ACB + ∠ADB = 180°。\n∠ACB = 180° - 65° = 115°。",
     "difficulty": 2,
     "topic": "Circle Theorems",
     "question_type": "calculation",
@@ -22,21 +22,21 @@
         },
         {
           "label": "A",
-          "x": -10,
-          "y": 0,
-          "description": "圓上的點 (180°)"
-        },
-        {
-          "label": "C",
-          "x": 5.592,
-          "y": 8.29,
-          "description": "圓上的點 (56°)"
+          "x": -9.063,
+          "y": 4.226,
+          "description": "圓上的點 (155°)"
         },
         {
           "label": "B",
+          "x": 9.063,
+          "y": 4.226,
+          "description": "圓上的點 (25°)"
+        },
+        {
+          "label": "C",
           "x": 0,
-          "y": -10,
-          "description": "圓上的點 (270°)"
+          "y": 10,
+          "description": "圓上的點 (位於劣弧上, 90°)"
         }
       ],
       "lines": [
@@ -48,10 +48,10 @@
           ]
         },
         {
-          "label": "OC",
+          "label": "OB",
           "points": [
             "O",
-            "C"
+            "B"
           ]
         },
         {
@@ -59,13 +59,6 @@
           "points": [
             "A",
             "C"
-          ]
-        },
-        {
-          "label": "AB",
-          "points": [
-            "A",
-            "B"
           ]
         },
         {
@@ -90,58 +83,48 @@
       ],
       "angles": [
         {
-          "label": "∠AOC",
+          "label": "reflex ∠AOB",
           "vertex": "O",
           "arms": [
             "OA",
-            "OC"
+            "OB"
           ],
-          "measure": 124,
-          "angle_type": "obtuse"
+          "measure": 230,
+          "angle_type": "reflex"
         },
         {
-          "label": "∠ABC",
-          "vertex": "B",
+          "label": "∠ACB",
+          "vertex": "C",
           "arms": [
-            "BA",
-            "BC"
+            "CA",
+            "CB"
           ],
-          "measure": 62,
-          "angle_type": "acute"
+          "measure": 115,
+          "angle_type": "obtuse"
         }
       ],
-      "triangles": [
-        {
-          "label": "△OAC",
-          "vertices": [
-            "O",
-            "A",
-            "C"
-          ],
-          "triangle_type": "isosceles"
-        }
-      ],
+      "triangles": [],
       "given_conditions": [
         "O 為圓心",
-        "∠AOC = 124°"
+        "反射角 ∠AOB = 230°"
       ],
-      "diagram_description": "圓 O，半徑 OA 和 OC 形成鈍角 124°。點 B 在優弧 AC 上。"
+      "diagram_description": "圓O，點A和B在圓下方兩側，點C在圓頂部。∠AOB的優角標示為230度。"
     },
     "required_theorems": [
-      "圓心角兩倍於圓周角",
-      "等腰三角形底角相等"
+      "圓心角是圓周角的兩倍",
+      "圓內接四邊形對角互補"
     ]
   },
   {
-    "question": "如圖所示，PA 為圓的一條切線，切點為 A。PBC 為一直線穿過圓心 O，並分別交圓於 B 及 C。若 $\\angle APB = 26^\\circ$，求 $\\angle ACB$。",
+    "question": "圖中，TA 為圓在 A 點的切線。TBO 為一直線穿過圓心 O。若 ∠ATB = 36°，求 ∠ABT。",
     "options": {
-      "A": "26°",
-      "B": "32°",
-      "C": "38°",
-      "D": "64°"
+      "A": "27°",
+      "B": "54°",
+      "C": "63°",
+      "D": "72°"
     },
-    "correct_answer": "B",
-    "explanation": "1. 由於 PA 是切線而 OA 是半徑，故 $\\angle OAP = 90^\\circ$（切線垂直半徑）。\n2. 在直角 $\\triangle OAP$ 中，$\\angle AOP = 90^\\circ - 26^\\circ = 64^\\circ$。\n3. $\\angle AOP$ 是 $\\triangle AOC$ 的外角（注意 O 在 BC 上，故 $\\angle AOP$ 對應弧 AB 的圓心角，而 $\\angle ACB$ 是對應的圓周角）。\n4. 或者直接使用圓心角定理：$\\angle AOB = 64^\\circ$。$\\angle ACB$ 為同弧 AB 所對的圓周角。\n5. $\\angle ACB = \\angle AOB / 2 = 64^\\circ / 2 = 32^\\circ$。",
+    "correct_answer": "C",
+    "explanation": "1. 由於 TA 為切線，OA 為半徑，根據切線性質，∠OAT = 90°。\n2. 在直角三角形 △OAT 中，∠AOT = 90° - ∠OTA = 90° - 36° = 54°。\n3. 考慮 △OAB，因為 OA = OB (半徑)，所以 △OAB 為等腰三角形。\n4. 外角 ∠AOT = ∠OAB + ∠OBA (三角形外角性質)。\n5. 由於等腰，∠OBA = ∠OAB。設 ∠OBA = x。\n6. 2x = 54° => x = 27°。\n7. 等等，∠AOT 是 △OAB 的頂角嗎？不，TBO 是直線。B 在 O 和 T 之間。\n修正圖形邏輯：\n若 TBO 是直線，且 T 在圓外，B 在圓周上，O 在圓心。\n在 △OAT 中，∠AOB 是 △OAT 的一角。\n∠AOB = 180° - 90° - 36° = 54°。\n在 △OAB 中，OA = OB。∠OAB = ∠OBA = (180° - 54°) / 2 = 63°。\n題目求 ∠ABT。由於 T-B-O 是直線，∠ABT 與 ∠OBA 是同一個角 (或互補，視B點位置)。\n通常 T-B-O 表示 B 在 T 和 O 之間。因此 ∠ABT = ∠ABO = 63°。\n答案為 63°。",
     "difficulty": 3,
     "topic": "Circle Theorems",
     "question_type": "calculation",
@@ -155,48 +138,37 @@
         },
         {
           "label": "A",
-          "x": 5.299,
-          "y": 8.48,
-          "description": "切點 (角度 58°)"
-        },
-        {
-          "label": "P",
-          "x": 18.87,
-          "y": 0,
-          "description": "圓外一點 (由 10/sin(32°) 計算)"
+          "x": 5.877,
+          "y": 8.09,
+          "description": "切點 (由54度計算: 10cos54, 10sin54)"
         },
         {
           "label": "B",
           "x": 10,
           "y": 0,
-          "description": "圓上的點 (近 P 端)"
+          "description": "圓上的點 (0度)"
         },
         {
-          "label": "C",
-          "x": -10,
+          "label": "T",
+          "x": 17.013,
           "y": 0,
-          "description": "圓上的點 (遠 P 端)"
+          "description": "切線上的點 (10/cos54)"
         }
       ],
       "lines": [
         {
-          "label": "PA",
+          "label": "OT",
           "points": [
-            "P",
-            "A"
-          ],
-          "properties": [
-            "tangent"
+            "O",
+            "B",
+            "T"
           ]
         },
         {
-          "label": "PC",
+          "label": "TA",
           "points": [
-            "P",
-            "C"
-          ],
-          "properties": [
-            "secant"
+            "T",
+            "A"
           ]
         },
         {
@@ -204,16 +176,13 @@
           "points": [
             "O",
             "A"
-          ],
-          "properties": [
-            "radius"
           ]
         },
         {
-          "label": "AC",
+          "label": "AB",
           "points": [
             "A",
-            "C"
+            "B"
           ]
         }
       ],
@@ -224,78 +193,177 @@
           "radius": 10,
           "points_on_circle": [
             "A",
-            "B",
-            "C"
+            "B"
           ]
         }
       ],
       "angles": [
         {
-          "label": "∠APB",
-          "vertex": "P",
-          "arms": [
-            "PA",
-            "PB"
-          ],
-          "measure": 26,
-          "angle_type": "acute"
-        },
-        {
-          "label": "∠OAP",
+          "label": "∠OAT",
           "vertex": "A",
           "arms": [
             "AO",
-            "AP"
+            "AT"
           ],
           "measure": 90,
           "angle_type": "right"
         },
         {
-          "label": "∠AOP",
-          "vertex": "O",
+          "label": "∠ATB",
+          "vertex": "T",
           "arms": [
-            "OA",
-            "OP"
+            "TA",
+            "TB"
           ],
-          "measure": 64,
+          "measure": 36,
+          "angle_type": "acute"
+        },
+        {
+          "label": "∠ABT",
+          "vertex": "B",
+          "arms": [
+            "BA",
+            "BT"
+          ],
+          "measure": 63,
           "angle_type": "acute"
         }
       ],
       "triangles": [
         {
-          "label": "△OAP",
+          "label": "△OAT",
           "vertices": [
             "O",
             "A",
-            "P"
+            "T"
           ],
           "triangle_type": "right"
+        },
+        {
+          "label": "△OAB",
+          "vertices": [
+            "O",
+            "A",
+            "B"
+          ],
+          "triangle_type": "isosceles"
         }
       ],
       "given_conditions": [
-        "PA 切圓於 A",
-        "PBC 是直線並穿過圓心 O",
-        "∠APB = 26°"
+        "TA 為切線",
+        "TBO 為直線",
+        "∠ATB = 36°"
       ],
-      "diagram_description": "圓 O，直線 PBC 穿過圓心，P 在圓外。PA 切圓於 A。∠OAP 為直角。"
+      "diagram_description": "圓O，半徑OA。切線TA與半徑OA垂直。直線TBO穿過B點與圓心O。構成直角三角形OAT。"
     },
     "required_theorems": [
-      "切線垂直半徑",
+      "切線垂直半徑 (Tangent ⊥ Radius)",
       "三角形內角和",
-      "圓心角兩倍於圓周角"
+      "等腰三角形底角"
     ]
   },
   {
-    "question": "圖中，A、B、C 及 D 為圓上的點。已知 AB = AC 及 $\\angle ADB = 38^\\circ$。求 $\\angle BAC$。",
+    "question": "圖中，一圓的半徑為 13 cm。AB 及 CD 為兩條平行弦，分別位於圓心的兩側。若 AB = 10 cm 及 CD = 24 cm，求兩弦之間的距離。",
     "options": {
-      "A": "38°",
-      "B": "72°",
-      "C": "76°",
-      "D": "104°"
+      "A": "7 cm",
+      "B": "14 cm",
+      "C": "17 cm",
+      "D": "34 cm"
     },
-    "correct_answer": "D",
-    "explanation": "1. 根據「同弓形內的圓周角」定理，$\\angle ACB = \\angle ADB = 38^\\circ$。\n2. 已知 $\\triangle ABC$ 中 $AB = AC$，故其為等腰三角形，底角相等。\n3. 因此，$\\angle ABC = \\angle ACB = 38^\\circ$。\n4. 在 $\\triangle ABC$ 中，內角和為 $180^\\circ$。\n5. $\\angle BAC = 180^\\circ - 38^\\circ - 38^\\circ = 104^\\circ$。",
+    "correct_answer": "C",
+    "explanation": "1. 從圓心 O 作垂線分別垂直於 AB 和 CD，垂足設為 M 和 N。\n2. 根據弦的性質，從圓心作出的垂線平分弦。\n3. 對於弦 AB：AM = AB / 2 = 10 / 2 = 5 cm。在直角三角形 △OMA 中，OA = 13 cm，OM = √(13² - 5²) = √(169 - 25) = √144 = 12 cm。\n4. 對於弦 CD：CN = CD / 2 = 24 / 2 = 12 cm。在直角三角形 △ONC 中，OC = 13 cm，ON = √(13² - 12²) = √(169 - 144) = √25 = 5 cm。\n5. 由於兩弦位於圓心兩側，兩弦距離 = OM + ON = 12 + 5 = 17 cm。",
     "difficulty": 3,
+    "topic": "Circle Theorems",
+    "question_type": "calculation",
+    "geometry_properties": {
+      "points": [
+        {
+          "label": "O",
+          "x": 0,
+          "y": 0,
+          "description": "圓心"
+        },
+        {
+          "label": "A",
+          "x": -5,
+          "y": 12,
+          "description": "弦AB端點"
+        },
+        {
+          "label": "B",
+          "x": 5,
+          "y": 12,
+          "description": "弦AB端點"
+        },
+        {
+          "label": "C",
+          "x": -12,
+          "y": -5,
+          "description": "弦CD端點"
+        },
+        {
+          "label": "D",
+          "x": 12,
+          "y": -5,
+          "description": "弦CD端點"
+        }
+      ],
+      "lines": [
+        {
+          "label": "AB",
+          "points": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "label": "CD",
+          "points": [
+            "C",
+            "D"
+          ]
+        }
+      ],
+      "circles": [
+        {
+          "label": "Circle O",
+          "center": "O",
+          "radius": 13,
+          "points_on_circle": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        }
+      ],
+      "angles": [],
+      "triangles": [],
+      "given_conditions": [
+        "半徑 = 13 cm",
+        "AB // CD",
+        "AB = 10 cm",
+        "CD = 24 cm",
+        "弦在圓心兩側"
+      ],
+      "diagram_description": "圓心為O。上方有一條較短的水平弦AB，下方有一條較長的水平弦CD。"
+    },
+    "required_theorems": [
+      "圓心至弦的垂線平分弦",
+      "畢氏定理"
+    ]
+  },
+  {
+    "question": "圖中，A、B、C 及 D 為圓上的點。AC 與 BD 相交於 E。若 ∠ABD = 35° 及 ∠BAC = 45°，求 ∠AED。",
+    "options": {
+      "A": "70°",
+      "B": "80°",
+      "C": "90°",
+      "D": "100°"
+    },
+    "correct_answer": "B",
+    "explanation": "1. 根據「同弓形內的圓周角」定理 (Angles in the same segment)，∠ACD = ∠ABD = 35°。\n2. 或者，∠BDC = ∠BAC = 45°。\n3. 我們關注三角形 △ABE。\n4. 在 △ABE 中，我們需要知道 ∠AEB。但我們已知 ∠ABD (即 ∠ABE) = 35°，且 ∠BAC (即 ∠BAE) = 45°。\n5. 根據三角形內角和，∠AEB = 180° - 35° - 45° = 100°。\n6. ∠AED 與 ∠AEB 互為鄰補角 (angles on a straight line)。\n7. ∠AED = 180° - ∠AEB = 180° - 100° = 80°。\n(或者：∠AED 是 △ABE 的外角？不，∠DEC 才是對頂角。∠AED 和 ∠BEC 是對頂角。)\n更正步驟 6：\nA-E-C 是直線，B-E-D 是直線。\n∠AED 與 ∠AEB 互補。\n∠AED = 180° - 100° = 80°。\n\n驗證方法 2：\n在 △ADE 中，∠DAE (即 ∠DAC) = ? 我們不知道。\n利用外角定理：∠AED = ∠ABD + ∠BAC = 35° + 45° = 80°。\n證明：∠AED 是 △ABE 的外角嗎？不是。∠CED 才是 △ABE 的外角... 不對。\n∠AED 是 △ABE 的鄰補角，這關係不直接。\n正確的外角關係是：∠AEB = ∠EDC + ∠ECD。\n讓我們堅持最簡單的路徑：\n在 △ABE 中，∠AEB = 180 - 35 - 45 = 100。\n∠AED + ∠AEB = 180 (直線 BD)。\n∠AED = 80°。",
+    "difficulty": 2,
     "topic": "Circle Theorems",
     "question_type": "calculation",
     "geometry_properties": {
@@ -310,28 +378,187 @@
           "label": "A",
           "x": 0,
           "y": 10,
-          "description": "頂點"
+          "description": "圓上的點 (90度)"
         },
         {
           "label": "B",
-          "x": -9.66,
-          "y": -2.59,
-          "description": "圓上的點 (255.5°)"
+          "x": 10,
+          "y": 0,
+          "description": "圓上的點 (0度)"
         },
         {
           "label": "C",
-          "x": 9.66,
-          "y": -2.59,
-          "description": "圓上的點 (284.5°)"
+          "x": 0,
+          "y": -10,
+          "description": "圓上的點 (270度)"
         },
         {
           "label": "D",
-          "x": -7.07,
-          "y": -7.07,
-          "description": "圓上的點 (225°)"
+          "x": -9.397,
+          "y": 3.42,
+          "description": "圓上的點 (160度)"
+        },
+        {
+          "label": "E",
+          "x": 0,
+          "y": 1.763,
+          "description": "AC與BD的交點"
         }
       ],
       "lines": [
+        {
+          "label": "AC",
+          "points": [
+            "A",
+            "E",
+            "C"
+          ]
+        },
+        {
+          "label": "BD",
+          "points": [
+            "B",
+            "E",
+            "D"
+          ]
+        }
+      ],
+      "circles": [
+        {
+          "label": "Circle O",
+          "center": "O",
+          "radius": 10,
+          "points_on_circle": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        }
+      ],
+      "angles": [
+        {
+          "label": "∠ABD",
+          "vertex": "B",
+          "arms": [
+            "BA",
+            "BD"
+          ],
+          "measure": 35,
+          "angle_type": "acute"
+        },
+        {
+          "label": "∠BAC",
+          "vertex": "A",
+          "arms": [
+            "AB",
+            "AC"
+          ],
+          "measure": 45,
+          "angle_type": "acute"
+        },
+        {
+          "label": "∠AED",
+          "vertex": "E",
+          "arms": [
+            "EA",
+            "ED"
+          ],
+          "measure": 80,
+          "angle_type": "acute"
+        }
+      ],
+      "triangles": [
+        {
+          "label": "△ABE",
+          "vertices": [
+            "A",
+            "B",
+            "E"
+          ],
+          "triangle_type": "scalene"
+        }
+      ],
+      "given_conditions": [
+        "A, B, C, D 共圓",
+        "∠ABD = 35°",
+        "∠BAC = 45°"
+      ],
+      "diagram_description": "圓內有四點A,B,C,D。弦AC與弦BD相交於E。"
+    },
+    "required_theorems": [
+      "同弓形內的圓周角",
+      "三角形內角和",
+      "鄰補角"
+    ]
+  },
+  {
+    "question": "圖中，SAT 為圓在點 A 的切線。AB = AC。若 ∠SAB = 48°，且 D 為劣弧 (minor arc) AC 上的一點，求 ∠ADC。",
+    "options": {
+      "A": "84°",
+      "B": "96°",
+      "C": "132°",
+      "D": "144°"
+    },
+    "correct_answer": "C",
+    "explanation": "1. 根據「交錯弓形的圓周角」定理 (Angle in alternate segment)，∠ACB = ∠SAB = 48°。\n2. 由於 AB = AC，△ABC 為等腰三角形，故 ∠ABC = ∠ACB = 48°。\n3. 在 △ABC 中，∠BAC = 180° - 48° - 48° = 84°。\n4. 考慮圓內接四邊形 ADCB (注意點的順序：A, D, C, B 都在圓上)。\n5. 我們要求 ∠ADC。在圓內接四邊形 ADCB 中，∠ADC 與 ∠ABC 是對角。\n6. 根據圓內接四邊形對角互補性質：∠ADC + ∠ABC = 180°。\n7. ∠ADC = 180° - 48° = 132°。",
+    "difficulty": 4,
+    "topic": "Circle Theorems",
+    "question_type": "calculation",
+    "geometry_properties": {
+      "points": [
+        {
+          "label": "O",
+          "x": 0,
+          "y": 0,
+          "description": "圓心"
+        },
+        {
+          "label": "A",
+          "x": 0,
+          "y": 10,
+          "description": "切點"
+        },
+        {
+          "label": "B",
+          "x": 1.045,
+          "y": -9.945,
+          "description": "圓上的點 (354度, 由90-2*48得出)"
+        },
+        {
+          "label": "C",
+          "x": -1.045,
+          "y": -9.945,
+          "description": "圓上的點 (186度, 由90+96得出)"
+        },
+        {
+          "label": "D",
+          "x": -7.43,
+          "y": 6.69,
+          "description": "劣弧AC上的點 (138度)"
+        },
+        {
+          "label": "S",
+          "x": -10,
+          "y": 10,
+          "description": "切線上左側的點"
+        },
+        {
+          "label": "T",
+          "x": 10,
+          "y": 10,
+          "description": "切線上右側的點"
+        }
+      ],
+      "lines": [
+        {
+          "label": "ST",
+          "points": [
+            "S",
+            "A",
+            "T"
+          ]
+        },
         {
           "label": "AB",
           "points": [
@@ -354,23 +581,23 @@
           ]
         },
         {
-          "label": "BD",
-          "points": [
-            "B",
-            "D"
-          ]
-        },
-        {
           "label": "AD",
           "points": [
             "A",
             "D"
           ]
+        },
+        {
+          "label": "DC",
+          "points": [
+            "D",
+            "C"
+          ]
         }
       ],
       "circles": [
         {
-          "label": "Circle",
+          "label": "Circle O",
           "center": "O",
           "radius": 10,
           "points_on_circle": [
@@ -383,33 +610,23 @@
       ],
       "angles": [
         {
-          "label": "∠ADB",
+          "label": "∠SAB",
+          "vertex": "A",
+          "arms": [
+            "AS",
+            "AB"
+          ],
+          "measure": 48,
+          "angle_type": "acute"
+        },
+        {
+          "label": "∠ADC",
           "vertex": "D",
           "arms": [
             "DA",
-            "DB"
+            "DC"
           ],
-          "measure": 38,
-          "angle_type": "acute"
-        },
-        {
-          "label": "∠ACB",
-          "vertex": "C",
-          "arms": [
-            "CA",
-            "CB"
-          ],
-          "measure": 38,
-          "angle_type": "acute"
-        },
-        {
-          "label": "∠BAC",
-          "vertex": "A",
-          "arms": [
-            "AB",
-            "AC"
-          ],
-          "measure": 104,
+          "measure": 132,
           "angle_type": "obtuse"
         }
       ],
@@ -425,281 +642,17 @@
         }
       ],
       "given_conditions": [
-        "A, B, C, D 共圓",
+        "SAT 為切線",
         "AB = AC",
-        "∠ADB = 38°"
+        "∠SAB = 48°",
+        "D 在劣弧 AC 上"
       ],
-      "diagram_description": "圓內接四邊形 ABCD，△ABC 為等腰三角形，AB=AC。"
+      "diagram_description": "圓頂部有切線ST切於A。等腰三角形ABC內接於圓。D點位於A與C之間的圓弧上，形成四邊形ABCD。"
     },
     "required_theorems": [
-      "同弓形內的圓周角",
-      "等腰三角形性質",
-      "三角形內角和"
-    ]
-  },
-  {
-    "question": "圖中，弦 AB 與弦 CD 相交於 E。若 AE = 6 cm，EB = 4 cm 及 CE = 3 cm，求弦 CD 的長度。",
-    "options": {
-      "A": "8 cm",
-      "B": "9 cm",
-      "C": "10 cm",
-      "D": "11 cm"
-    },
-    "correct_answer": "D",
-    "explanation": "1. 根據相交弦定理 (Intersecting Chords Theorem)，圓內兩弦相交，其線段長度的積相等。\n2. 即 $AE \\times EB = CE \\times ED$。\n3. 代入數值：$6 \\times 4 = 3 \\times ED$。\n4. $24 = 3 \\times ED \\implies ED = 8 \\text{ cm}$。\n5. 弦 CD 的總長度 = $CE + ED = 3 + 8 = 11 \\text{ cm}$。",
-    "difficulty": 3,
-    "topic": "Circle Theorems",
-    "question_type": "calculation",
-    "geometry_properties": {
-      "points": [
-        {
-          "label": "O",
-          "x": 0,
-          "y": 0,
-          "description": "圓心"
-        },
-        {
-          "label": "E",
-          "x": 1,
-          "y": 1,
-          "description": "交點"
-        },
-        {
-          "label": "A",
-          "x": -4.6,
-          "y": 2.5,
-          "description": "弦 AB 端點"
-        },
-        {
-          "label": "B",
-          "x": 4.8,
-          "y": 0,
-          "description": "弦 AB 端點"
-        },
-        {
-          "label": "C",
-          "x": 1,
-          "y": 4,
-          "description": "弦 CD 端點 (長度 3)"
-        },
-        {
-          "label": "D",
-          "x": 1,
-          "y": -7,
-          "description": "弦 CD 端點 (長度 8)"
-        }
-      ],
-      "lines": [
-        {
-          "label": "AB",
-          "points": [
-            "A",
-            "B"
-          ],
-          "length": 10
-        },
-        {
-          "label": "CD",
-          "points": [
-            "C",
-            "D"
-          ],
-          "length": 11
-        }
-      ],
-      "circles": [
-        {
-          "label": "Circle",
-          "center": "O",
-          "radius": 5.5,
-          "points_on_circle": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ]
-        }
-      ],
-      "angles": [],
-      "triangles": [],
-      "given_conditions": [
-        "AE = 6",
-        "EB = 4",
-        "CE = 3"
-      ],
-      "diagram_description": "兩條弦 AB 和 CD 在圓內一點 E 相交。E 點將弦分為不同長度的線段。"
-    },
-    "required_theorems": [
-      "相交弦定理"
-    ]
-  },
-  {
-    "question": "圖中，TP 及 TQ 分別切圓於 P 及 Q。R 為優弧 PQ 上的一點。若 $\\angle PTQ = 70^\\circ$，求 $\\angle PRQ$。",
-    "options": {
-      "A": "35°",
-      "B": "55°",
-      "C": "70°",
-      "D": "110°"
-    },
-    "correct_answer": "B",
-    "explanation": "1. 由於 TP 及 TQ 為切線，O 為圓心，則 $\\angle OPT = 90^\\circ$ 及 $\\angle OQT = 90^\\circ$。\n2. 考慮四邊形 OPTQ，內角和為 $360^\\circ$。\n3. $\\angle POQ = 360^\\circ - 90^\\circ - 90^\\circ - 70^\\circ = 110^\\circ$。\n4. 根據圓心角定理，圓周角 $\\angle PRQ$ 是圓心角 $\\angle POQ$ 的一半。\n5. $\\angle PRQ = 110^\\circ / 2 = 55^\\circ$。",
-    "difficulty": 4,
-    "topic": "Circle Theorems",
-    "question_type": "calculation",
-    "geometry_properties": {
-      "points": [
-        {
-          "label": "O",
-          "x": 0,
-          "y": 0,
-          "description": "圓心"
-        },
-        {
-          "label": "T",
-          "x": 14.28,
-          "y": 0,
-          "description": "圓外一點 (10/sin(55°) * cos(55°) = ? No, 10/cos(35°))"
-        },
-        {
-          "label": "P",
-          "x": 5.73,
-          "y": 8.19,
-          "description": "切點 (55°)"
-        },
-        {
-          "label": "Q",
-          "x": 5.73,
-          "y": -8.19,
-          "description": "切點 (-55°)"
-        },
-        {
-          "label": "R",
-          "x": -10,
-          "y": 0,
-          "description": "圓上的點 (180°)"
-        }
-      ],
-      "lines": [
-        {
-          "label": "TP",
-          "points": [
-            "T",
-            "P"
-          ],
-          "properties": [
-            "tangent"
-          ]
-        },
-        {
-          "label": "TQ",
-          "points": [
-            "T",
-            "Q"
-          ],
-          "properties": [
-            "tangent"
-          ]
-        },
-        {
-          "label": "OP",
-          "points": [
-            "O",
-            "P"
-          ],
-          "properties": [
-            "radius"
-          ]
-        },
-        {
-          "label": "OQ",
-          "points": [
-            "O",
-            "Q"
-          ],
-          "properties": [
-            "radius"
-          ]
-        },
-        {
-          "label": "PR",
-          "points": [
-            "P",
-            "R"
-          ]
-        },
-        {
-          "label": "QR",
-          "points": [
-            "Q",
-            "R"
-          ]
-        }
-      ],
-      "circles": [
-        {
-          "label": "Circle O",
-          "center": "O",
-          "radius": 10,
-          "points_on_circle": [
-            "P",
-            "Q",
-            "R"
-          ]
-        }
-      ],
-      "angles": [
-        {
-          "label": "∠PTQ",
-          "vertex": "T",
-          "arms": [
-            "TP",
-            "TQ"
-          ],
-          "measure": 70,
-          "angle_type": "acute"
-        },
-        {
-          "label": "∠POQ",
-          "vertex": "O",
-          "arms": [
-            "OP",
-            "OQ"
-          ],
-          "measure": 110,
-          "angle_type": "obtuse"
-        },
-        {
-          "label": "∠PRQ",
-          "vertex": "R",
-          "arms": [
-            "RP",
-            "RQ"
-          ],
-          "measure": 55,
-          "angle_type": "acute"
-        }
-      ],
-      "triangles": [
-        {
-          "label": "△PQR",
-          "vertices": [
-            "P",
-            "Q",
-            "R"
-          ],
-          "triangle_type": "scalene"
-        }
-      ],
-      "given_conditions": [
-        "TP 和 TQ 為切線",
-        "∠PTQ = 70°"
-      ],
-      "diagram_description": "圓 O，圓外一點 T 引兩條切線接觸圓於 P 和 Q。R 在圓周的遠端。"
-    },
-    "required_theorems": [
-      "切線性質 (Two Tangent Theorem)",
-      "多邊形內角和",
-      "圓心角兩倍於圓周角"
+      "交錯弓形的圓周角",
+      "圓內接四邊形對角互補",
+      "等腰三角形性質"
     ]
   }
 ]

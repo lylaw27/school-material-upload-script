@@ -5,78 +5,15 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-interface Point {
-  label: string;
-  x: number;
-  y: number;
-  description?: string;
-}
-
-interface Line {
-  label: string;
-  points: string[];
-  length?: number;
-  properties?: string[];
-}
-
-interface Circle {
-  label: string;
-  center: string;
-  radius: number;
-  points_on_circle: string[];
-}
-
-interface Angle {
-  label: string;
-  vertex: string;
-  arms: string[];
-  measure: number;
-  angle_type?: 'acute' | 'right' | 'obtuse' | 'straight' | 'reflex' | 'unknown';
-}
-
-interface Triangle {
-  label: string;
-  vertices: string[];
-  sides?: string[];
-  angles?: string[];
-  triangle_type?: 'equilateral' | 'isosceles' | 'scalene' | 'right' | 'unknown';
-}
-
-interface GeometryProperties {
-  points: Point[];
-  lines: Line[];
-  circles?: Circle[];
-  angles?: Angle[];
-  triangles?: Triangle[];
-  given_conditions: string[];
-  diagram_description: string;
-}
-
-interface MathMCQ {
-  question: string;
-  options: {
-    A: string;
-    B: string;
-    C: string;
-    D: string;
-  };
-  correct_answer: 'A' | 'B' | 'C' | 'D';
-  explanation: string;
-  difficulty: number;
-  topic: string;
-  question_type: 'calculation' | 'proof' | 'application' | 'conceptual';
-  geometry_properties: GeometryProperties;
-  required_theorems: string[];
-}
 
 /**
  * Generate JSXGraph HTML code for a geometry diagram
  */
-function generateJSXGraphHTML(mcq: MathMCQ, questionIndex: number): string {
+function generateJSXGraphHTML(mcq, questionIndex) {
   const { geometry_properties } = mcq;
   const boardId = `jxgbox-${questionIndex}`;
   
-  // Find bounds for the board
+    // Find bounds for the board
   const allX = geometry_properties.points.map(p => p.x);
   const allY = geometry_properties.points.map(p => p.y);
   const dataMinX = Math.min(...allX);
@@ -250,7 +187,7 @@ function generateJSXGraphHTML(mcq: MathMCQ, questionIndex: number): string {
 /**
  * Generate complete HTML file with JSXGraph visualizations
  */
-function generateHTMLFile(mcqs: MathMCQ[], sourceFile: string): string {
+function generateHTMLFile(mcqs, sourceFile) {
   let html = `<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -315,15 +252,11 @@ function generateHTMLFile(mcqs: MathMCQ[], sourceFile: string): string {
     .diagram-wrapper {
       width: 100%;
       min-width: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
     .jxgbox {
-      width: 100%;
-      max-width: 500px;
-      height: 500px;
-      aspect-ratio: 1;
+      width: 400px;
+      max-width: 400px;
+      height: 400px;
       border: 2px solid #ddd;
       border-radius: 4px;
       box-sizing: border-box;
@@ -492,13 +425,13 @@ ${mcq.required_theorems.map(theorem => `<li>${theorem}</li>`).join('\n')}
 /**
  * Read JSON file and generate HTML visualization
  */
-async function visualizeGeometry(jsonFilePath: string): Promise<void> {
+async function visualizeGeometry(jsonFilePath) {
   try {
     console.log(`Reading JSON file: ${jsonFilePath}`);
     
     // Read JSON file
     const jsonContent = await fs.readFile(jsonFilePath, 'utf-8');
-    const mcqs: MathMCQ[] = JSON.parse(jsonContent);
+    const mcqs= JSON.parse(jsonContent);
     
     console.log(`Found ${mcqs.length} question(s)`);
     

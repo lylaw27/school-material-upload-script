@@ -149,7 +149,7 @@
 <body>
   <h1>📐 Geometry Visualization: circle-theorems</h1>
   <p style="color: #666; margin-bottom: 30px;">
-    Source: <code>/Users/larrylaw/ai-projects/quiz-app/school-material-upload-script/circle-theorems.json</code> | Total Questions: 5
+    Source: <code>C:\Users\larry.law\gitrepo\quiz-app\uploader\circle-theorems.json</code> | Total Questions: 5
   </p>
 
   <div class="question-container">
@@ -158,7 +158,7 @@
       <span class="difficulty-badge diff-2">Difficulty: 2/5</span>
     </div>
     
-    <div class="question-text">圖中，O 為圓心。A、B 及 C 為圓周上的點。若 $\angle AOC = 124^\circ$，求 $\angle OAC + \angle ABC$ 的值。</div>
+    <div class="question-text">圖中，O 為圓心，A、B 及 C 為圓周上的點。若反射角 (reflex angle) ∠AOB = 230°，求 ∠ACB 的度數。</div>
     
     <div class="diagram-container">
       <div class="diagram-wrapper">
@@ -171,38 +171,49 @@
           <h4>📋 Given Conditions</h4>
           <ul>
 <li>O 為圓心</li>
-<li>∠AOC = 124°</li>
+<li>反射角 ∠AOB = 230°</li>
           </ul>
         </div>
         
         <div class="info-section">
           <h4>📐 Diagram Description</h4>
-          <p>圓 O，半徑 OA 和 OC 形成鈍角 124°。點 B 在優弧 AC 上。</p>
+          <p>圓O，點A和B在圓下方兩側，點C在圓頂部。∠AOB的優角標示為230度。</p>
         </div>
         
         <div class="info-section">
           <h4>🎓 Required Theorems</h4>
           <ul>
-<li>圓心角兩倍於圓周角</li>
-<li>等腰三角形底角相等</li>
+<li>圓心角是圓周角的兩倍</li>
+<li>圓內接四邊形對角互補</li>
           </ul>
         </div>
       </div>
     </div>
     
     <div class="options">
-      <div class="option ">A. 84°</div>
-      <div class="option correct">B. 90°</div>
-      <div class="option ">C. 96°</div>
-      <div class="option ">D. 118°</div>
+      <div class="option ">A. 65°</div>
+      <div class="option correct">B. 115°</div>
+      <div class="option ">C. 130°</div>
+      <div class="option ">D. 155°</div>
     </div>
     
     <div class="explanation">
       <h4>✅ Answer: B</h4>
-      <p>1. 考慮 $\triangle OAC$。因為 OA 及 OC 均為半徑，所以 $\triangle OAC$ 是等腰三角形。
-2. $\angle OAC = (180^\circ - 124^\circ) / 2 = 56^\circ / 2 = 28^\circ$。
-3. 根據圓心角定理（圓心角是圓周角的兩倍），$\angle ABC = \angle AOC / 2 = 124^\circ / 2 = 62^\circ$。
-4. 所求之和 = $28^\circ + 62^\circ = 90^\circ$。</p>
+      <p>1. 已知反射角 ∠AOB = 230°。
+2. 圓內對應的劣角 (obtuse/acute angle) ∠AOB = 360° - 230° = 130°。
+3. 注意點 C 的位置相對於弦 AB。根據圓周角定理（angle at center is twice angle at circumference），若 C 點位於大弧（major arc）上，則 ∠ACB = 130° / 2 = 65°。
+4. 然而，根據圖示（或幾何邏輯），若反射角對應的是優弧上的圓周角，則 ∠ACB 對應的是反射角的一半？
+不，標準定理是：圓心角 = 2 × 圓周角（兩者必須對應同一段弧）。
+反射角 ∠AOB (230°) 對應的是優弧 AB。
+角 ∠ACB 所對的弧也是優弧 AB（即 C 點位於劣弧上）。
+因此，2 × ∠ACB = 反射角 ∠AOB。
+∠ACB = 230° / 2 = 115°。
+
+另一種想法：
+圓內接四邊形性質。設圓上大弧有一點 D。
+∠ADB = 130° / 2 = 65°。
+ACBD 為圓內接四邊形，故 ∠ACB + ∠ADB = 180°。
+∠ACB = 180° - 65° = 115°。</p>
     </div>
     
     <div class="metadata">
@@ -224,7 +235,7 @@
       <span class="difficulty-badge diff-3">Difficulty: 3/5</span>
     </div>
     
-    <div class="question-text">如圖所示，PA 為圓的一條切線，切點為 A。PBC 為一直線穿過圓心 O，並分別交圓於 B 及 C。若 $\angle APB = 26^\circ$，求 $\angle ACB$。</div>
+    <div class="question-text">圖中，TA 為圓在 A 點的切線。TBO 為一直線穿過圓心 O。若 ∠ATB = 36°，求 ∠ABT。</div>
     
     <div class="diagram-container">
       <div class="diagram-wrapper">
@@ -236,42 +247,52 @@
         <div class="info-section">
           <h4>📋 Given Conditions</h4>
           <ul>
-<li>PA 切圓於 A</li>
-<li>PBC 是直線並穿過圓心 O</li>
-<li>∠APB = 26°</li>
+<li>TA 為切線</li>
+<li>TBO 為直線</li>
+<li>∠ATB = 36°</li>
           </ul>
         </div>
         
         <div class="info-section">
           <h4>📐 Diagram Description</h4>
-          <p>圓 O，直線 PBC 穿過圓心，P 在圓外。PA 切圓於 A。∠OAP 為直角。</p>
+          <p>圓O，半徑OA。切線TA與半徑OA垂直。直線TBO穿過B點與圓心O。構成直角三角形OAT。</p>
         </div>
         
         <div class="info-section">
           <h4>🎓 Required Theorems</h4>
           <ul>
-<li>切線垂直半徑</li>
+<li>切線垂直半徑 (Tangent ⊥ Radius)</li>
 <li>三角形內角和</li>
-<li>圓心角兩倍於圓周角</li>
+<li>等腰三角形底角</li>
           </ul>
         </div>
       </div>
     </div>
     
     <div class="options">
-      <div class="option ">A. 26°</div>
-      <div class="option correct">B. 32°</div>
-      <div class="option ">C. 38°</div>
-      <div class="option ">D. 64°</div>
+      <div class="option ">A. 27°</div>
+      <div class="option ">B. 54°</div>
+      <div class="option correct">C. 63°</div>
+      <div class="option ">D. 72°</div>
     </div>
     
     <div class="explanation">
-      <h4>✅ Answer: B</h4>
-      <p>1. 由於 PA 是切線而 OA 是半徑，故 $\angle OAP = 90^\circ$（切線垂直半徑）。
-2. 在直角 $\triangle OAP$ 中，$\angle AOP = 90^\circ - 26^\circ = 64^\circ$。
-3. $\angle AOP$ 是 $\triangle AOC$ 的外角（注意 O 在 BC 上，故 $\angle AOP$ 對應弧 AB 的圓心角，而 $\angle ACB$ 是對應的圓周角）。
-4. 或者直接使用圓心角定理：$\angle AOB = 64^\circ$。$\angle ACB$ 為同弧 AB 所對的圓周角。
-5. $\angle ACB = \angle AOB / 2 = 64^\circ / 2 = 32^\circ$。</p>
+      <h4>✅ Answer: C</h4>
+      <p>1. 由於 TA 為切線，OA 為半徑，根據切線性質，∠OAT = 90°。
+2. 在直角三角形 △OAT 中，∠AOT = 90° - ∠OTA = 90° - 36° = 54°。
+3. 考慮 △OAB，因為 OA = OB (半徑)，所以 △OAB 為等腰三角形。
+4. 外角 ∠AOT = ∠OAB + ∠OBA (三角形外角性質)。
+5. 由於等腰，∠OBA = ∠OAB。設 ∠OBA = x。
+6. 2x = 54° => x = 27°。
+7. 等等，∠AOT 是 △OAB 的頂角嗎？不，TBO 是直線。B 在 O 和 T 之間。
+修正圖形邏輯：
+若 TBO 是直線，且 T 在圓外，B 在圓周上，O 在圓心。
+在 △OAT 中，∠AOB 是 △OAT 的一角。
+∠AOB = 180° - 90° - 36° = 54°。
+在 △OAB 中，OA = OB。∠OAB = ∠OBA = (180° - 54°) / 2 = 63°。
+題目求 ∠ABT。由於 T-B-O 是直線，∠ABT 與 ∠OBA 是同一個角 (或互補，視B點位置)。
+通常 T-B-O 表示 B 在 T 和 O 之間。因此 ∠ABT = ∠ABO = 63°。
+答案為 63°。</p>
     </div>
     
     <div class="metadata">
@@ -293,7 +314,7 @@
       <span class="difficulty-badge diff-3">Difficulty: 3/5</span>
     </div>
     
-    <div class="question-text">圖中，A、B、C 及 D 為圓上的點。已知 AB = AC 及 $\angle ADB = 38^\circ$。求 $\angle BAC$。</div>
+    <div class="question-text">圖中，一圓的半徑為 13 cm。AB 及 CD 為兩條平行弦，分別位於圓心的兩側。若 AB = 10 cm 及 CD = 24 cm，求兩弦之間的距離。</div>
     
     <div class="diagram-container">
       <div class="diagram-wrapper">
@@ -305,42 +326,43 @@
         <div class="info-section">
           <h4>📋 Given Conditions</h4>
           <ul>
-<li>A, B, C, D 共圓</li>
-<li>AB = AC</li>
-<li>∠ADB = 38°</li>
+<li>半徑 = 13 cm</li>
+<li>AB // CD</li>
+<li>AB = 10 cm</li>
+<li>CD = 24 cm</li>
+<li>弦在圓心兩側</li>
           </ul>
         </div>
         
         <div class="info-section">
           <h4>📐 Diagram Description</h4>
-          <p>圓內接四邊形 ABCD，△ABC 為等腰三角形，AB=AC。</p>
+          <p>圓心為O。上方有一條較短的水平弦AB，下方有一條較長的水平弦CD。</p>
         </div>
         
         <div class="info-section">
           <h4>🎓 Required Theorems</h4>
           <ul>
-<li>同弓形內的圓周角</li>
-<li>等腰三角形性質</li>
-<li>三角形內角和</li>
+<li>圓心至弦的垂線平分弦</li>
+<li>畢氏定理</li>
           </ul>
         </div>
       </div>
     </div>
     
     <div class="options">
-      <div class="option ">A. 38°</div>
-      <div class="option ">B. 72°</div>
-      <div class="option ">C. 76°</div>
-      <div class="option correct">D. 104°</div>
+      <div class="option ">A. 7 cm</div>
+      <div class="option ">B. 14 cm</div>
+      <div class="option correct">C. 17 cm</div>
+      <div class="option ">D. 34 cm</div>
     </div>
     
     <div class="explanation">
-      <h4>✅ Answer: D</h4>
-      <p>1. 根據「同弓形內的圓周角」定理，$\angle ACB = \angle ADB = 38^\circ$。
-2. 已知 $\triangle ABC$ 中 $AB = AC$，故其為等腰三角形，底角相等。
-3. 因此，$\angle ABC = \angle ACB = 38^\circ$。
-4. 在 $\triangle ABC$ 中，內角和為 $180^\circ$。
-5. $\angle BAC = 180^\circ - 38^\circ - 38^\circ = 104^\circ$。</p>
+      <h4>✅ Answer: C</h4>
+      <p>1. 從圓心 O 作垂線分別垂直於 AB 和 CD，垂足設為 M 和 N。
+2. 根據弦的性質，從圓心作出的垂線平分弦。
+3. 對於弦 AB：AM = AB / 2 = 10 / 2 = 5 cm。在直角三角形 △OMA 中，OA = 13 cm，OM = √(13² - 5²) = √(169 - 25) = √144 = 12 cm。
+4. 對於弦 CD：CN = CD / 2 = 24 / 2 = 12 cm。在直角三角形 △ONC 中，OC = 13 cm，ON = √(13² - 12²) = √(169 - 144) = √25 = 5 cm。
+5. 由於兩弦位於圓心兩側，兩弦距離 = OM + ON = 12 + 5 = 17 cm。</p>
     </div>
     
     <div class="metadata">
@@ -359,10 +381,10 @@
   <div class="question-container">
     <div class="question-header">
       <div class="question-title">Question 4</div>
-      <span class="difficulty-badge diff-3">Difficulty: 3/5</span>
+      <span class="difficulty-badge diff-2">Difficulty: 2/5</span>
     </div>
     
-    <div class="question-text">圖中，弦 AB 與弦 CD 相交於 E。若 AE = 6 cm，EB = 4 cm 及 CE = 3 cm，求弦 CD 的長度。</div>
+    <div class="question-text">圖中，A、B、C 及 D 為圓上的點。AC 與 BD 相交於 E。若 ∠ABD = 35° 及 ∠BAC = 45°，求 ∠AED。</div>
     
     <div class="diagram-container">
       <div class="diagram-wrapper">
@@ -374,40 +396,60 @@
         <div class="info-section">
           <h4>📋 Given Conditions</h4>
           <ul>
-<li>AE = 6</li>
-<li>EB = 4</li>
-<li>CE = 3</li>
+<li>A, B, C, D 共圓</li>
+<li>∠ABD = 35°</li>
+<li>∠BAC = 45°</li>
           </ul>
         </div>
         
         <div class="info-section">
           <h4>📐 Diagram Description</h4>
-          <p>兩條弦 AB 和 CD 在圓內一點 E 相交。E 點將弦分為不同長度的線段。</p>
+          <p>圓內有四點A,B,C,D。弦AC與弦BD相交於E。</p>
         </div>
         
         <div class="info-section">
           <h4>🎓 Required Theorems</h4>
           <ul>
-<li>相交弦定理</li>
+<li>同弓形內的圓周角</li>
+<li>三角形內角和</li>
+<li>鄰補角</li>
           </ul>
         </div>
       </div>
     </div>
     
     <div class="options">
-      <div class="option ">A. 8 cm</div>
-      <div class="option ">B. 9 cm</div>
-      <div class="option ">C. 10 cm</div>
-      <div class="option correct">D. 11 cm</div>
+      <div class="option ">A. 70°</div>
+      <div class="option correct">B. 80°</div>
+      <div class="option ">C. 90°</div>
+      <div class="option ">D. 100°</div>
     </div>
     
     <div class="explanation">
-      <h4>✅ Answer: D</h4>
-      <p>1. 根據相交弦定理 (Intersecting Chords Theorem)，圓內兩弦相交，其線段長度的積相等。
-2. 即 $AE \times EB = CE \times ED$。
-3. 代入數值：$6 \times 4 = 3 \times ED$。
-4. $24 = 3 \times ED \implies ED = 8 \text{ cm}$。
-5. 弦 CD 的總長度 = $CE + ED = 3 + 8 = 11 \text{ cm}$。</p>
+      <h4>✅ Answer: B</h4>
+      <p>1. 根據「同弓形內的圓周角」定理 (Angles in the same segment)，∠ACD = ∠ABD = 35°。
+2. 或者，∠BDC = ∠BAC = 45°。
+3. 我們關注三角形 △ABE。
+4. 在 △ABE 中，我們需要知道 ∠AEB。但我們已知 ∠ABD (即 ∠ABE) = 35°，且 ∠BAC (即 ∠BAE) = 45°。
+5. 根據三角形內角和，∠AEB = 180° - 35° - 45° = 100°。
+6. ∠AED 與 ∠AEB 互為鄰補角 (angles on a straight line)。
+7. ∠AED = 180° - ∠AEB = 180° - 100° = 80°。
+(或者：∠AED 是 △ABE 的外角？不，∠DEC 才是對頂角。∠AED 和 ∠BEC 是對頂角。)
+更正步驟 6：
+A-E-C 是直線，B-E-D 是直線。
+∠AED 與 ∠AEB 互補。
+∠AED = 180° - 100° = 80°。
+
+驗證方法 2：
+在 △ADE 中，∠DAE (即 ∠DAC) = ? 我們不知道。
+利用外角定理：∠AED = ∠ABD + ∠BAC = 35° + 45° = 80°。
+證明：∠AED 是 △ABE 的外角嗎？不是。∠CED 才是 △ABE 的外角... 不對。
+∠AED 是 △ABE 的鄰補角，這關係不直接。
+正確的外角關係是：∠AEB = ∠EDC + ∠ECD。
+讓我們堅持最簡單的路徑：
+在 △ABE 中，∠AEB = 180 - 35 - 45 = 100。
+∠AED + ∠AEB = 180 (直線 BD)。
+∠AED = 80°。</p>
     </div>
     
     <div class="metadata">
@@ -418,7 +460,7 @@
         <strong>Type:</strong> calculation
       </div>
       <div class="metadata-item">
-        <strong>Difficulty:</strong> 3/5
+        <strong>Difficulty:</strong> 2/5
       </div>
     </div>
   </div>
@@ -429,7 +471,7 @@
       <span class="difficulty-badge diff-4">Difficulty: 4/5</span>
     </div>
     
-    <div class="question-text">圖中，TP 及 TQ 分別切圓於 P 及 Q。R 為優弧 PQ 上的一點。若 $\angle PTQ = 70^\circ$，求 $\angle PRQ$。</div>
+    <div class="question-text">圖中，SAT 為圓在點 A 的切線。AB = AC。若 ∠SAB = 48°，且 D 為劣弧 (minor arc) AC 上的一點，求 ∠ADC。</div>
     
     <div class="diagram-container">
       <div class="diagram-wrapper">
@@ -441,41 +483,45 @@
         <div class="info-section">
           <h4>📋 Given Conditions</h4>
           <ul>
-<li>TP 和 TQ 為切線</li>
-<li>∠PTQ = 70°</li>
+<li>SAT 為切線</li>
+<li>AB = AC</li>
+<li>∠SAB = 48°</li>
+<li>D 在劣弧 AC 上</li>
           </ul>
         </div>
         
         <div class="info-section">
           <h4>📐 Diagram Description</h4>
-          <p>圓 O，圓外一點 T 引兩條切線接觸圓於 P 和 Q。R 在圓周的遠端。</p>
+          <p>圓頂部有切線ST切於A。等腰三角形ABC內接於圓。D點位於A與C之間的圓弧上，形成四邊形ABCD。</p>
         </div>
         
         <div class="info-section">
           <h4>🎓 Required Theorems</h4>
           <ul>
-<li>切線性質 (Two Tangent Theorem)</li>
-<li>多邊形內角和</li>
-<li>圓心角兩倍於圓周角</li>
+<li>交錯弓形的圓周角</li>
+<li>圓內接四邊形對角互補</li>
+<li>等腰三角形性質</li>
           </ul>
         </div>
       </div>
     </div>
     
     <div class="options">
-      <div class="option ">A. 35°</div>
-      <div class="option correct">B. 55°</div>
-      <div class="option ">C. 70°</div>
-      <div class="option ">D. 110°</div>
+      <div class="option ">A. 84°</div>
+      <div class="option ">B. 96°</div>
+      <div class="option correct">C. 132°</div>
+      <div class="option ">D. 144°</div>
     </div>
     
     <div class="explanation">
-      <h4>✅ Answer: B</h4>
-      <p>1. 由於 TP 及 TQ 為切線，O 為圓心，則 $\angle OPT = 90^\circ$ 及 $\angle OQT = 90^\circ$。
-2. 考慮四邊形 OPTQ，內角和為 $360^\circ$。
-3. $\angle POQ = 360^\circ - 90^\circ - 90^\circ - 70^\circ = 110^\circ$。
-4. 根據圓心角定理，圓周角 $\angle PRQ$ 是圓心角 $\angle POQ$ 的一半。
-5. $\angle PRQ = 110^\circ / 2 = 55^\circ$。</p>
+      <h4>✅ Answer: C</h4>
+      <p>1. 根據「交錯弓形的圓周角」定理 (Angle in alternate segment)，∠ACB = ∠SAB = 48°。
+2. 由於 AB = AC，△ABC 為等腰三角形，故 ∠ABC = ∠ACB = 48°。
+3. 在 △ABC 中，∠BAC = 180° - 48° - 48° = 84°。
+4. 考慮圓內接四邊形 ADCB (注意點的順序：A, D, C, B 都在圓上)。
+5. 我們要求 ∠ADC。在圓內接四邊形 ADCB 中，∠ADC 與 ∠ABC 是對角。
+6. 根據圓內接四邊形對角互補性質：∠ADC + ∠ABC = 180°。
+7. ∠ADC = 180° - 48° = 132°。</p>
     </div>
     
     <div class="metadata">
@@ -496,11 +542,14 @@
     
     // Board 1: Circle Theorems
     const board0 = JXG.JSXGraph.initBoard('jxgbox-0', {
-      boundingbox: [-12, 10.29, 7.592, -12],
-      axis: true,
+      boundingbox: [-12.688200000000002, 17.688200000000002, 12.688200000000002, -7.688200000000002],
+      axis: false,
       showCopyright: false,
-      showNavigation: true,
-      grid: false
+      showNavigation: false,
+      grid: false,
+      pan: {enabled: false},
+      zoom: {enabled: false},
+      keepAspectRatio: true
     });
     
     // Create points
@@ -510,32 +559,36 @@
       size: 3,
       fillColor: '#0066cc',
       strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
+      label: {offset: [5, 5]},
+      fixed: true
     });
-    points0['A'] = board0.create('point', [-10, 0], {
+    points0['A'] = board0.create('point', [-9.063, 4.226], {
       name: 'A',
       size: 3,
       fillColor: '#0066cc',
       strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
+      label: {offset: [5, 5]},
+      fixed: true
     });
-    points0['C'] = board0.create('point', [5.592, 8.29], {
-      name: 'C',
-      size: 3,
-      fillColor: '#0066cc',
-      strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
-    });
-    points0['B'] = board0.create('point', [0, -10], {
+    points0['B'] = board0.create('point', [9.063, 4.226], {
       name: 'B',
       size: 3,
       fillColor: '#0066cc',
       strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
+      label: {offset: [5, 5]},
+      fixed: true
+    });
+    points0['C'] = board0.create('point', [0, 10], {
+      name: 'C',
+      size: 3,
+      fillColor: '#0066cc',
+      strokeColor: '#0066cc',
+      label: {offset: [5, 5]},
+      fixed: true
     });
 
     // Circle: Circle O
-    board0.create('circle', [points0['O'], 10], {
+    board0.create('circle', [points0['O'], points0['A']], {
       strokeColor: '#666',
       strokeWidth: 2,
       fillOpacity: 0
@@ -545,18 +598,13 @@
       strokeColor: '#333',
       strokeWidth: 1.5
     });
-    board0.create('segment', [points0['O'], points0['C']], {
-      name: 'OC',
+    board0.create('segment', [points0['O'], points0['B']], {
+      name: 'OB',
       strokeColor: '#333',
       strokeWidth: 1.5
     });
     board0.create('segment', [points0['A'], points0['C']], {
       name: 'AC',
-      strokeColor: '#333',
-      strokeWidth: 1.5
-    });
-    board0.create('segment', [points0['A'], points0['B']], {
-      name: 'AB',
       strokeColor: '#333',
       strokeWidth: 1.5
     });
@@ -566,41 +614,87 @@
       strokeWidth: 1.5
     });
 
-    // Angle: ∠AOC = 124°
-    board0.create('angle', [points0['A'], points0['O'], points0['C']], {
-      radius: 0.8,
-      fillColor: '#ffcccc',
-      strokeColor: '#cc0000',
-      name: '124°'
-    });
+    // Angle: reflex ∠AOB = 230°
+    (function() {
+      const angle1 = board0.create('angle', [points0['A'], points0['O'], points0['B']], {
+        radius: 0.8,
+        fillColor: '#ffcccc',
+        strokeColor: '#cc0000',
+        name: '230°',
+        visible: false
+      });
+      const angle2 = board0.create('angle', [points0['B'], points0['O'], points0['A']], {
+        radius: 0.8,
+        fillColor: '#ffcccc',
+        strokeColor: '#cc0000',
+        name: '230°',
+        visible: false
+      });
+      
+      // Get the actual angle values (in radians, convert to degrees)
+      const measure1 = Math.abs(angle1.Value() * 180 / Math.PI);
+      const measure2 = Math.abs(angle2.Value() * 180 / Math.PI);
+      
+      // Find which angle is closer to the expected measure
+      const diff1 = Math.abs(measure1 - 230);
+      const diff2 = Math.abs(measure2 - 230);
+      
+      // Show the correct one
+      if (diff1 < diff2) {
+        angle1.setAttribute({visible: true});
+        board0.removeObject(angle2);
+      } else {
+        angle2.setAttribute({visible: true});
+        board0.removeObject(angle1);
+      }
+    })();
 
-    // Angle: ∠ABC = 62°
-    board0.create('angle', [points0['A'], points0['B'], points0['C']], {
-      radius: 0.8,
-      fillColor: '#ffcccc',
-      strokeColor: '#cc0000',
-      name: '62°'
-    });
-
-    // Triangle: △OAC
-    board0.create('polygon', [
-      points0['O'],
-      points0['A'],
-      points0['C']
-    ], {
-      fillColor: '#e6f2ff',
-      fillOpacity: 0.3,
-      borders: {strokeColor: '#0066cc', strokeWidth: 2}
-    });
+    // Angle: ∠ACB = 115°
+    (function() {
+      const angle1 = board0.create('angle', [points0['A'], points0['C'], points0['B']], {
+        radius: 0.8,
+        fillColor: '#ffcccc',
+        strokeColor: '#cc0000',
+        name: '115°',
+        visible: false
+      });
+      const angle2 = board0.create('angle', [points0['B'], points0['C'], points0['A']], {
+        radius: 0.8,
+        fillColor: '#ffcccc',
+        strokeColor: '#cc0000',
+        name: '115°',
+        visible: false
+      });
+      
+      // Get the actual angle values (in radians, convert to degrees)
+      const measure1 = Math.abs(angle1.Value() * 180 / Math.PI);
+      const measure2 = Math.abs(angle2.Value() * 180 / Math.PI);
+      
+      // Find which angle is closer to the expected measure
+      const diff1 = Math.abs(measure1 - 115);
+      const diff2 = Math.abs(measure2 - 115);
+      
+      // Show the correct one
+      if (diff1 < diff2) {
+        angle1.setAttribute({visible: true});
+        board0.removeObject(angle2);
+      } else {
+        angle2.setAttribute({visible: true});
+        board0.removeObject(angle1);
+      }
+    })();
 
 
     // Board 2: Circle Theorems
     const board1 = JXG.JSXGraph.initBoard('jxgbox-1', {
-      boundingbox: [-12, 10.48, 20.87, -2],
-      axis: true,
+      boundingbox: [-3.4026000000000014, 15.954100000000002, 20.415600000000005, -7.864100000000002],
+      axis: false,
       showCopyright: false,
-      showNavigation: true,
-      grid: false
+      showNavigation: false,
+      grid: false,
+      pan: {enabled: false},
+      zoom: {enabled: false},
+      keepAspectRatio: true
     });
     
     // Create points
@@ -610,107 +704,177 @@
       size: 3,
       fillColor: '#0066cc',
       strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
+      label: {offset: [5, 5]},
+      fixed: true
     });
-    points1['A'] = board1.create('point', [5.299, 8.48], {
+    points1['A'] = board1.create('point', [5.877, 8.09], {
       name: 'A',
       size: 3,
       fillColor: '#0066cc',
       strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
-    });
-    points1['P'] = board1.create('point', [18.87, 0], {
-      name: 'P',
-      size: 3,
-      fillColor: '#0066cc',
-      strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
+      label: {offset: [5, 5]},
+      fixed: true
     });
     points1['B'] = board1.create('point', [10, 0], {
       name: 'B',
       size: 3,
       fillColor: '#0066cc',
       strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
+      label: {offset: [5, 5]},
+      fixed: true
     });
-    points1['C'] = board1.create('point', [-10, 0], {
-      name: 'C',
+    points1['T'] = board1.create('point', [17.013, 0], {
+      name: 'T',
       size: 3,
       fillColor: '#0066cc',
       strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
+      label: {offset: [5, 5]},
+      fixed: true
     });
 
     // Circle: Circle O
-    board1.create('circle', [points1['O'], 10], {
+    board1.create('circle', [points1['O'], points1['A']], {
       strokeColor: '#666',
       strokeWidth: 2,
       fillOpacity: 0
     });
-    board1.create('segment', [points1['P'], points1['A']], {
-      name: 'PA',
+    board1.create('segment', [points1['O'], points1['T']], {
+      name: 'OT',
       strokeColor: '#333',
       strokeWidth: 1.5
     });
-    board1.create('segment', [points1['P'], points1['C']], {
-      name: 'PC',
+    board1.create('segment', [points1['T'], points1['A']], {
+      name: 'TA',
       strokeColor: '#333',
       strokeWidth: 1.5
     });
     board1.create('segment', [points1['O'], points1['A']], {
       name: 'OA',
-      strokeColor: '#ff6600',
-      strokeWidth: 2
+      strokeColor: '#333',
+      strokeWidth: 1.5
     });
-    board1.create('segment', [points1['A'], points1['C']], {
-      name: 'AC',
+    board1.create('segment', [points1['A'], points1['B']], {
+      name: 'AB',
       strokeColor: '#333',
       strokeWidth: 1.5
     });
 
-    // Angle: ∠APB = 26°
-    board1.create('angle', [points1['A'], points1['P'], points1['B']], {
-      radius: 0.8,
-      fillColor: '#ffcccc',
-      strokeColor: '#cc0000',
-      name: '26°'
-    });
+    // Angle: ∠OAT = 90°
+    (function() {
+      const angle1 = board1.create('angle', [points1['O'], points1['A'], points1['T']], {
+        radius: 0.8,
+        fillColor: '#ffcccc',
+        strokeColor: '#cc0000',
+        name: '90°',
+        visible: false
+      });
+      const angle2 = board1.create('angle', [points1['T'], points1['A'], points1['O']], {
+        radius: 0.8,
+        fillColor: '#ffcccc',
+        strokeColor: '#cc0000',
+        name: '90°',
+        visible: false
+      });
+      
+      // Get the actual angle values (in radians, convert to degrees)
+      const measure1 = Math.abs(angle1.Value() * 180 / Math.PI);
+      const measure2 = Math.abs(angle2.Value() * 180 / Math.PI);
+      
+      // Find which angle is closer to the expected measure
+      const diff1 = Math.abs(measure1 - 90);
+      const diff2 = Math.abs(measure2 - 90);
+      
+      // Show the correct one
+      if (diff1 < diff2) {
+        angle1.setAttribute({visible: true});
+        board1.removeObject(angle2);
+      } else {
+        angle2.setAttribute({visible: true});
+        board1.removeObject(angle1);
+      }
+    })();
 
-    // Angle: ∠OAP = 90°
-    board1.create('angle', [points1['O'], points1['A'], points1['P']], {
-      radius: 0.8,
-      fillColor: '#ffcccc',
-      strokeColor: '#cc0000',
-      name: '90°'
-    });
+    // Angle: ∠ATB = 36°
+    (function() {
+      const angle1 = board1.create('angle', [points1['A'], points1['T'], points1['B']], {
+        radius: 0.8,
+        fillColor: '#ffcccc',
+        strokeColor: '#cc0000',
+        name: '36°',
+        visible: false
+      });
+      const angle2 = board1.create('angle', [points1['B'], points1['T'], points1['A']], {
+        radius: 0.8,
+        fillColor: '#ffcccc',
+        strokeColor: '#cc0000',
+        name: '36°',
+        visible: false
+      });
+      
+      // Get the actual angle values (in radians, convert to degrees)
+      const measure1 = Math.abs(angle1.Value() * 180 / Math.PI);
+      const measure2 = Math.abs(angle2.Value() * 180 / Math.PI);
+      
+      // Find which angle is closer to the expected measure
+      const diff1 = Math.abs(measure1 - 36);
+      const diff2 = Math.abs(measure2 - 36);
+      
+      // Show the correct one
+      if (diff1 < diff2) {
+        angle1.setAttribute({visible: true});
+        board1.removeObject(angle2);
+      } else {
+        angle2.setAttribute({visible: true});
+        board1.removeObject(angle1);
+      }
+    })();
 
-    // Angle: ∠AOP = 64°
-    board1.create('angle', [points1['A'], points1['O'], points1['P']], {
-      radius: 0.8,
-      fillColor: '#ffcccc',
-      strokeColor: '#cc0000',
-      name: '64°'
-    });
-
-    // Triangle: △OAP
-    board1.create('polygon', [
-      points1['O'],
-      points1['A'],
-      points1['P']
-    ], {
-      fillColor: '#e6f2ff',
-      fillOpacity: 0.3,
-      borders: {strokeColor: '#0066cc', strokeWidth: 2}
-    });
+    // Angle: ∠ABT = 63°
+    (function() {
+      const angle1 = board1.create('angle', [points1['A'], points1['B'], points1['T']], {
+        radius: 0.8,
+        fillColor: '#ffcccc',
+        strokeColor: '#cc0000',
+        name: '63°',
+        visible: false
+      });
+      const angle2 = board1.create('angle', [points1['T'], points1['B'], points1['A']], {
+        radius: 0.8,
+        fillColor: '#ffcccc',
+        strokeColor: '#cc0000',
+        name: '63°',
+        visible: false
+      });
+      
+      // Get the actual angle values (in radians, convert to degrees)
+      const measure1 = Math.abs(angle1.Value() * 180 / Math.PI);
+      const measure2 = Math.abs(angle2.Value() * 180 / Math.PI);
+      
+      // Find which angle is closer to the expected measure
+      const diff1 = Math.abs(measure1 - 63);
+      const diff2 = Math.abs(measure2 - 63);
+      
+      // Show the correct one
+      if (diff1 < diff2) {
+        angle1.setAttribute({visible: true});
+        board1.removeObject(angle2);
+      } else {
+        angle2.setAttribute({visible: true});
+        board1.removeObject(angle1);
+      }
+    })();
 
 
     // Board 3: Circle Theorems
     const board2 = JXG.JSXGraph.initBoard('jxgbox-2', {
-      boundingbox: [-11.66, 12, 11.66, -9.07],
-      axis: true,
+      boundingbox: [-16.8, 20.3, 16.8, -13.3],
+      axis: false,
       showCopyright: false,
-      showNavigation: true,
-      grid: false
+      showNavigation: false,
+      grid: false,
+      pan: {enabled: false},
+      zoom: {enabled: false},
+      keepAspectRatio: true
     });
     
     // Create points
@@ -720,39 +884,44 @@
       size: 3,
       fillColor: '#0066cc',
       strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
+      label: {offset: [5, 5]},
+      fixed: true
     });
-    points2['A'] = board2.create('point', [0, 10], {
+    points2['A'] = board2.create('point', [-5, 12], {
       name: 'A',
       size: 3,
       fillColor: '#0066cc',
       strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
+      label: {offset: [5, 5]},
+      fixed: true
     });
-    points2['B'] = board2.create('point', [-9.66, -2.59], {
+    points2['B'] = board2.create('point', [5, 12], {
       name: 'B',
       size: 3,
       fillColor: '#0066cc',
       strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
+      label: {offset: [5, 5]},
+      fixed: true
     });
-    points2['C'] = board2.create('point', [9.66, -2.59], {
+    points2['C'] = board2.create('point', [-12, -5], {
       name: 'C',
       size: 3,
       fillColor: '#0066cc',
       strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
+      label: {offset: [5, 5]},
+      fixed: true
     });
-    points2['D'] = board2.create('point', [-7.07, -7.07], {
+    points2['D'] = board2.create('point', [12, -5], {
       name: 'D',
       size: 3,
       fillColor: '#0066cc',
       strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
+      label: {offset: [5, 5]},
+      fixed: true
     });
 
-    // Circle: Circle
-    board2.create('circle', [points2['O'], 10], {
+    // Circle: Circle O
+    board2.create('circle', [points2['O'], points2['A']], {
       strokeColor: '#666',
       strokeWidth: 2,
       fillOpacity: 0
@@ -762,70 +931,23 @@
       strokeColor: '#333',
       strokeWidth: 1.5
     });
-    board2.create('segment', [points2['A'], points2['C']], {
-      name: 'AC',
+    board2.create('segment', [points2['C'], points2['D']], {
+      name: 'CD',
       strokeColor: '#333',
       strokeWidth: 1.5
-    });
-    board2.create('segment', [points2['B'], points2['C']], {
-      name: 'BC',
-      strokeColor: '#333',
-      strokeWidth: 1.5
-    });
-    board2.create('segment', [points2['B'], points2['D']], {
-      name: 'BD',
-      strokeColor: '#333',
-      strokeWidth: 1.5
-    });
-    board2.create('segment', [points2['A'], points2['D']], {
-      name: 'AD',
-      strokeColor: '#333',
-      strokeWidth: 1.5
-    });
-
-    // Angle: ∠ADB = 38°
-    board2.create('angle', [points2['A'], points2['D'], points2['B']], {
-      radius: 0.8,
-      fillColor: '#ffcccc',
-      strokeColor: '#cc0000',
-      name: '38°'
-    });
-
-    // Angle: ∠ACB = 38°
-    board2.create('angle', [points2['A'], points2['C'], points2['B']], {
-      radius: 0.8,
-      fillColor: '#ffcccc',
-      strokeColor: '#cc0000',
-      name: '38°'
-    });
-
-    // Angle: ∠BAC = 104°
-    board2.create('angle', [points2['B'], points2['A'], points2['C']], {
-      radius: 0.8,
-      fillColor: '#ffcccc',
-      strokeColor: '#cc0000',
-      name: '104°'
-    });
-
-    // Triangle: △ABC
-    board2.create('polygon', [
-      points2['A'],
-      points2['B'],
-      points2['C']
-    ], {
-      fillColor: '#e6f2ff',
-      fillOpacity: 0.3,
-      borders: {strokeColor: '#0066cc', strokeWidth: 2}
     });
 
 
     // Board 4: Circle Theorems
     const board3 = JXG.JSXGraph.initBoard('jxgbox-3', {
-      boundingbox: [-6.6, 6, 6.8, -9],
-      axis: true,
+      boundingbox: [-13.6985, 14, 14.3015, -14],
+      axis: false,
       showCopyright: false,
-      showNavigation: true,
-      grid: false
+      showNavigation: false,
+      grid: false,
+      pan: {enabled: false},
+      zoom: {enabled: false},
+      keepAspectRatio: true
     });
     
     // Create points
@@ -835,69 +957,183 @@
       size: 3,
       fillColor: '#0066cc',
       strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
+      label: {offset: [5, 5]},
+      fixed: true
     });
-    points3['E'] = board3.create('point', [1, 1], {
-      name: 'E',
-      size: 3,
-      fillColor: '#0066cc',
-      strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
-    });
-    points3['A'] = board3.create('point', [-4.6, 2.5], {
+    points3['A'] = board3.create('point', [0, 10], {
       name: 'A',
       size: 3,
       fillColor: '#0066cc',
       strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
+      label: {offset: [5, 5]},
+      fixed: true
     });
-    points3['B'] = board3.create('point', [4.8, 0], {
+    points3['B'] = board3.create('point', [10, 0], {
       name: 'B',
       size: 3,
       fillColor: '#0066cc',
       strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
+      label: {offset: [5, 5]},
+      fixed: true
     });
-    points3['C'] = board3.create('point', [1, 4], {
+    points3['C'] = board3.create('point', [0, -10], {
       name: 'C',
       size: 3,
       fillColor: '#0066cc',
       strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
+      label: {offset: [5, 5]},
+      fixed: true
     });
-    points3['D'] = board3.create('point', [1, -7], {
+    points3['D'] = board3.create('point', [-9.397, 3.42], {
       name: 'D',
       size: 3,
       fillColor: '#0066cc',
       strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
+      label: {offset: [5, 5]},
+      fixed: true
+    });
+    points3['E'] = board3.create('point', [0, 1.763], {
+      name: 'E',
+      size: 3,
+      fillColor: '#0066cc',
+      strokeColor: '#0066cc',
+      label: {offset: [5, 5]},
+      fixed: true
     });
 
-    // Circle: Circle
-    board3.create('circle', [points3['O'], 5.5], {
+    // Circle: Circle O
+    board3.create('circle', [points3['O'], points3['A']], {
       strokeColor: '#666',
       strokeWidth: 2,
       fillOpacity: 0
     });
-    board3.create('segment', [points3['A'], points3['B']], {
-      name: 'AB',
+    board3.create('segment', [points3['A'], points3['C']], {
+      name: 'AC',
       strokeColor: '#333',
       strokeWidth: 1.5
     });
-    board3.create('segment', [points3['C'], points3['D']], {
-      name: 'CD',
+    board3.create('segment', [points3['B'], points3['D']], {
+      name: 'BD',
       strokeColor: '#333',
       strokeWidth: 1.5
     });
+
+    // Angle: ∠ABD = 35°
+    (function() {
+      const angle1 = board3.create('angle', [points3['A'], points3['B'], points3['D']], {
+        radius: 0.8,
+        fillColor: '#ffcccc',
+        strokeColor: '#cc0000',
+        name: '35°',
+        visible: false
+      });
+      const angle2 = board3.create('angle', [points3['D'], points3['B'], points3['A']], {
+        radius: 0.8,
+        fillColor: '#ffcccc',
+        strokeColor: '#cc0000',
+        name: '35°',
+        visible: false
+      });
+      
+      // Get the actual angle values (in radians, convert to degrees)
+      const measure1 = Math.abs(angle1.Value() * 180 / Math.PI);
+      const measure2 = Math.abs(angle2.Value() * 180 / Math.PI);
+      
+      // Find which angle is closer to the expected measure
+      const diff1 = Math.abs(measure1 - 35);
+      const diff2 = Math.abs(measure2 - 35);
+      
+      // Show the correct one
+      if (diff1 < diff2) {
+        angle1.setAttribute({visible: true});
+        board3.removeObject(angle2);
+      } else {
+        angle2.setAttribute({visible: true});
+        board3.removeObject(angle1);
+      }
+    })();
+
+    // Angle: ∠BAC = 45°
+    (function() {
+      const angle1 = board3.create('angle', [points3['B'], points3['A'], points3['C']], {
+        radius: 0.8,
+        fillColor: '#ffcccc',
+        strokeColor: '#cc0000',
+        name: '45°',
+        visible: false
+      });
+      const angle2 = board3.create('angle', [points3['C'], points3['A'], points3['B']], {
+        radius: 0.8,
+        fillColor: '#ffcccc',
+        strokeColor: '#cc0000',
+        name: '45°',
+        visible: false
+      });
+      
+      // Get the actual angle values (in radians, convert to degrees)
+      const measure1 = Math.abs(angle1.Value() * 180 / Math.PI);
+      const measure2 = Math.abs(angle2.Value() * 180 / Math.PI);
+      
+      // Find which angle is closer to the expected measure
+      const diff1 = Math.abs(measure1 - 45);
+      const diff2 = Math.abs(measure2 - 45);
+      
+      // Show the correct one
+      if (diff1 < diff2) {
+        angle1.setAttribute({visible: true});
+        board3.removeObject(angle2);
+      } else {
+        angle2.setAttribute({visible: true});
+        board3.removeObject(angle1);
+      }
+    })();
+
+    // Angle: ∠AED = 80°
+    (function() {
+      const angle1 = board3.create('angle', [points3['A'], points3['E'], points3['D']], {
+        radius: 0.8,
+        fillColor: '#ffcccc',
+        strokeColor: '#cc0000',
+        name: '80°',
+        visible: false
+      });
+      const angle2 = board3.create('angle', [points3['D'], points3['E'], points3['A']], {
+        radius: 0.8,
+        fillColor: '#ffcccc',
+        strokeColor: '#cc0000',
+        name: '80°',
+        visible: false
+      });
+      
+      // Get the actual angle values (in radians, convert to degrees)
+      const measure1 = Math.abs(angle1.Value() * 180 / Math.PI);
+      const measure2 = Math.abs(angle2.Value() * 180 / Math.PI);
+      
+      // Find which angle is closer to the expected measure
+      const diff1 = Math.abs(measure1 - 80);
+      const diff2 = Math.abs(measure2 - 80);
+      
+      // Show the correct one
+      if (diff1 < diff2) {
+        angle1.setAttribute({visible: true});
+        board3.removeObject(angle2);
+      } else {
+        angle2.setAttribute({visible: true});
+        board3.removeObject(angle1);
+      }
+    })();
 
 
     // Board 5: Circle Theorems
     const board4 = JXG.JSXGraph.initBoard('jxgbox-4', {
-      boundingbox: [-12, 10.19, 16.28, -10.19],
-      axis: true,
+      boundingbox: [-14, 14.0275, 14, -13.9725],
+      axis: false,
       showCopyright: false,
-      showNavigation: true,
-      grid: false
+      showNavigation: false,
+      grid: false,
+      pan: {enabled: false},
+      zoom: {enabled: false},
+      keepAspectRatio: true
     });
     
     // Create points
@@ -907,108 +1143,164 @@
       size: 3,
       fillColor: '#0066cc',
       strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
+      label: {offset: [5, 5]},
+      fixed: true
     });
-    points4['T'] = board4.create('point', [14.28, 0], {
+    points4['A'] = board4.create('point', [0, 10], {
+      name: 'A',
+      size: 3,
+      fillColor: '#0066cc',
+      strokeColor: '#0066cc',
+      label: {offset: [5, 5]},
+      fixed: true
+    });
+    points4['B'] = board4.create('point', [1.045, -9.945], {
+      name: 'B',
+      size: 3,
+      fillColor: '#0066cc',
+      strokeColor: '#0066cc',
+      label: {offset: [5, 5]},
+      fixed: true
+    });
+    points4['C'] = board4.create('point', [-1.045, -9.945], {
+      name: 'C',
+      size: 3,
+      fillColor: '#0066cc',
+      strokeColor: '#0066cc',
+      label: {offset: [5, 5]},
+      fixed: true
+    });
+    points4['D'] = board4.create('point', [-7.43, 6.69], {
+      name: 'D',
+      size: 3,
+      fillColor: '#0066cc',
+      strokeColor: '#0066cc',
+      label: {offset: [5, 5]},
+      fixed: true
+    });
+    points4['S'] = board4.create('point', [-10, 10], {
+      name: 'S',
+      size: 3,
+      fillColor: '#0066cc',
+      strokeColor: '#0066cc',
+      label: {offset: [5, 5]},
+      fixed: true
+    });
+    points4['T'] = board4.create('point', [10, 10], {
       name: 'T',
       size: 3,
       fillColor: '#0066cc',
       strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
-    });
-    points4['P'] = board4.create('point', [5.73, 8.19], {
-      name: 'P',
-      size: 3,
-      fillColor: '#0066cc',
-      strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
-    });
-    points4['Q'] = board4.create('point', [5.73, -8.19], {
-      name: 'Q',
-      size: 3,
-      fillColor: '#0066cc',
-      strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
-    });
-    points4['R'] = board4.create('point', [-10, 0], {
-      name: 'R',
-      size: 3,
-      fillColor: '#0066cc',
-      strokeColor: '#0066cc',
-      label: {offset: [5, 5]}
+      label: {offset: [5, 5]},
+      fixed: true
     });
 
     // Circle: Circle O
-    board4.create('circle', [points4['O'], 10], {
+    board4.create('circle', [points4['O'], points4['A']], {
       strokeColor: '#666',
       strokeWidth: 2,
       fillOpacity: 0
     });
-    board4.create('segment', [points4['T'], points4['P']], {
-      name: 'TP',
+    board4.create('segment', [points4['S'], points4['T']], {
+      name: 'ST',
       strokeColor: '#333',
       strokeWidth: 1.5
     });
-    board4.create('segment', [points4['T'], points4['Q']], {
-      name: 'TQ',
+    board4.create('segment', [points4['A'], points4['B']], {
+      name: 'AB',
       strokeColor: '#333',
       strokeWidth: 1.5
     });
-    board4.create('segment', [points4['O'], points4['P']], {
-      name: 'OP',
-      strokeColor: '#ff6600',
-      strokeWidth: 2
-    });
-    board4.create('segment', [points4['O'], points4['Q']], {
-      name: 'OQ',
-      strokeColor: '#ff6600',
-      strokeWidth: 2
-    });
-    board4.create('segment', [points4['P'], points4['R']], {
-      name: 'PR',
+    board4.create('segment', [points4['A'], points4['C']], {
+      name: 'AC',
       strokeColor: '#333',
       strokeWidth: 1.5
     });
-    board4.create('segment', [points4['Q'], points4['R']], {
-      name: 'QR',
+    board4.create('segment', [points4['B'], points4['C']], {
+      name: 'BC',
+      strokeColor: '#333',
+      strokeWidth: 1.5
+    });
+    board4.create('segment', [points4['A'], points4['D']], {
+      name: 'AD',
+      strokeColor: '#333',
+      strokeWidth: 1.5
+    });
+    board4.create('segment', [points4['D'], points4['C']], {
+      name: 'DC',
       strokeColor: '#333',
       strokeWidth: 1.5
     });
 
-    // Angle: ∠PTQ = 70°
-    board4.create('angle', [points4['P'], points4['T'], points4['Q']], {
-      radius: 0.8,
-      fillColor: '#ffcccc',
-      strokeColor: '#cc0000',
-      name: '70°'
-    });
+    // Angle: ∠SAB = 48°
+    (function() {
+      const angle1 = board4.create('angle', [points4['S'], points4['A'], points4['B']], {
+        radius: 0.8,
+        fillColor: '#ffcccc',
+        strokeColor: '#cc0000',
+        name: '48°',
+        visible: false
+      });
+      const angle2 = board4.create('angle', [points4['B'], points4['A'], points4['S']], {
+        radius: 0.8,
+        fillColor: '#ffcccc',
+        strokeColor: '#cc0000',
+        name: '48°',
+        visible: false
+      });
+      
+      // Get the actual angle values (in radians, convert to degrees)
+      const measure1 = Math.abs(angle1.Value() * 180 / Math.PI);
+      const measure2 = Math.abs(angle2.Value() * 180 / Math.PI);
+      
+      // Find which angle is closer to the expected measure
+      const diff1 = Math.abs(measure1 - 48);
+      const diff2 = Math.abs(measure2 - 48);
+      
+      // Show the correct one
+      if (diff1 < diff2) {
+        angle1.setAttribute({visible: true});
+        board4.removeObject(angle2);
+      } else {
+        angle2.setAttribute({visible: true});
+        board4.removeObject(angle1);
+      }
+    })();
 
-    // Angle: ∠POQ = 110°
-    board4.create('angle', [points4['P'], points4['O'], points4['Q']], {
-      radius: 0.8,
-      fillColor: '#ffcccc',
-      strokeColor: '#cc0000',
-      name: '110°'
-    });
-
-    // Angle: ∠PRQ = 55°
-    board4.create('angle', [points4['P'], points4['R'], points4['Q']], {
-      radius: 0.8,
-      fillColor: '#ffcccc',
-      strokeColor: '#cc0000',
-      name: '55°'
-    });
-
-    // Triangle: △PQR
-    board4.create('polygon', [
-      points4['P'],
-      points4['Q'],
-      points4['R']
-    ], {
-      fillColor: '#e6f2ff',
-      fillOpacity: 0.3,
-      borders: {strokeColor: '#0066cc', strokeWidth: 2}
-    });
+    // Angle: ∠ADC = 132°
+    (function() {
+      const angle1 = board4.create('angle', [points4['A'], points4['D'], points4['C']], {
+        radius: 0.8,
+        fillColor: '#ffcccc',
+        strokeColor: '#cc0000',
+        name: '132°',
+        visible: false
+      });
+      const angle2 = board4.create('angle', [points4['C'], points4['D'], points4['A']], {
+        radius: 0.8,
+        fillColor: '#ffcccc',
+        strokeColor: '#cc0000',
+        name: '132°',
+        visible: false
+      });
+      
+      // Get the actual angle values (in radians, convert to degrees)
+      const measure1 = Math.abs(angle1.Value() * 180 / Math.PI);
+      const measure2 = Math.abs(angle2.Value() * 180 / Math.PI);
+      
+      // Find which angle is closer to the expected measure
+      const diff1 = Math.abs(measure1 - 132);
+      const diff2 = Math.abs(measure2 - 132);
+      
+      // Show the correct one
+      if (diff1 < diff2) {
+        angle1.setAttribute({visible: true});
+        board4.removeObject(angle2);
+      } else {
+        angle2.setAttribute({visible: true});
+        board4.removeObject(angle1);
+      }
+    })();
 
   </script>
 </body>
